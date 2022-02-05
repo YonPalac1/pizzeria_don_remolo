@@ -15,3 +15,21 @@
 #### npm start
 
 <p>y se abrirá una ventana en el puerto http://localhost:3000/</p>
+
+
+----------------------------------
+
+## Para ejecutar el servidor Backend
+
+<p>Para ejecutar el servidor debes ingresar a la carpeta Backend y luego a la carpeta pizzeria don remolo</p>
+
+<p>Abrir una consola de sistema en esa ubicación y colocar:</p>
+
+#### npm install 
+<p>Instalar las dependencias requeridas para el funcionamiento correcto del servidor</p>
+
+#### npm start
+<p>Para iniciar el servidor</p>
+
+### [Documentación de la API](https://documenter.getpostman.com/view/17864000/UVeGr6QQ)
+
