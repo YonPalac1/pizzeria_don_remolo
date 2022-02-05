@@ -13,3 +13,5 @@
 <p>Y para ejecutar la vista: </p>
 
 #### npm start
+
+<p>y se abrirá una ventana en el puerto http://localhost:3000/</p>
