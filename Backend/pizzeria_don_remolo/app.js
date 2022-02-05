@@ -13,10 +13,9 @@ mongooseConnection()
 ///////////////////////////////////////////////////
 
 // Enrutadores
-const indexRouter = require("./routes/index");
-const usersRouter = require("./routes/users");
+const adminRouter = require("./routes/admin");
 
-// Middlewares
+// Middleware
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -24,13 +23,21 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 // Rutas
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
+
+app.use("/api/admin", adminRouter);
+
+app.use("/*", (req, res) => {
+  res.status(404).json({ 
+    status:404,
+    error: "Not found"
+  });
+});
 
 // Error 404 -  Not Found
 app.use(function (req, res, next) {
   next(createError(404));
 });
+
 
 // Error handler
 app.use(function (err, req, res, next) {
