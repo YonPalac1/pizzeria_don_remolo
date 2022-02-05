@@ -4,7 +4,7 @@
 
 <p>Para clonar el proyecto ejecuta:</p>
 
-git clone 
+git clone https://github.com/YonPalac1/pizzeria_don_remolo.git
 
 <p>en tu controlador de versiones</p>
 
