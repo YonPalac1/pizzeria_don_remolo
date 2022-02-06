@@ -25,10 +25,10 @@
 
 <p>Abrir una consola de sistema y en esa ubicación, colocar:</p>
 
-#### npm install 
+### npm install 
 <p>Para instalar las dependencias requeridas para el funcionamiento correcto del servidor</p>
 
-#### npm start
+### npm start
 <p>Para iniciar el servidor en el puerto 3000</p>
 
 ### [Documentación de la API](https://documenter.getpostman.com/view/17864000/UVeGr6QQ)
