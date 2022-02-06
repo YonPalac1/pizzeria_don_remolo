@@ -21,7 +21,7 @@
 
 ## Para ejecutar el servidor Backend
 
-<p>Para ejecutar el servidor debes ingresar a la carpeta Backend y luego a la carpeta pizzeria don remolo</p>
+<p>Para ejecutar el servidor debes ingresar a la carpeta Backend</p>
 
 <p>Abrir una consola de sistema y en esa ubicación, colocar:</p>
 
