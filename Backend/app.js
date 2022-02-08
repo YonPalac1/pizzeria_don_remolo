@@ -7,6 +7,9 @@ const createError = require("http-errors");
 const path = require("path");
 const app = express();
 const mongooseConnection = require('./database/connection')
+const cors = require('cors')
+
+app.use(cors()) 
 
 /////////////// Conexión a base de datos /////////////
 mongooseConnection()

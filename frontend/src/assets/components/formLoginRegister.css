@@ -1,0 +1,16 @@
+.form_login {
+    display: flex;
+    flex-direction: column;
+    max-width: 1024px;
+    margin: auto;
+}
+.form_login input {
+    padding: 10px;
+}
+.form_login button {
+    margin-top: 20px;
+    padding: 10px;
+}
+.text-danger {
+    color: red;
+}
