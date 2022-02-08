@@ -19,8 +19,8 @@ module.exports = [
     .notEmpty()
     .withMessage("Contraseña requerida")
     .bail()
-    .custom(async (value) => {
-      const user = await User.findOne({email:value});
+    .custom(async (value, {req}) => {
+      const user = await User.findOne({email: req.body.email});
       if (user) {
         const passwordTrue = await compare(value, user.password);
         return !passwordTrue && Promise.reject("El email o la contraseña son incorrectas");
