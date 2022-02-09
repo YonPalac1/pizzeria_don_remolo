@@ -1,9 +1,14 @@
-import React, {useState, useEffect} from 'react';
-import { useDispatch } from "react-redux";
+import React, {useState, useEffect, useRef} from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import { registerAction } from '../redux/reducer';
 
+
+
 export const Register = () => {
+  const password_confirm = useRef()
+
   const dispatch = useDispatch()
+
   const initialForm = {
     name: "",
     email: "",
@@ -11,13 +16,8 @@ export const Register = () => {
     rol: 1
   };
   const [form, setForm] = useState(initialForm)
-  const [password_confirm, setPassword_confirm] = useState("")
-  const [error, setError] = useState({})
-  
-  useEffect(() => {
-    setForm(form)
-  }, []);
-  
+  const errors = useSelector(store=>store.data.errors)
+
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -28,13 +28,11 @@ export const Register = () => {
   // Submit
   const handleSubmit = (e) => {
     e.preventDefault()
+    dispatch(registerAction(form))
     
-    if(validate()){
-      dispatch(registerAction(form))
-    }
   }
 
-  function validate(){
+ /*   function validate(){
       let input = form;
       let errors = {};
       let isValid = true;
@@ -67,10 +65,8 @@ export const Register = () => {
         }
       } 
 
-      setError(errors)
-
       return isValid;
-  }
+  } */
 
   return <div>
         <form onSubmit={handleSubmit} className="form_login">
@@ -82,7 +78,7 @@ export const Register = () => {
               onChange={handleChange}
               placeholder="Enter name" 
               id="name" />
-            <div className="text-danger">{error.name}</div>
+         <div className="text-danger">{errors['name']?.msg}</div>
               
             <label htmlFor="email">Email</label>
             <input 
@@ -93,7 +89,7 @@ export const Register = () => {
               placeholder="Enter email" 
               id="email" />
   
-              <div className="text-danger">{error.email}</div>
+             <div className="text-danger">{errors['email']?.msg}</div>
    
             <label htmlFor="password">Contraseña</label>
             <input 
@@ -103,18 +99,17 @@ export const Register = () => {
               onChange={handleChange}
               placeholder="Enter password" 
               id="password" />
-              <div className="text-danger">{error.password}</div>
+              <div className="text-danger">{errors['password']?.msg}</div>
   
   
             <label htmlFor="password">Confirme la contraseña</label>
             <input 
               type="password" 
               name="password_confirm"
-              value={password_confirm}
-              onChange={(e)=>setPassword_confirm(e.target.value)}
+              ref={password_confirm}
               placeholder="Enter confirm password" 
               id="confirm_password" />
-              <div className="text-danger">{error.password_confirm}</div>
+             <div className="text-danger">{errors['password']?.value !== password_confirm.current?.value && "Las contraseñas no coinciden"}</div>
   
               
           <button type="submit">Registrarse</button>
