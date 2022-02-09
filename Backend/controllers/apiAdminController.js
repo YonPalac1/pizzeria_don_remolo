@@ -69,6 +69,7 @@ module.exports = {
             ok: true,
           },
           data: userFound,
+          errors:null
         });
       } catch (error) {
         res.status(404).json({
@@ -85,9 +86,13 @@ module.exports = {
         delete errorsObj[key].param;
         delete errorsObj[key].location;
       }
-      res.status(400).json({
-        error: true,
-        errors: errorsObj,
+      res.status(200).json({
+        meta: {
+          status: 200,
+          ok: false,
+        },
+        data: null,
+        errors:errorsObj
       });
     }
   },
