@@ -22,8 +22,10 @@ export default function reducer(state = dataInicial, action) {
 
     case LOGIN:
       return { ...state,
-        
-      };
+        user: action.payload.data,
+        errors: action.payload.errors,
+        ok: action.payload.meta.ok,
+       };
 
     default:
       return state;
@@ -47,7 +49,6 @@ export const registerAction = (data) => async (dispatch) => {
     type: REGISTER,
     payload: res.data,
   });
-  console.log(data)
 };
 
 export const loginAction = (data) => (dispatch) => {
