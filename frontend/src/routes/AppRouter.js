@@ -1,5 +1,5 @@
 import React,{useEffect} from 'react'
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
 
 import {Login} from '../components/Login.jsx'
@@ -9,22 +9,23 @@ import { Register } from '../components/Register.jsx';
 
 const AppRouter = () => {
     const logged = useSelector(store => store.data.ok)
-
-    useEffect(() => {
-    }, [logged]);
-    
+   
+    useEffect(()=>{
+    }, [])
 
     return (
         <Router>
             <Navbar />
             <Routes>
+                
                 <Route path='/login' element={
                     logged ? 
-                    <Home />
-                    :
-                    <Login />
-                } />
+                        <Navigate to="/" />
+                        :
+                        <Login />
+                    } />
                 <Route path='/register' element={<Register />} />
+                <Route path='/' element={<Home />} />
             </Routes>
         </Router>
     )
