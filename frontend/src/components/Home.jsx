@@ -1,5 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux'
 
 export const Home = () => {
-  return <div>Logeado</div>;
+  const user = useSelector(state => state.auth.user)
+
+  return <>
+    {user?.name ? <p>Bienvenido {user.name}</p> : "Home sin logear  "}
+  </>
 };

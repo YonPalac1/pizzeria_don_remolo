@@ -1,37 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { loginAction } from '../redux/reducer';
+import { loginAction } from '../redux/authReducer';
+import useForm from '../hooks/useForm'
 
 export const Login = () => {
   const dispatch = useDispatch()
-
-  const initialForm = {
-    email: "",
-    password: ""
-  };
-  const [form, setForm] = useState(initialForm)
-  const isError = useSelector(state => state.data.isError)
-  const errors = useSelector(state => state.data.errors)
-
-  useEffect(() => {
-    setForm(initialForm)
-  }, []);
-
-  const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const [formValues, handleChange] = useForm({ email : '', password : '' })
+  const { email, password } = formValues;
+  const errors = useSelector(state => state.auth.errors)
 
   // Submit
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    dispatch(loginAction(form))
+    dispatch(loginAction(formValues))
   }
-
-
 
   return <>
       <form onSubmit={handleSubmit} className='form_login'>
@@ -41,22 +24,22 @@ export const Login = () => {
           name="email"
           type="email"
           placeholder='Email'
-          value={form.email}
+          value={email}
           onChange={handleChange}
           ></input>
 
-          <div className="text-danger">{errors.email?.msg}</div>
+          <div className="text-danger">{errors && errors["email"]?.msg}</div>
 
           <label htmlFor="password">Contraseña</label>
           <input id='password' 
           type="password"
           name="password"
           placeholder='Contraseña'
-          value={form.password}
+          value={password}
           onChange={handleChange}
           ></input>
 
-          <div className="text-danger">{errors.password?.msg}</div>
+          <div className="text-danger">{errors && errors["password"]?.msg}</div>
 
 
           <button type='submit'>Ingresar</button>
