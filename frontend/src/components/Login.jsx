@@ -10,7 +10,6 @@ export const Login = () => {
     password: ""
   };
   const [form, setForm] = useState(initialForm)
-  const isError = useSelector(state => state.data.isError)
   const errors = useSelector(state => state.data.errors)
 
   useEffect(() => {

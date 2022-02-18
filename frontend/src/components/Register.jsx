@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { registerAction } from "../redux/reducer";
 
@@ -48,6 +48,7 @@ export const Register = () => {
           onChange={handleChange}
           placeholder="Enter name"
           id="name"
+          maxlength="15"
         />
         <div className="text-danger">{errors && errors["name"]?.msg}</div>
 

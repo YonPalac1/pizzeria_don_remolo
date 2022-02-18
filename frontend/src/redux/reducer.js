@@ -21,11 +21,7 @@ export default function reducer(state = dataInicial, action) {
       };
 
     case LOGIN:
-      return { ...state,
-        user: action.payload.data,
-        errors: action.payload.errors,
-        ok: action.payload.meta.ok,
-       };
+      return { ...state };
 
     default:
       return state;
