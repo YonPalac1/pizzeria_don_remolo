@@ -2,6 +2,8 @@ import axios from "axios";
 
 const REGISTER = "REGISTER";
 const LOGIN = "LOGIN";
+const LOGOUT = "LOGOUT";
+const SESSION = "SESSION";
 
 const dataInicial = {
   ok: false,
@@ -10,7 +12,7 @@ const dataInicial = {
 };
 
 //Reducer
-export default function reducer(state = dataInicial, action) {
+export default function authReducer(state = dataInicial, action) {
   switch (action.type) {
     case REGISTER:
       return {
@@ -21,7 +23,26 @@ export default function reducer(state = dataInicial, action) {
       };
 
     case LOGIN:
-      return { ...state };
+      localStorage.setItem('user', JSON.stringify(action.payload.data));
+      return { ...state,
+        user: action.payload.data,
+        errors: action.payload.errors,
+        ok: action.payload.meta.ok,
+       };
+    case SESSION: 
+      return { ...state,
+        user: action.payload,
+        errors: null,
+        ok: true,
+      }
+    case LOGOUT:
+      localStorage.removeItem('user')
+      return { ...state,
+        user: null,
+        errors: null,
+        ok: false,
+       };
+
 
     default:
       return state;
@@ -68,3 +89,21 @@ export const loginAction = (data) => (dispatch) => {
     console.log(err);
   }
 };
+<<<<<<< HEAD:frontend/src/redux/reducer.js
+=======
+
+export const sessionAction = (data) => (dispatch) =>{
+  const user = JSON.parse(data)
+  dispatch({
+    type: SESSION,
+    payload: user
+  })
+}
+
+export const logoutAction = () => (dispatch) => {
+  dispatch({
+    type: LOGOUT,
+    payload: false
+  });
+};
+>>>>>>> 0a34be0c6f5365e6182ee6a31cb8579c43559790:frontend/src/redux/authReducer.js

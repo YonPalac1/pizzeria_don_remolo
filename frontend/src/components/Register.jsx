@@ -1,28 +1,15 @@
 import React, { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { registerAction } from "../redux/reducer";
+import { registerAction } from "../redux/authReducer";
+import useForm from '../hooks/useForm'
 
 export const Register = () => {
   const dispatch = useDispatch();
+  const [formValues, handleChange] = useForm({ name: "", email: "", password: "", rol: 1 })
+  const {name, email, password} = formValues;
   const [errorPass2, setErrorPass2] = useState();
+  const errors = useSelector((store) => store.auth.errors);
   const pass1 = useRef()
-  const initialForm = {
-    name: "",
-    email: "",
-    password: "",
-    rol: 1,
-  };
-
-  const [form, setForm] = useState(initialForm);
-
-  const errors = useSelector((store) => store.data.errors);
-
-  const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
-  };
 
   const handleChangePass2 = (e) => {
     setErrorPass2(
@@ -34,7 +21,7 @@ export const Register = () => {
   // Submit
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(registerAction(form));
+    dispatch(registerAction(formValues));
   };
 
   return (
@@ -44,7 +31,7 @@ export const Register = () => {
         <input
           type="text"
           name="name"
-          value={form.name}
+          value={name}
           onChange={handleChange}
           placeholder="Enter name"
           id="name"
@@ -56,7 +43,7 @@ export const Register = () => {
         <input
           type="text"
           name="email"
-          value={form.email}
+          value={email}
           onChange={handleChange}
           placeholder="Enter email"
           id="email"
@@ -69,7 +56,7 @@ export const Register = () => {
           type="password"
           name="password"
           ref={pass1}
-          value={form.password}
+          value={password}
           onChange={handleChange}
           placeholder="Enter password"
           id="password"
