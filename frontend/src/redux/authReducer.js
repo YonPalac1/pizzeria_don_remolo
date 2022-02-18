@@ -89,8 +89,6 @@ export const loginAction = (data) => (dispatch) => {
     console.log(err);
   }
 };
-<<<<<<< HEAD:frontend/src/redux/reducer.js
-=======
 
 export const sessionAction = (data) => (dispatch) =>{
   const user = JSON.parse(data)
@@ -106,4 +104,3 @@ export const logoutAction = () => (dispatch) => {
     payload: false
   });
 };
->>>>>>> 0a34be0c6f5365e6182ee6a31cb8579c43559790:frontend/src/redux/authReducer.js
