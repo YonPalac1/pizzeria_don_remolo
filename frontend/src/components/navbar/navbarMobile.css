@@ -1,0 +1,31 @@
+.navbarMobile {
+    position: fixed;
+    width: 100%;
+    background: #fff;
+}
+.navbarMobile-buttons {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+}
+.navbarMobile-buttons_btn {
+    text-align: right;
+}
+
+.navbarMobile-buttons_btn .icon {
+    margin-right: 20px;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+.logo img {
+    width: 30px;
+    margin-right: 10px;
+}
+@media screen and (min-width: 620px) {
+    .navbarMobile {
+        display: none;
+    }
+}
