@@ -34,18 +34,16 @@ module.exports = [
     .withMessage("Tamaño requerido")
     .isNumeric()
     .withMessage("Tamaño tiene que ser un número")
-    .bail()
-    .isIn([1, 2]) 
-    .withMessage("Rol tiene que ser 1 o 2"),
+    .bail(),
 
   body("show")
     .notEmpty()
-    .withMessage("Rol requerido")
+    .withMessage("Selección requerido")
     .isNumeric()
-    .withMessage("Rol tiene que ser un número")
+    .withMessage("Mostrar tiene que ser un número")
     .bail()
-    .isIn([1, 2]) 
-    .withMessage("Rol tiene que ser 1 o 2"),
+    .isIn([0, 1]) 
+    .withMessage("El valor es invalido"),
     
   body("available")
     .notEmpty()

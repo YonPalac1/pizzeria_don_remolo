@@ -2,6 +2,7 @@ const { Schema, model } = require("mongoose");
 
 const drinkSchema = new Schema({
   brand: String,
+  image:String,
   title: String,
   measurement: String,
   size: Number,

@@ -17,7 +17,7 @@ mongooseConnection()
 
 // Enrutadores
 const adminRouter = require("./routes/admin");
-const apiFoodAndDrinksRoutes = require("./routes/apiDrinks");
+const apiFoodAndDrinksRoutes = require("./routes/Drinks");
 
 
 // Middleware
