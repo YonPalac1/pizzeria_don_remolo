@@ -17,6 +17,8 @@ mongooseConnection()
 
 // Enrutadores
 const adminRouter = require("./routes/admin");
+const apiFoodAndDrinksRoutes = require("./routes/apiDrinks");
+
 
 // Middleware
 app.use(logger("dev"));
@@ -28,6 +30,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // Rutas
 
 app.use("/api/admin", adminRouter);
+app.use("/api", apiFoodAndDrinksRoutes);
 
 app.use("/*", (req, res) => {
   res.status(404).json({ 
