@@ -1,4 +1,4 @@
-require("dotenv").config(); // Configuración de variables de entorno.
+require("dotenv").config(); // Setting environment variables
 
 const express = require("express");
 const cookieParser = require("cookie-parser");
@@ -10,13 +10,14 @@ const mongooseConnection = require("./database/connection");
 const cors = require("cors");
 const fileUpload = require("express-fileupload");
 
-/////////////// Conexión a base de datos /////////////
+/////////////// Connection to database /////////////
 mongooseConnection();
 ///////////////////////////////////////////////////
 
-// Enrutadores
+// Routers
 const adminRouter = require("./routes/admin");
 const apiDrinksRoutes = require("./routes/drinks");
+const { body } = require("express-validator");
 
 // Middleware
 app.use(logger("dev"));
@@ -24,11 +25,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-app.use(fileUpload());
 app.use(cors());
+app.use(fileUpload());
 
-// Rutas
 
+// Routes
 app.use("/api/admin", adminRouter);
 app.use("/api/drinks", apiDrinksRoutes);
 

@@ -2,6 +2,12 @@ const Drink = require("../database/Drink");
 const path = require("path");
 const { validationResult } = require("express-validator");
 const { unlinkSync, existsSync } = require("fs");
+
+const getPath = (
+  filename // Function that return a path by every filename
+) => path.join(__dirname, "../public/archives/images/", filename);
+
+
 module.exports = {
   store: async (req, res) => {
     // Constant variables
@@ -33,10 +39,6 @@ module.exports = {
 
         // Save the drink in database
         const drink = await newDrink.save();
-
-        const getPath = (
-          filename // Function that return a path by every filename
-        ) => path.join(__dirname, "../public/archives/images/", filename);
 
         // Save archives of images
         arrFilename.forEach((name) => {
@@ -83,7 +85,6 @@ module.exports = {
         data: null,
         errors: error,
       });
-      console.log(error);
     }
   },
 
@@ -117,10 +118,7 @@ module.exports = {
 
         const drinkAfter = await Drink.findOne({ _id: req.params.id }); // Search the drink after
 
-        const getPath = (
-          filename // Function that return a path by every filename
-        ) => path.join(__dirname, "../public/archives/images/", filename);
-
+        
 
         let existsFileBefore = await Promise.all(   // example [true ,true ,true]
           // The promises returns us a array with values booleans
@@ -140,7 +138,7 @@ module.exports = {
 
         // Delete archives before
         if (files && existsFileBefore) {
-          Promise.all(
+         await Promise.all(
             drinkBefore.image // In the drink before we iterate
               .map((filenameBefore) =>
                 unlinkSync(
@@ -199,13 +197,77 @@ module.exports = {
           msg: "Error del servidor",
         },
         data: null,
-        errors: error,
+        errors: error.message,
       });
 
     }
   },
-  remove: (req, res) => {
+  remove: async (req, res) => {
+    try {
+      
+    const {id:_id}=req.params
+    const drink = await Drink.findById(_id)
+    if(drink){  // If the value is truthy
+
+      await Drink.remove({_id})
+
+      let existsFileBefore = await Promise.all(   // example [true ,true ,true]
+        // The promises returns us a array with values booleans
+        drink.image // In the drink before we mapped
+          .map((filenameBefore) =>
+            existsSync(
+              // Enter a path
+              getPath(filenameBefore) // Get path to directory specify
+            )
+          )
+      );
+  
+      // Method .every() return us a boolean according to its condition in callback
+      existsFileBefore = existsFileBefore.every((isTrue) => isTrue);
+  
+      // Delete archives before
+      if (existsFileBefore) {
+       await Promise.all(
+          drink.image // In the drink before we iterate
+            .map((filenameBefore) =>
+              unlinkSync(
+                // Enter a path
+                getPath(filenameBefore) // Get path to directory specify
+              )
+            )
+        );
+      }
+
+      res.status(200).json({
+          ok:true
+      })
+
+    }else{
+      res.status(400).json({
+        meta:{
+          status:400,
+          ok:false,
+        },
+        data:null,
+        errors:{
+          msg:'El elemento no existe'
+        }
+      })
+    }
+
+  } catch (error) {
+    res.status(500).json({
+      meta: {
+        ok: false,
+        status: 500,
+        msg: "Error del servidor",
+      },
+      data: null,
+      errors: error.message,
+    });
+  }
+   
   },
-  allDrinks: (req, res) => {},
+  all: (req, res) => {},
   detail: (req, res) => {},
 };

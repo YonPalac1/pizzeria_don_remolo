@@ -1,11 +1,11 @@
-const router = require("express").Router();
+module.exports = router = require("express").Router();
 
 // Controllers
 const {
   store,
   update,
   remove,
-  allDrinks,
+  all,
   detail,
 } = require("../controllers/apiDrinksController");
 
@@ -14,10 +14,16 @@ const drinkAddValidation = require("../validations/drinkValidation");
 
 /* ADMIN POST */
 router
-  .post("/add", drinkAddValidation, store)
-  .put("/update/:id", update)
-  .delete("/remove/:id", remove)
-  .get("/", allDrinks)
-  .get("/:id", detail);
 
-module.exports = router;
+  // Verb POST
+  .post("/add", drinkAddValidation, store)
+  
+  // Verb PUT
+  .put("/update/:id", drinkAddValidation, update)
+  
+  // Verb DELETE
+  .delete("/remove/:id", remove)
+
+  // Verbs GET
+  .get("/", all)
+  .get("/:id", detail);
