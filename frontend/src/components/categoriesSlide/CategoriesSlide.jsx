@@ -5,7 +5,13 @@ import "react-multi-carousel/lib/styles.css";
 import './categoriesSlide.css'
 
 export const CategoriesSlide = () => {
-   const responsive = {
+  const card_bg = {
+    active: "active",
+    unactive: "unactive"
+  }
+
+  
+  const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1030 },
       items: 4,
@@ -46,10 +52,10 @@ export const CategoriesSlide = () => {
       slidesToSlide={1}
       swipeable
     >
-      <CardsCategories />
-      <CardsCategories />
-      <CardsCategories />
-      <CardsCategories />
+      <CardsCategories name="Pizzas" bg={card_bg.active} />
+      <CardsCategories name="Empanadas" bg={card_bg.unactive} />
+      <CardsCategories name="Postres" bg={card_bg.unactive} />
+      <CardsCategories name="Bebidas" bg={card_bg.unactive} />
     </Carousel>
   </>
 }

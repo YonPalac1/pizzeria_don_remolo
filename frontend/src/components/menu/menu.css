@@ -46,4 +46,25 @@
     .menu {
         grid-template-columns: auto;
     } 
+    .menu-card {
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+    }
+    .menu-card_img {
+        border-radius: 18px;
+        width: 100%;
+        background: aqua;
+    }
+    .menu-card_details {
+        margin-top: 10px;
+    }
+    .menu-card_btns {
+        margin-top: 10px;
+        width: 100%;
+    }
+    .menu-card_btns .btn-add {
+        right: 0;
+        
+    }
 }
