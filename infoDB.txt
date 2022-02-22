@@ -1,0 +1,40 @@
+*Pizzas*: Son un total de 8.
+1_ Muzzarella $560: Salsa, muzzarella, aceintunas, oregano.
+2_ Calabressa $750: Salsa, muzzarella, cantimpalo, aceitunas y orégano.
+3_ Fugazzeta $630: Cebolla, muzzarella, ajo, morrones y aceitunas.
+4_ Cuatro quesos $790: Salsa, muzzarella, roquefort, provolone, sardo, aceintunas, oregano.
+5_ Pollo con roquefort $790: Salsa, muzzarella, pollo con roquefort, morrones, aceintunas, oregano.
+6_ Especial $710: Salsa, jamón, muzzarella, morrón, oregano y aceitunas.
+7_ Napolitana con jamón	$630: Salsa, muzzarella, tomate, jamón, aceintunas, oregano.
+8_ Remolo $750: Salsa, muzzarella, lomito, ají picante, parmesa, aceintunas, oregano.
+
+*Empandas*: Son un total de 10. $120 cada una.
+1_ Carne Suave
+2_ Jamón y queso
+3_ Humita
+4_ Verdura
+5_ Pollo con salsa blanca
+6_ Pollo con barbacoa
+7_ Roquefort y Jamón
+8_ Carne picante
+9_ Salchicha y cheddar
+10_ Pollo
+
+
+*Postres*: Son un total de 6. se vende por porciones (cada una esta $280)
+1_ Tiramisú
+2_ Chocotorta 
+3_ Mil Hojas
+4_ Cheesecake
+5_ Tarta sacher 
+6_ Waffles (solo estos estan $400)
+
+*Bebidas*: Son un total de 8.
+1_ Pepsi 500 ml $150
+2_ Coca-Cola 500 ml $150
+3_ Agua 500 ml $130
+4_ Aquarius 600 ml $160
+5_ Coca-Cola 1,5Lts $280
+6_ Aquarius 1,5Lts $250
+7_ Cerveza Patagonia IPA 24.7 410 ml $540
+8_ Cerveza Patagonia Amber Lager 410 ml $540

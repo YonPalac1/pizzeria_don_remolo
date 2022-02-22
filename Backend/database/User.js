@@ -5,7 +5,7 @@ const userSchema = new Schema({
     password:String,
     created_at:Date,
     name:String,
-    rol:Number
+    rol:Number,
 })
 
 const User = model('User',userSchema)

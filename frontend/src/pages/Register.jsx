@@ -35,6 +35,7 @@ export const Register = () => {
           onChange={handleChange}
           placeholder="Enter name"
           id="name"
+          maxlength="15"
         />
         <div className="text-danger">{errors && errors["name"]?.msg}</div>
 
