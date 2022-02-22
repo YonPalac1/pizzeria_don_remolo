@@ -25,7 +25,7 @@ module.exports = [
     .isString()
     .withMessage("Medición tiene que ser un texto")
     .isIn(["l", "ml"])
-    .withMessage("Medición invalida"),
+    .withMessage("Medición invalida ( l y ml )"),
 
   body("size")
     .notEmpty()

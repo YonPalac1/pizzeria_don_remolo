@@ -10,16 +10,16 @@ const {
 } = require("../controllers/apiDrinksController");
 
 // Validations Middleware
-const drinkAddValidation = require("../validations/drinkValidation");
+const drinkValidation = require("../validations/drinkValidation");
 
 /* ADMIN POST */
 router
 
   // Verb POST
-  .post("/add", drinkAddValidation, store)
+  .post("/add", drinkValidation, store)
   
   // Verb PUT
-  .put("/update/:id", drinkAddValidation, update)
+  .put("/update/:id", drinkValidation, update)
   
   // Verb DELETE
   .delete("/remove/:id", remove)
