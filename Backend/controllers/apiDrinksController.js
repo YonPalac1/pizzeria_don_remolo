@@ -7,7 +7,6 @@ const getPath = (
   filename // Function that return a path by every filename
 ) => path.join(__dirname, "../public/archives/images/", filename);
 
-
 module.exports = {
   store: async (req, res) => {
     // Constant variables
@@ -87,7 +86,6 @@ module.exports = {
       });
     }
   },
-
   update: async (req, res) => {
     // Constant variables
     const files = req.files?.image;
@@ -118,9 +116,8 @@ module.exports = {
 
         const drinkAfter = await Drink.findOne({ _id: req.params.id }); // Search the drink after
 
-        
-
-        let existsFileBefore = await Promise.all(   // example [true ,true ,true]
+        let existsFileBefore = await Promise.all(
+          // example [true ,true ,true]
           // The promises returns us a array with values booleans
           drinkBefore.image // In the drink before we mapped
             .map((filenameBefore) =>
@@ -131,14 +128,12 @@ module.exports = {
             )
         );
 
-
         // Method .every() return us a boolean according to its condition in callback
         existsFileBefore = existsFileBefore.every((isTrue) => isTrue);
 
-
         // Delete archives before
         if (files && existsFileBefore) {
-         await Promise.all(
+          await Promise.all(
             drinkBefore.image // In the drink before we iterate
               .map((filenameBefore) =>
                 unlinkSync(
@@ -148,7 +143,6 @@ module.exports = {
               )
           );
         }
-
 
         // Save archives of images
         arrFilename.forEach((name) => {
@@ -166,9 +160,7 @@ module.exports = {
           data: drinkAfter,
           errors: null,
         });
-
       } else {
-
         // Deleted the properties unnecessary
         for (key in errorsArr) {
           delete errorsArr[key].location;
@@ -186,9 +178,7 @@ module.exports = {
           errors: errorsArr,
         });
       }
-
     } catch (error) {
-
       // Response from Api if exists errors in the server
       res.status(500).json({
         meta: {
@@ -199,75 +189,126 @@ module.exports = {
         data: null,
         errors: error.message,
       });
-
     }
   },
   remove: async (req, res) => {
     try {
-      
-    const {id:_id}=req.params
-    const drink = await Drink.findById(_id)
-    if(drink){  // If the value is truthy
+      const { id: _id } = req.params;
+      const drink = await Drink.findById(_id);
+      if (drink) {
+        // If the value is truthy
 
-      await Drink.remove({_id})
+        await Drink.remove({ _id });
 
-      let existsFileBefore = await Promise.all(   // example [true ,true ,true]
-        // The promises returns us a array with values booleans
-        drink.image // In the drink before we mapped
-          .map((filenameBefore) =>
-            existsSync(
-              // Enter a path
-              getPath(filenameBefore) // Get path to directory specify
-            )
-          )
-      );
-  
-      // Method .every() return us a boolean according to its condition in callback
-      existsFileBefore = existsFileBefore.every((isTrue) => isTrue);
-  
-      // Delete archives before
-      if (existsFileBefore) {
-       await Promise.all(
-          drink.image // In the drink before we iterate
+        let existsFileBefore = await Promise.all(
+          // example [true ,true ,true] (true for each file)
+          // The promises returns us a array with values booleans
+          drink.image // In the drink before we mapped
             .map((filenameBefore) =>
-              unlinkSync(
+              existsSync(
                 // Enter a path
                 getPath(filenameBefore) // Get path to directory specify
               )
             )
         );
+
+        // Method .every() return us a boolean according to its condition in callback
+        existsFileBefore = existsFileBefore.every((isTrue) => isTrue);
+
+        // Delete archives before
+        if (existsFileBefore) {
+          await Promise.all(
+            drink.image // In the drink before we iterate
+              .map((filenameBefore) =>
+                unlinkSync(
+                  // Enter a path
+                  getPath(filenameBefore) // Get path to directory specify
+                )
+              )
+          );
+        }
+
+        res.status(200).json({
+          meta: {
+            status: 200,
+            ok: true,
+          },
+          data: drink,
+          errors: null,
+        });
+      } else {
+        res.status(400).json({
+          meta: {
+            status: 400,
+            ok: false,
+          },
+          data: null,
+          errors: {
+            msg: "El elemento no existe",
+          },
+        });
       }
+    } catch (error) {
+      res.status(500).json({
+        meta: {
+          ok: false,
+          status: 500,
+          msg: "Error del servidor",
+        },
+        data: null,
+        errors: error.message,
+      });
+    }
+  },
+  all: async (req, res) => {
+    try {
+      const drinks = await Drink.find(); // Return us all drinks
 
       res.status(200).json({
-          ok:true
-      })
-
-    }else{
-      res.status(400).json({
-        meta:{
-          status:400,
-          ok:false,
+        // Response from Api if all out good
+        meta: {
+          ok: true,
+          status: 200,
+          msg: "Todas las bebidas",
         },
-        data:null,
-        errors:{
-          msg:'El elemento no existe'
-        }
-      })
+        data: drinks,
+        errors: null,
+      });
+    } catch (error) {
+      res.status(500).json({
+        meta: {
+          ok: false,
+          status: 500,
+          msg: "Error del servidor",
+        },
+        data: null,
+        errors: error.message,
+      });
     }
-
-  } catch (error) {
-    res.status(500).json({
-      meta: {
-        ok: false,
-        status: 500,
-        msg: "Error del servidor",
-      },
-      data: null,
-      errors: error.message,
-    });
-  }
-   
   },
-  all: (req, res) => {},
-  detail: (req, res) => {},
+  detail: async (req, res) => {
+    try {
+      const drink = await Drink.findById(req.params.id); // Return us all drinks
+
+        res.status(200).json({
+        // Response from Api if all out good
+        meta: {
+          ok: true,
+          status: 200,
+        },
+        data: drink,
+        errors: null,
+      });
+      
+    } catch (error) {
+      res.status(500).json({
+        meta: {
+          ok: false,
+          status: 500,
+        },
+        data: null,
+        errors: {msg: error.message},
+      });
+    }
+  },
 };
