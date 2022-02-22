@@ -1,22 +1,19 @@
 const { body } = require("express-validator");
-const Drink = require("../database/Drink");
+
 
 module.exports = [
   body("brand")
     .notEmpty()
-    .withMessage("Marca requerido")
-    .not().isNumber()
-    .withMessage("Marca tiene que ser un texto")
-    .bail()
-    .custom(async (value) => {
-      const email = await User.findOne({ email: value });
-      return email && Promise.reject("Email ya esta registrado");
-    }),
+    .withMessage("Marca requerida")
+    .not()
+    .isNumeric()
+    .withMessage("Marca tiene que ser un texto"),
 
   body("title")
     .notEmpty()
     .withMessage("Titulo requerido")
-    .not().isNumber()
+    .not()
+    .isNumeric()
     .withMessage("Titulo tiene que ser un texto")
     .bail()
     .isLength({ max: 15 })
@@ -24,49 +21,48 @@ module.exports = [
 
   body("measurement")
     .notEmpty()
-    .withMessage("Elige una medición")
+    .withMessage("Medición requerida")
     .bail()
     .isString()
-    .withMessage("Medición tiene que ser un texto"),
+    .withMessage("Medición tiene que ser un texto")
+    .isIn(["l", "ml"])
+    .withMessage("Medición invalida"),
 
   body("size")
     .notEmpty()
     .withMessage("Tamaño requerido")
+    .bail()
     .isNumeric()
-    .withMessage("Tamaño tiene que ser un número")
-    .bail(),
+    .withMessage("Tamaño tiene que ser un número"),
 
   body("show")
-    .notEmpty()
-    .withMessage("Selección requerido")
+    .optional({ nullable: true })
     .isNumeric()
     .withMessage("Mostrar tiene que ser un número")
     .bail()
-    .isIn([0, 1]) 
-    .withMessage("El valor es invalido"),
-    
+    .isIn([0, 1])
+    .withMessage("Mostrar es invalido"),
+
   body("available")
-    .notEmpty()
-    .withMessage("Rol requerido")
+    .optional({ nullable: true })
     .isNumeric()
-    .withMessage("Rol tiene que ser un número")
+    .withMessage("Disponible tiene que ser un número")
     .bail()
-    .isIn([1, 2]) // 1 = Dueño y 2 = Encargado
-    .withMessage("Rol tiene que ser 1 o 2"),
+    .isIn([0, 1])
+    .withMessage("Disponible es invalido"),
+
   body("price")
     .notEmpty()
-    .withMessage("Rol requerido")
-    .isNumeric()
-    .withMessage("Rol tiene que ser un número")
+    .withMessage("Precio requerido")
     .bail()
-    .isIn([1, 2]) // 1 = Dueño y 2 = Encargado
-    .withMessage("Rol tiene que ser 1 o 2"),
+    .isNumeric()
+    .withMessage("Precio tiene que ser un número"),
+
   body("category")
     .notEmpty()
-    .withMessage("Rol requerido")
-    .isNumeric()
-    .withMessage("Rol tiene que ser un número")
+    .withMessage("Categoría requerido")
     .bail()
-    .isIn([1, 2]) // 1 = Dueño y 2 = Encargado
-    .withMessage("Rol tiene que ser 1 o 2"),
+    .not()
+    .isNumeric()
+    .withMessage("Categoría tiene que ser un texto"),
 ];

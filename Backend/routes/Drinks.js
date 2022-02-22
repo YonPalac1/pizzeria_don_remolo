@@ -10,14 +10,14 @@ const {
 } = require("../controllers/apiDrinksController");
 
 // Validations Middleware
-
+const drinkAddValidation = require("../validations/drinkValidation");
 
 /* ADMIN POST */
 router
-  .post("/drink/add", store)
-  .put("/drink/update/:id", update)
-  .delete("/drink/remove/:id", remove)
-  .get("/drinks", allDrinks)
-  .get("/drink/:id", detail);
+  .post("/add", drinkAddValidation, store)
+  .put("/update/:id", update)
+  .delete("/remove/:id", remove)
+  .get("/", allDrinks)
+  .get("/:id", detail);
 
 module.exports = router;
