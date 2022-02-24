@@ -6,7 +6,7 @@ const userSchema = new Schema({
     created_at:Date,
     name:String,
     rol:Number,
-})
+},{versionKey:false})
 
 const User = model('User',userSchema)
 

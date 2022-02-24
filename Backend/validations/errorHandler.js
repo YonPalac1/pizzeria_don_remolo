@@ -5,7 +5,7 @@ const { registerValidator } = require("./registerValidator");
 const { drinkValidator,checkDrink } = require("./drinkValidator");
 
 
-const indexValidation = (req, res, next) => {
+const errorHandler = (req, res, next) => {
   // Constant variables
   const errors = validationResult(req);
   const errorsObjects = errors.mapped();
@@ -49,7 +49,7 @@ module.exports = {
   loginValidator,
   registerValidator,
   drinkValidator,
-  indexValidation,
+  errorHandler,
   checkDrink,
   checkObjectId
 };

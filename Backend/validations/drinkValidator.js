@@ -69,7 +69,6 @@ const drinkValidator = [
 
 const checkDrink = async (req, res, next) => {
   const drink = await Drink.findById(req.params.id);
-console.log(drink)
   if(!drink) {
     return res.status(422).json({
       meta: {

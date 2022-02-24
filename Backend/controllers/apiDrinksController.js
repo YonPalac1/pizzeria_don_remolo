@@ -27,7 +27,6 @@ module.exports = {
     }
 
     try {
-      
 
         const newDrink = new Drink({
           // We create a new drink
@@ -61,22 +60,17 @@ module.exports = {
         meta: {
           ok: false,
           status: 500,
-          msg: "Error del servidor",
         },
         data: null,
-        errors: error,
+        errors: {msg: error.message},
       });
     }
   },
   update: async (req, res) => {
     // Constant variables
-    const files = req.files?.image;
+    const files = req.files?.image; 
     const arrImages = files ? [files].flat(2) : null;
     let arrFilename = [];
-
-    // get errors from express-validator
-    const errors = validationResult(req);
-    const errorsArr = errors.mapped(); // The mapped
 
     // Mapped the filenames
     if (arrImages) {
@@ -148,10 +142,9 @@ module.exports = {
         meta: {
           ok: false,
           status: 500,
-          msg: "Error del servidor",
         },
         data: null,
-        errors: error.message,
+        errors: {msg: error.message},
       });
     }
   },
@@ -159,8 +152,7 @@ module.exports = {
     try {
       const { id: _id } = req.params;
       const drink = await Drink.findById(_id);
-      if (drink) {
-        // If the value is truthy
+     
 
         await Drink.remove({ _id });
 
@@ -200,27 +192,14 @@ module.exports = {
           data: drink,
           errors: null,
         });
-      } else {
-        res.status(400).json({
-          meta: {
-            status: 400,
-            ok: false,
-          },
-          data: null,
-          errors: {
-            msg: "El elemento no existe",
-          },
-        });
-      }
     } catch (error) {
       res.status(500).json({
         meta: {
           ok: false,
           status: 500,
-          msg: "Error del servidor",
         },
         data: null,
-        errors: error.message,
+        errors: {msg: error.message},
       });
     }
   },
@@ -243,10 +222,9 @@ module.exports = {
         meta: {
           ok: false,
           status: 500,
-          msg: "Error del servidor",
         },
         data: null,
-        errors: error.message,
+        errors: {msg: error.message},
       });
     }
   },

@@ -12,22 +12,29 @@ const {
 // Validations Middleware
 const {
   drinkValidator,
-  indexValidation,
+  errorHandler,
   checkDrink,
   checkObjectId,
-} = require("../validations/indexValidations");
+} = require("../validations/errorHandler");
 
 /* ADMIN POST */
 router
   // Verb POST
-  .post("/", drinkValidator, indexValidation, store)
+  .post("/", drinkValidator, errorHandler, store)
 
   // Verb PUT
-  .put("/:id", checkObjectId,checkDrink,drinkValidator, indexValidation, update)
+  .put(
+    "/:id",
+    checkObjectId,
+    checkDrink,
+    drinkValidator,
+    errorHandler,
+    update
+  )
 
   // Verb DELETE
-  .delete("/:id",checkObjectId, checkDrink, indexValidation, remove)
+  .delete("/:id", checkObjectId, checkDrink, errorHandler, remove)
 
   // Verbs GET
   .get("/", all)
-  .get("/:id", checkObjectId,checkDrink, detail);
+  .get("/:id", checkObjectId, checkDrink, detail);
