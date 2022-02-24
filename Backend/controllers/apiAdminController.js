@@ -2,12 +2,8 @@ const User = require("../database/User");
 const { hash } = require("bcrypt");
 const { validationResult } = require("express-validator");
 
-const getUrl = (req) => {
-  return `${req.protocol}://${req.get("host")}${req.originalUrl}`;
-};
-
 module.exports = {
-  adminRegister: async (req, res) => {
+  register: async (req, res) => {
     const errors = validationResult(req);
     try {
       if (errors.isEmpty()) {
@@ -21,10 +17,10 @@ module.exports = {
         });
         const user = await newUser.save();
 
-       return res.status(200).json({
+       return res.status(201).json({
           meta: {
             ok: true,
-            status: 200,
+            status: 201,
             msg: "Usuario creado con existo",
           },
           data: user,
@@ -38,26 +34,26 @@ module.exports = {
         delete errorsObj[key].location;
       }
 
-    return res.status(200).json({
+    return res.status(400).json({
         meta: {
           ok: false,
-          status: 200,
+          status: 400,
           msg: "El registro no se realizo",
         },
         data: null,
         errors:errorsObj
       });
     } catch (error) {
-      res.status(404).json({
+      res.status(500).json({
         meta: {
           ok: false,
-          status: 404,
+          status: 500,
           msg: error.message,
         },
       });
     }
   },
-  adminLogin: async (req, res) => {
+  login: async (req, res) => {
     const errors = validationResult(req);
     if (errors.isEmpty()) {
       try {

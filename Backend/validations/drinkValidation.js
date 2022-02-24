@@ -1,6 +1,6 @@
 const { body } = require("express-validator");
 
-module.exports = [
+const drinkValidator = [
   body("brand")
     .notEmpty()
     .withMessage("Marca requerida")
@@ -65,3 +65,7 @@ module.exports = [
     .isNumeric()
     .withMessage("Categoría tiene que ser un texto"),
 ];
+
+
+
+module.exports = { drinkValidator };

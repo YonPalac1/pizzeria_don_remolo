@@ -1,15 +1,18 @@
-const router = require('express').Router();
+const router = require("express").Router();
 
 // Controllers
-const { adminLogin,adminRegister } = require('../controllers/apiAdminController');
+const { login, register } = require("../controllers/apiAdminController");
 
 // Validations Middleware
-const adminLoginValidator = require('../validations/adminLoginValidator');
-const adminRegisterValidator = require('../validations/adminRegisterValidator');
+const {
+  loginValidator,
+  registerValidator,
+  indexValidation,
+} = require("../validations/indexValidations");
 
 /* ADMIN POST */
 router
-.post('/login',adminLoginValidator,adminLogin)
-.post('/register',adminRegisterValidator, adminRegister)
+  .post("/login", loginValidator, indexValidation, login)
+  .post("/register", registerValidator, indexValidation, register);
 
 module.exports = router;

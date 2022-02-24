@@ -14,12 +14,11 @@ const drinkValidation = require("../validations/drinkValidation");
 
 /* ADMIN POST */
 router
-
   // Verb POST
-  .post("/add", drinkValidation, store)
+  .post("/", drinkValidation, store)
   
   // Verb PUT
-  .put("/update/:id", drinkValidation, update)
+  .put("/:id", drinkValidation, update)
   
   // Verb DELETE
   .delete("/remove/:id", remove)
