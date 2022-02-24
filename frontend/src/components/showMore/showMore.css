@@ -1,0 +1,14 @@
+.showMore {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-showMore {
+    background: red;
+    color: #fff;
+    border-radius: 10px;
+    border: none;
+    padding: 10px 12px;
+    cursor: pointer; 
+}

@@ -1,0 +1,43 @@
+h3 {
+    color: #EB9F3F;
+    font-size: 48px;
+    line-height: 62px;
+}
+.categories-cards {
+    display: flex;
+    justify-content: space-between;
+}
+.categorie-card {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: red;
+    background: linear-gradient(139.61deg, #F2F2F1 11.51%, #C0C1C0 85.07%);
+    border-radius: 10px;
+    padding: 12px;
+    margin: 12px;
+}
+.categorie-card.active {
+    background: linear-gradient(139.61deg, #D85613 11.51%, #EB9F3F 85.07%);
+}
+.categorie-card.unactive {
+    background: linear-gradient(139.61deg, #F2F2F1 11.51%, #C0C1C0 85.07%);
+}
+.categorie-card span {
+    font-weight: bold;
+    font-size: 24px;
+}
+.categorie-card.active span {
+    color: #fff;
+}
+.categorie-card_img {
+    padding: 10px 0;
+}
+.categorie-card_img .img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: grey;
+}

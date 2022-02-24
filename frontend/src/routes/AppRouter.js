@@ -2,10 +2,12 @@ import React, { useEffect } from 'react'
 import {BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import {Login} from '../components/Login.jsx'
-import { Navbar } from '../components/Navbar.jsx';
-import { Home } from '../components/Home.jsx';
-import { Register } from '../components/Register.jsx';
+import {Login} from '../pages/Login.jsx'
+import { Register } from '../pages/Register.jsx';
+import { Home } from '../pages/home/Home.jsx';
+
+import { Navbar } from '../components/navbar/Navbar.jsx';
+import { NavbarMobile } from '../components/navbar/NavbarMobile.jsx';
 import { sessionAction } from '../redux/authReducer.js';
 
 const AppRouter = () => {
@@ -22,6 +24,7 @@ const AppRouter = () => {
     return (
         <Router>
             <Navbar />
+            <NavbarMobile />
             <Routes>
                 <Route path='/login' element={
                     logged ? 
