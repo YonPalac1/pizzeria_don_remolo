@@ -17,7 +17,6 @@ mongooseConnection();
 // Routers
 const adminRouter = require("./routes/admin");
 const apiDrinksRoutes = require("./routes/drinks");
-const { body } = require("express-validator");
 
 // Middleware
 app.use(logger("dev"));

@@ -27,8 +27,7 @@ module.exports = {
     }
 
     try {
-      if (errors.isEmpty()) {
-        // If don't have errors
+      
 
         const newDrink = new Drink({
           // We create a new drink
@@ -55,24 +54,7 @@ module.exports = {
           data: drink,
           errors: null,
         });
-      } else {
-        // Deleted the properties unnecessary
-        for (key in errorsArr) {
-          delete errorsArr[key].location;
-          delete errorsArr[key].param;
-        }
-
-        // Response from Api if exists errors
-        res.status(400).json({
-          meta: {
-            ok: false,
-            status: 400,
-            msg: "Fallo el proceso",
-          },
-          data: null,
-          errors: errorsArr,
-        });
-      }
+      
     } catch (error) {
       // Response from Api if exists errors in the server
       res.status(500).json({
@@ -105,7 +87,6 @@ module.exports = {
     }
 
     try {
-      if (errors.isEmpty()) {
         const drinkBefore = await Drink.findOne({ _id: req.params.id }); // Search the drink before
 
         // If don't have errors
@@ -160,24 +141,7 @@ module.exports = {
           data: drinkAfter,
           errors: null,
         });
-      } else {
-        // Deleted the properties unnecessary
-        for (key in errorsArr) {
-          delete errorsArr[key].location;
-          delete errorsArr[key].param;
-        }
-
-        // Response from Api if exists errors
-        res.status(400).json({
-          meta: {
-            ok: false,
-            status: 400,
-            msg: "Fallo el proceso",
-          },
-          data: null,
-          errors: errorsArr,
-        });
-      }
+      
     } catch (error) {
       // Response from Api if exists errors in the server
       res.status(500).json({
@@ -288,9 +252,9 @@ module.exports = {
   },
   detail: async (req, res) => {
     try {
-      const drink = await Drink.findById(req.params.id); // Return us all drinks
+      const drink = await Drink.findById(req.params.id); // Return us one drink
 
-        res.status(200).json({
+       res.status(200).json({
         // Response from Api if all out good
         meta: {
           ok: true,

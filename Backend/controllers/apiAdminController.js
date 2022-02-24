@@ -4,44 +4,25 @@ const { validationResult } = require("express-validator");
 
 module.exports = {
   register: async (req, res) => {
-    const errors = validationResult(req);
     try {
-      if (errors.isEmpty()) {
-        const { email, name, password, rol } = req.body;
-        const newUser = new User({
-          email,
-          name,
-          password: await hash(password, 10),
-          rol,
-          created_at: new Date(),
-        });
-        const user = await newUser.save();
+      const { email, name, password, rol } = req.body;
+      const newUser = new User({
+        email,
+        name,
+        password: await hash(password, 10),
+        rol,
+        created_at: new Date(),
+      });
+      const user = await newUser.save();
 
-       return res.status(201).json({
-          meta: {
-            ok: true,
-            status: 201,
-            msg: "Usuario creado con existo",
-          },
-          data: user,
-          errors:null
-        });
-      }
-
-      const errorsObj = errors.mapped();
-      for (key in errorsObj) {
-        delete errorsObj[key].param;
-        delete errorsObj[key].location;
-      }
-
-    return res.status(400).json({
+      return res.status(201).json({
         meta: {
-          ok: false,
-          status: 400,
-          msg: "El registro no se realizo",
+          ok: true,
+          status: 201,
+          msg: "Usuario creado con existo",
         },
-        data: null,
-        errors:errorsObj
+        data: user,
+        errors: null,
       });
     } catch (error) {
       res.status(500).json({
@@ -65,7 +46,7 @@ module.exports = {
             ok: true,
           },
           data: userFound,
-          errors:null
+          errors: null,
         });
       } catch (error) {
         res.status(404).json({
@@ -88,9 +69,8 @@ module.exports = {
           ok: false,
         },
         data: null,
-        errors:errorsObj
+        errors: errorsObj,
       });
     }
   },
-  
 };

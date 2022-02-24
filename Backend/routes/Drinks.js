@@ -10,19 +10,24 @@ const {
 } = require("../controllers/apiDrinksController");
 
 // Validations Middleware
-const drinkValidation = require("../validations/drinkValidation");
+const {
+  drinkValidator,
+  indexValidation,
+  checkDrink,
+  checkObjectId,
+} = require("../validations/indexValidations");
 
 /* ADMIN POST */
 router
   // Verb POST
-  .post("/", drinkValidation, store)
-  
+  .post("/", drinkValidator, indexValidation, store)
+
   // Verb PUT
-  .put("/:id", drinkValidation, update)
-  
+  .put("/:id", checkObjectId,checkDrink,drinkValidator, indexValidation, update)
+
   // Verb DELETE
-  .delete("/remove/:id", remove)
+  .delete("/:id",checkObjectId, checkDrink, indexValidation, remove)
 
   // Verbs GET
   .get("/", all)
-  .get("/:id", detail);
+  .get("/:id", checkObjectId,checkDrink, detail);
