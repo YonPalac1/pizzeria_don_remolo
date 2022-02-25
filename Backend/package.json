@@ -17,6 +17,7 @@
     "express-validator": "^6.14.0",
     "http-errors": "~1.6.3",
     "mongoose": "^6.1.10",
+    "mongoose-autopopulate": "^0.16.0",
     "morgan": "~1.9.1"
   },
   "devDependencies": {

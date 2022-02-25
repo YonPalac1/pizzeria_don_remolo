@@ -17,6 +17,7 @@ mongooseConnection();
 // Routers
 const usersRouter = require("./routes/users");
 const drinksRoutes = require("./routes/drinks");
+const cartRoutes = require("./routes/cart");
 
 // Middleware
 app.use(logger("dev"));
@@ -31,6 +32,7 @@ app.use(fileUpload());
 // Routes
 app.use("/api/users", usersRouter);
 app.use("/api/drinks", drinksRoutes);
+app.use("/api/cart", cartRoutes);
 
 app.use("/*", (req, res) => {
   res.status(404).json({
