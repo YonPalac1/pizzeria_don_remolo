@@ -1,6 +1,5 @@
-const Drink = require("../database/Drink");
+const Food = require("../database/Food");
 const path = require("path");
-const { validationResult } = require("express-validator");
 const { unlinkSync, existsSync } = require("fs");
 
 const getPath = (
@@ -14,10 +13,6 @@ module.exports = {
     const arrImages = files ? [files].flat(2) : null;
     let arrFilename = [];
 
-    // get errors from express-validator
-    const errors = validationResult(req);
-    const errorsArr = errors.mapped(); // The mapped
-
     if (arrImages) {
       // If the value is truthy
       arrFilename = arrImages.map(
@@ -28,14 +23,14 @@ module.exports = {
 
     try {
 
-        const newDrink = new Drink({
-          // We create a new drink
+        const newFood = new Food({
+          // We create a new food
           ...req.body,
           image: files ? arrFilename : ["default.png"],
         });
 
-        // Save the drink in database
-        const drink = await newDrink.save();
+        // Save the food in database
+        const Food = await newFood.save();
 
         // Save archives of images
         arrFilename.forEach((name) => {
@@ -48,9 +43,9 @@ module.exports = {
           meta: {
             ok: true,
             status: 200,
-            msg: "Bebida ingresada",
+            msg: "comida ingresada",
           },
-          data: drink,
+          data: food,
           errors: null,
         });
       
@@ -81,20 +76,20 @@ module.exports = {
     }
 
     try {
-        const drinkBefore = await Drink.findOne({ _id: req.params.id }); // Search the drink before
+        const foodBefore = await Food.findOne({ _id: req.params.id }); // Search the food before
 
         // If don't have errors
-        await Drink.updateOne(
+        await Food.updateOne(
           { _id: req.params.id },
           { ...req.body, image: files ? arrFilename : this.image }
         );
 
-        const drinkAfter = await Drink.findOne({ _id: req.params.id }); // Search the drink after
+        const foodAfter = await Food.findOne({ _id: req.params.id }); // Search the food after
 
         let existsFileBefore = await Promise.all(
           // example [true ,true ,true]
           // The promises returns us a array with values booleans
-          drinkBefore.image // In the drink before we mapped
+          foodBefore.image // In the food before we mapped
             .map((filenameBefore) =>
               existsSync(
                 // Enter a path
@@ -109,7 +104,7 @@ module.exports = {
         // Delete archives before
         if (files && existsFileBefore) {
           await Promise.all(
-            drinkBefore.image // In the drink before we iterate
+            foodBefore.image // In the food before we iterate
               .map((filenameBefore) =>
                 unlinkSync(
                   // Enter a path
@@ -130,9 +125,9 @@ module.exports = {
           meta: {
             ok: true,
             status: 200,
-            msg: "Bebida ingresada",
+            msg: "Comida ingresada",
           },
-          data: drinkAfter,
+          data: foodAfter,
           errors: null,
         });
       
@@ -151,15 +146,15 @@ module.exports = {
   remove: async (req, res) => {
     try {
       const { id: _id } = req.params;
-      const drink = await Drink.findById(_id);
+      const food = await Food.findById(_id);
      
 
-        await Drink.remove({ _id });
+        await Food.remove({ _id });
 
         let existsFileBefore = await Promise.all(
           // example [true ,true ,true] (true for each file)
           // The promises returns us a array with values booleans
-          drink.image // In the drink before we mapped
+          food.image // In the food before we mapped
             .map((filenameBefore) =>
               existsSync(
                 // Enter a path
@@ -174,7 +169,7 @@ module.exports = {
         // Delete archives before
         if (existsFileBefore) {
           await Promise.all(
-            drink.image // In the drink before we iterate
+            food.image // In the food before we iterate
               .map((filenameBefore) =>
                 unlinkSync(
                   // Enter a path
@@ -189,7 +184,7 @@ module.exports = {
             status: 200,
             ok: true,
           },
-          data: drink,
+          data: food,
           errors: null,
         });
     } catch (error) {
@@ -205,16 +200,16 @@ module.exports = {
   },
   all: async (req, res) => {
     try {
-      const drinks = await Drink.find(); // Return us all drinks
+      const foods = await Food.find(); // Return us all foods
 
       res.status(200).json({
         // Response from Api if all out good
         meta: {
           ok: true,
           status: 200,
-          msg: "Todas las bebidas",
+          msg: "Todas las comidas",
         },
-        data: drinks,
+        data: foods,
         errors: null,
       });
     } catch (error) {
@@ -230,7 +225,7 @@ module.exports = {
   },
   detail: async (req, res) => {
     try {
-      const drink = await Drink.findById(req.params.id); // Return us one drink
+      const food = await Food.findById(req.params.id); // Return us one food
 
        res.status(200).json({
         // Response from Api if all out good
@@ -238,7 +233,7 @@ module.exports = {
           ok: true,
           status: 200,
         },
-        data: drink,
+        data: food,
         errors: null,
       });
       
