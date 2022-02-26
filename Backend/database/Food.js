@@ -3,14 +3,13 @@ const { Schema, model } = require("mongoose");
 const foodSchema = new Schema({
   name: String,
   price: Number,
-  description: Text,
-  measurement: String,
+  description: String,
+  image: Array,
+  measurement: { type: String, default: 0 },
   preparationTimeMin: Number,
+  category: String,
   show: { type: Number, default: 1 },
   available: { type: Number, default: 1 },
-  category: String,
-  amount: Number,
-  image: String,
 },{ versionKey: false });
 
 const Food = model("Food", foodSchema);
