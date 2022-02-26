@@ -5,10 +5,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import {Login} from '../pages/Login.jsx'
 import { Register } from '../pages/Register.jsx';
 import { Home } from '../pages/home/Home.jsx';
+import { Cart } from '../pages/cart/Cart.jsx';
+import { Payment } from '../pages/payment/Payment.jsx';
 
 import { Navbar } from '../components/navbar/Navbar.jsx';
 import { NavbarMobile } from '../components/navbar/NavbarMobile.jsx';
 import { sessionAction } from '../redux/authReducer.js';
+import { Details } from '../pages/details/Details.jsx';
 
 const AppRouter = () => {
     const logged = useSelector(store => store.auth.ok)
@@ -39,6 +42,9 @@ const AppRouter = () => {
                         <Register />
                     } />
                 <Route path='/' element={<Home />} />
+                <Route path='/cart' element={<Cart />} />
+                <Route path='/details' element={<Details />} />
+                <Route path='/payment' element={<Payment />} />
             </Routes>
         </Router>
     )

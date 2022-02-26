@@ -1,0 +1,37 @@
+footer {
+    background: #1D1F22; 
+    margin-top: 50px;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1080px;
+    margin: auto;
+    color: #fff;
+    padding: 50px 13px;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-column span {
+    padding: 13px 0;
+    font-weight: bold;
+}
+
+.footer-column a {
+    color: #999;
+    text-decoration: none;
+    font-weight: lighter;
+    padding: 5px 0;
+}
+
+@media screen and (max-width: 420px) {
+    .footer {
+        display: flex;
+        flex-direction: column;
+    }
+}

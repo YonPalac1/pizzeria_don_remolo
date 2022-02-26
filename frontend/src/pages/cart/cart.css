@@ -1,0 +1,55 @@
+.cart {
+    max-width: 1080px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.cart-column {
+    width: 100%;
+}
+
+.cart-header span {
+    padding: 12px;
+}
+
+.cart-body {
+    padding: 30px;
+}
+
+.cart-body h5 {
+    font-size: 22px;
+    margin-top: 20px;
+}
+.cart-body_input {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    gap: 10px;
+}
+.cart-body_input.names {
+    flex-direction: row;
+}
+.cart-body_input.names input {
+    width: 100%;
+}
+.cart-body_input input {
+    padding: 8px 12px;
+}
+.cart-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+.cart-footer .btn-send {
+    padding: 12px 15px;
+    border: none;
+    background: #C53D11;
+    color: #fff;
+    border-radius: 12px;
+    cursor: pointer;
+}
+.cart-footer a {
+    text-decoration: underline;
+    cursor: pointer;
+}

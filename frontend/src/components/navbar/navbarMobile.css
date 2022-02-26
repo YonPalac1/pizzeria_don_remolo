@@ -1,7 +1,9 @@
 .navbarMobile {
     position: fixed;
     width: 100%;
-    background: #fff;
+    background: #ffffff;
+    padding: 10px;
+    z-index: 1000;
 }
 .navbarMobile-buttons {
     display: grid;

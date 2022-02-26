@@ -14,7 +14,7 @@ export const CategoriesSlide = () => {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1030 },
-      items: 4,
+      items: 5,
       slidesToSlide: 2, // optional, default to 1.
     },
     tablet: {
@@ -56,6 +56,7 @@ export const CategoriesSlide = () => {
       <CardsCategories name="Empanadas" bg={card_bg.unactive} />
       <CardsCategories name="Postres" bg={card_bg.unactive} />
       <CardsCategories name="Bebidas" bg={card_bg.unactive} />
+      <CardsCategories name="Todos" bg={card_bg.unactive} />
     </Carousel>
   </>
 }

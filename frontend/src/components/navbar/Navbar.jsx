@@ -32,7 +32,7 @@ export const Navbar = () => {
       <Link to="/">Bebidas</Link>
       <Link to="/">Postres</Link>
     </div>
-    <div className='navbar-column cart'>
+    <div className='navbar-column iconCart'>
       <FontAwesomeIcon icon={faShoppingCart} />
     </div>
   </div>;

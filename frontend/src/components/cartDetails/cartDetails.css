@@ -1,0 +1,56 @@
+
+
+.cart-column.details {
+    background-color: #F2F2F2;
+    padding: 30px;
+}
+
+.cart-column_column.img {
+    display: flex;
+    gap: 30px; 
+}
+
+.cart-column_column.img img {
+    height: 100px;
+    width: 100px;
+    background: #ccc;
+}
+.cart-column_column.img div:nth-child(2) h5 {
+    margin-top: 20px;
+    font-size: 18px;
+}
+.cart-column_column.img div:nth-child(2) span {
+    margin-top: 20px;
+    color: #C53D11;
+}
+.cart-column_column {
+    border-bottom: 1px solid #ccc;
+    padding: 20px 0;
+}
+.cart-column_column.coupon {
+    display: flex;
+    gap: 20px;
+}
+.cart-column_column.coupon input,
+.cart-column_column.coupon button {
+    padding: 8px 12px;
+}
+.cart-column_column.coupon button {
+    background: #C53D11;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+}
+.cart-column_column.subtotal div {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+}
+.cart-column_column.subtotal div span {
+    font-size: 15px;
+}
+.cart-column_column.total div {
+    display: flex;
+    justify-content: space-between;
+}

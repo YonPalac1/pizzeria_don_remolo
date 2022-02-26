@@ -1,0 +1,50 @@
+.authentication {
+    max-width: 1080px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.details {
+    padding: 20px;
+}
+.details_info {
+    border-radius: 10px;
+    border: 1px solid #f1f1f1;
+    padding: 12px;
+}
+.details_info div {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    padding: 12px 0px;
+}
+.details_info div:nth-child(1) {
+    border-bottom: 1px solid #ccc;
+}
+.details_info div h5 {
+    color: #ccc;
+    font-weight: lighter;
+}
+.details_info div h5 span {
+    color: #000;
+}
+.details_info div a {
+    color: lightskyblue;
+    cursor: pointer;
+}
+
+.details_details h5 {
+    font-size: 20px;
+    margin-top: 20px;
+}
+.details_details div {
+    border-radius: 10px;
+    border: 1px solid #f1f1f1;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+}
+.details_details div input {
+    margin-right: 12px;
+}
