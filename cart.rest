@@ -1,0 +1,79 @@
+### Obtener todas las bebidas
+GET http://localhost:3001/api/drinks/
+Content-Type: application/json; charset=utf-8
+
+### Crear una bebida
+POST http://localhost:3001/api/drinks/
+Content-Type: application/json; charset=utf-8
+
+{
+"brand":"coca cola",
+"title":"coca cola",
+"measurement":"l",
+"size":1.5,
+"price":200,
+"category":"gaseosas",
+"show":1,
+"available":1
+}
+
+### Eliminamos un elemento del carrito
+DELETE http://localhost:3001/api/cart
+Content-Type: application/json; charset=utf-8
+
+{
+    "userId":"61fefe099cd102d5143243eb",
+    "productId":"62155ce4d73535f90bf388f2"
+}
+
+### Obtener el Carrito de compra de un cliente
+GET http://localhost:3001/api/cart/61fefe099cd102d5143243eb
+Content-Type: application/json; charset=utf-8
+
+### Agregar al carrito un producto
+POST http://localhost:3001/api/cart/
+Content-Type: application/json; charset=utf-8
+
+{
+    "productId": "62171b9cc9f2c4c04cae2326",
+    "userId": "61fefe099cd102d5143243eb"
+}
+
+### Agregar al carrito un producto
+POST http://localhost:3001/api/cart/
+Content-Type: application/json; charset=utf-8
+
+{
+    "productId": "62155ce4d73535f90bf388f2",
+    "userId": "61fefe099cd102d5143243eb"
+}
+
+
+### Eliminar todo el carrito
+DELETE http://localhost:3001/api/cart/61fefe099cd102d5143243eb
+Content-Type: application/json; charset=utf-8
+
+
+### Aumentar la cantidad de un producto
+POST http://localhost:3001/api/cart/more
+Content-Type: application/json; charset=utf-8
+
+{
+"productId":"62155ce4d73535f90bf388f2",
+"userId":"61fefe099cd102d5143243eb"
+}
+
+### Disminuir la cantidad de un producto
+POST http://localhost:3001/api/cart/less
+Content-Type: application/json; charset=utf-8
+
+{
+"productId":"62155ce4d73535f90bf388f2",
+"userId":"61fefe099cd102d5143243eb"
+}
+
+### Realizar la orden del pedido
+GET http://localhost:3001/api/cart/order/61fefe099cd102d5143243eb
+Content-Type: application/json; charset=utf-8
+
+

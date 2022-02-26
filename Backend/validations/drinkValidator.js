@@ -1,6 +1,7 @@
 const { body } = require("express-validator");
+const Drink = require("../database/Drink");
 
-module.exports = [
+const drinkValidator = [
   body("brand")
     .notEmpty()
     .withMessage("Marca requerida")
@@ -65,3 +66,22 @@ module.exports = [
     .isNumeric()
     .withMessage("Categoría tiene que ser un texto"),
 ];
+
+const checkDrink = async (req, res, next) => {
+  const drink = await Drink.findById(req.params.id);
+  if(!drink) {
+    return res.status(422).json({
+      meta: {
+        status: 422,
+        ok: false,
+      },
+      data: null,
+      errors: { msg: "La bebida no existe" },
+    });
+  }
+
+  next();
+};
+
+
+module.exports = { drinkValidator, checkDrink };

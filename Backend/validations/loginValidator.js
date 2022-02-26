@@ -2,7 +2,7 @@ const { body } = require("express-validator");
 const { compare } = require("bcrypt");
 const User = require("../database/User");
 
-module.exports = [
+const loginValidator = [
   body("email")
     .notEmpty()
     .withMessage("Email requerido")
@@ -27,3 +27,7 @@ module.exports = [
       }
     })
 ];
+
+module.exports = {
+  loginValidator
+}

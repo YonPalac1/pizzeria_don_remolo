@@ -1,7 +1,7 @@
 const { body } = require("express-validator");
 const User = require("../database/User");
 
-module.exports = [
+const registerValidator = [
   body("email")
     .notEmpty()
     .withMessage("Email requerido")
@@ -40,3 +40,7 @@ module.exports = [
     .isIn([1, 2]) // 1 = Dueño y 2 = Encargado
     .withMessage("Rol tiene que ser 1 o 2"),
 ];
+
+module.exports ={
+  registerValidator
+}

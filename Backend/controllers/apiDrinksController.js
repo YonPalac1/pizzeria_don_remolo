@@ -27,8 +27,6 @@ module.exports = {
     }
 
     try {
-      if (errors.isEmpty()) {
-        // If don't have errors
 
         const newDrink = new Drink({
           // We create a new drink
@@ -55,46 +53,24 @@ module.exports = {
           data: drink,
           errors: null,
         });
-      } else {
-        // Deleted the properties unnecessary
-        for (key in errorsArr) {
-          delete errorsArr[key].location;
-          delete errorsArr[key].param;
-        }
-
-        // Response from Api if exists errors
-        res.status(400).json({
-          meta: {
-            ok: false,
-            status: 400,
-            msg: "Fallo el proceso",
-          },
-          data: null,
-          errors: errorsArr,
-        });
-      }
+      
     } catch (error) {
       // Response from Api if exists errors in the server
       res.status(500).json({
         meta: {
           ok: false,
           status: 500,
-          msg: "Error del servidor",
         },
         data: null,
-        errors: error,
+        errors: {msg: error.message},
       });
     }
   },
   update: async (req, res) => {
     // Constant variables
-    const files = req.files?.image;
+    const files = req.files?.image; 
     const arrImages = files ? [files].flat(2) : null;
     let arrFilename = [];
-
-    // get errors from express-validator
-    const errors = validationResult(req);
-    const errorsArr = errors.mapped(); // The mapped
 
     // Mapped the filenames
     if (arrImages) {
@@ -105,7 +81,6 @@ module.exports = {
     }
 
     try {
-      if (errors.isEmpty()) {
         const drinkBefore = await Drink.findOne({ _id: req.params.id }); // Search the drink before
 
         // If don't have errors
@@ -160,34 +135,16 @@ module.exports = {
           data: drinkAfter,
           errors: null,
         });
-      } else {
-        // Deleted the properties unnecessary
-        for (key in errorsArr) {
-          delete errorsArr[key].location;
-          delete errorsArr[key].param;
-        }
-
-        // Response from Api if exists errors
-        res.status(400).json({
-          meta: {
-            ok: false,
-            status: 400,
-            msg: "Fallo el proceso",
-          },
-          data: null,
-          errors: errorsArr,
-        });
-      }
+      
     } catch (error) {
       // Response from Api if exists errors in the server
       res.status(500).json({
         meta: {
           ok: false,
           status: 500,
-          msg: "Error del servidor",
         },
         data: null,
-        errors: error.message,
+        errors: {msg: error.message},
       });
     }
   },
@@ -195,8 +152,7 @@ module.exports = {
     try {
       const { id: _id } = req.params;
       const drink = await Drink.findById(_id);
-      if (drink) {
-        // If the value is truthy
+     
 
         await Drink.remove({ _id });
 
@@ -236,27 +192,14 @@ module.exports = {
           data: drink,
           errors: null,
         });
-      } else {
-        res.status(400).json({
-          meta: {
-            status: 400,
-            ok: false,
-          },
-          data: null,
-          errors: {
-            msg: "El elemento no existe",
-          },
-        });
-      }
     } catch (error) {
       res.status(500).json({
         meta: {
           ok: false,
           status: 500,
-          msg: "Error del servidor",
         },
         data: null,
-        errors: error.message,
+        errors: {msg: error.message},
       });
     }
   },
@@ -279,18 +222,17 @@ module.exports = {
         meta: {
           ok: false,
           status: 500,
-          msg: "Error del servidor",
         },
         data: null,
-        errors: error.message,
+        errors: {msg: error.message},
       });
     }
   },
   detail: async (req, res) => {
     try {
-      const drink = await Drink.findById(req.params.id); // Return us all drinks
+      const drink = await Drink.findById(req.params.id); // Return us one drink
 
-        res.status(200).json({
+       res.status(200).json({
         // Response from Api if all out good
         meta: {
           ok: true,
