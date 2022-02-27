@@ -19,7 +19,7 @@
     padding: 12px 0px;
 }
 .details_info div:nth-child(1) {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #f1f1f1;
 }
 .details_info div h5 {
     color: #ccc;
@@ -48,3 +48,27 @@
 .details_details div input {
     margin-right: 12px;
 }
+.details-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+.details-footer .btn-send {
+    padding: 12px 15px;
+    border: none;
+    background: #C53D11;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+.details-footer a {
+    text-decoration: underline;
+    cursor: pointer;
+    color: #000;
+}
+@media screen and (max-width: 720px) {
+    .authentication {
+        grid-template-columns: auto;
+    }
+} 

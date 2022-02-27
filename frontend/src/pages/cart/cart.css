@@ -39,17 +39,25 @@
 .cart-footer {
     display: flex;
     justify-content: space-between;
-    padding: 20px;
+    padding: 20px
 }
 .cart-footer .btn-send {
     padding: 12px 15px;
     border: none;
     background: #C53D11;
     color: #fff;
+    text-decoration: none;
     border-radius: 12px;
     cursor: pointer;
 }
 .cart-footer a {
     text-decoration: underline;
     cursor: pointer;
+    color: #000;
+}
+
+@media screen and (max-width: 720px) {
+    .cart {
+        grid-template-columns: auto;
+    }
 }

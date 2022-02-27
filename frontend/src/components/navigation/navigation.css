@@ -1,6 +1,14 @@
 .navigation-header {
-    margin: 30px 0;
+    margin: 12px 0 10px;
+    max-width: 1080px;
+    margin: auto;
 }
 .navigation-header span {
     padding: 10px;
+}
+
+@media screen and (max-width: 720px) {
+    .navigation-header {
+        margin: 50px 0 10px;
+    }
 }

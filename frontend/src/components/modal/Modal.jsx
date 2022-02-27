@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { modalAction } from '../../redux/authReducer'
@@ -60,19 +61,19 @@ export const Modal = () => {
 
                   </div>
                   <div className='modal-card_footer-buttons'>
-                    <button>
+                    <Link to="/">
                       <span>Agregar y seguir comprando</span>
                       <p>
                       <FontAwesomeIcon className='icon' icon={faCartPlus} />
                         Volver</p>
-                    </button>
+                    </Link>
 
-                    <button>
+                    <Link to="/cart">
                       <span>Agregar e ir a pagar</span>
                       <p>
                       <FontAwesomeIcon className='icon' icon={faCartArrowDown} />
                       Pagar</p>
-                      </button>
+                      </Link>
                   </div>
                 </section>
               </div>

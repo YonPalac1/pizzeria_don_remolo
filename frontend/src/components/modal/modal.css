@@ -93,25 +93,28 @@
     display: flex;
     gap: 12px;
 }
-.modal-card_footer-buttons button {
+.modal-card_footer-buttons a {
     padding: 10px 12px;
     border: none;
     border-radius: 12px;
     background: none;
     width: 100%;
     text-align: center;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-.modal-card_footer-buttons button .icon {
+.modal-card_footer-buttons a .icon {
     margin-right: 10px;
 }
-.modal-card_footer-buttons button p {
+.modal-card_footer-buttons a p {
     display: none;
 }
-.modal-card_footer-buttons button:nth-child(1) {
+.modal-card_footer-buttons a:nth-child(1) {
     border: 2px solid #ccc;
+    color: #000;
 }
-.modal-card_footer-buttons button:nth-child(2) {
+.modal-card_footer-buttons a:nth-child(2) {
     background: #C53D11;
     color: #fff;
 }

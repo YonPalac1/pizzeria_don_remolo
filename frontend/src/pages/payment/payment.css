@@ -3,3 +3,9 @@
     color: #fff;
     padding-left: 30px;
 }
+.details_info div {
+    border-bottom: 1px #f1f1f1 solid;
+}
+.details_info div:nth-child(3) {
+    border-bottom: none;
+}

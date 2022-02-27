@@ -22,8 +22,10 @@ export const Navbar = () => {
   return <div className='navbar'>
     <div className='navbar-column'>
       <div className="logo">
-        <img src={logo}></img>
-        Don Remolo
+        <Link to="/">
+          <img src={logo}></img>
+          Don Remolo
+        </Link>
       </div>
     </div>
     <div className='navbar-column links'>
