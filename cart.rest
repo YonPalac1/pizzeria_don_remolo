@@ -59,7 +59,7 @@ POST http://localhost:3001/api/cart/more
 Content-Type: application/json; charset=utf-8
 
 {
-"productId":"62155ce4d73535f90bf388f2",
+"productId":"62171b9cc9f2c4c04cae2326",
 "userId":"61fefe099cd102d5143243eb"
 }
 
@@ -68,7 +68,7 @@ POST http://localhost:3001/api/cart/less
 Content-Type: application/json; charset=utf-8
 
 {
-"productId":"62155ce4d73535f90bf388f2",
+"productId":"62171b9cc9f2c4c04cae2326",
 "userId":"61fefe099cd102d5143243eb"
 }
 
