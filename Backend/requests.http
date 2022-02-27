@@ -1,0 +1,32 @@
+###
+POST http://localhost:3001/api/foods HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "muzzarella",
+  "price": 560,
+  "description": "Salsa, muzzarella, aceintunas, oregano",
+  "measurement": "unidad",
+  "preparationTimeMin": 25,
+  "category": "pizzas",
+  "amount": 1,
+}
+
+###
+GET http://localhost:3001/api/foods HTTP/1.1
+
+###
+GET http://localhost:9000/api/users/6137e2bb2e329eb206b0073e HTTP/1.1
+
+###
+DELETE http://localhost:9000/api/users/6137e1725461c36eba8b2ce4 HTTP/1.1
+
+###
+PUT http://localhost:9000/api/users/6137e2412e329eb206b0073c HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "John Conway",
+  "age": 80,
+  "email": "johnconway@email.com"
+}

@@ -3,6 +3,7 @@ const { validationResult } = require("express-validator");
 const { loginValidator } = require("./loginValidator");
 const { registerValidator } = require("./registerValidator");
 const { drinkValidator,checkDrink } = require("./drinkValidator");
+const { foodValidator,checkFood} = require("./foodValidator");
 
 
 const errorHandler = (req, res, next) => {
@@ -51,5 +52,7 @@ module.exports = {
   drinkValidator,
   errorHandler,
   checkDrink,
-  checkObjectId
+  checkObjectId,
+  foodValidator,
+  checkFood
 };
