@@ -9,6 +9,7 @@ const cartSchema = new Schema(
         product: {
           type: Schema.Types.ObjectId,
           ref: "Drink",
+          ref: "Food",
           autopopulate: true,
         },
         quantity: { type: Number, default: 1 },

@@ -48,7 +48,7 @@ module.exports = {
     try {
       const cart = await Cart.findOne({ userId: req.params.id }); // Buscamos con el id del usuario
       res.status(200).json({
-        data: cart.products,
+        data: cart,
       });
     } catch (error) {
       res.status(500).json({
@@ -80,7 +80,9 @@ module.exports = {
 
   delAll: async (req, res) => {
     try {
-      await Cart.findOneAndRemove({ userId: req.params.id });
+      const cart = await Cart.findOne({ userId: req.params.id });
+      cart.products = [];
+      await cart.save();
       res.json({ ok: true });
     } catch (error) {
       res.status(500).json({ ok: false, msg: "Fallo el servidor" });
@@ -91,13 +93,16 @@ module.exports = {
     const { productId, userId } = req.body;
 
     try {
-      const cart = await Cart.findOne({ // Buscamos el carrito con el userId que obtenemos del body
+      const cart = await Cart.findOne({
+        // Buscamos el carrito con el userId que obtenemos del body
         userId,
       });
 
-      for (index in cart.products) {  // Recorro el array de objeto
-        if (cart.products[index].product._id == productId) {  // Si el id del producto que tengo en el carrito de compra es igual que el productId que obtenemos del body
-          cart.products[index].quantity++;  // Aumentale de a 1
+      for (index in cart.products) {
+        // Recorro el array de objeto
+        if (cart.products[index].product._id == productId) {
+          // Si el id del producto que tengo en el carrito de compra es igual que el productId que obtenemos del body
+          cart.products[index].quantity++; // Aumentale de a 1
         }
       }
 
@@ -138,20 +143,21 @@ module.exports = {
 
       const transformProps = (string) => string.split(" ").join("%20");
 
-      const order = products.map(
-        ({ product, quantity }) =>
-          product.category === "gaseosas" &&
-          `*%20%20${transformProps(product.title)}%20${product.size}%20${
-            product.measurement
-          }%20,%20${quantity}${quantity > 1 ? "%20unidades." : "%20unidad."}`
-      );
-      //const userAdmin = await User.findOne({ rol: 1 });
+      if (products.length > 0) {
+        const order = products.map(({ product, quantity }) =>
+          product.category === "gaseosas"
+            ? `* ${quantity} ${
+                quantity > 1 ? product.category : product.category.slice(-1)
+              } ${product.title} de ${product.size} ${product.measurement}.`
+            : `*${product.category}%0A${product.name} ${product.measurement}%0A   ${product.description}  ,  `
+        );
 
-      const url = `https://api.whatsapp.com/send?phone=+5491156412335&text=%20*%20%20Código%20del%20pedido%20:%20%20${_id}%20%0A${order.join(
-        "%0A"
-      )}`;
+        const url = `https://api.whatsapp.com/send?phone=+5491156412335&text=%20*%20%20Código%20del%20pedido%20:%20%20${_id}%20%0A${transformProps(
+          order.join("%0A")
+        )}`;
 
-      res.status(200).json({ ok: true, url });
+        res.status(200).json({ ok: true, url });
+      }
     } catch (error) {
       res.status(500).json({ msg: error.message });
     }
