@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 1080px;
+    max-width: 1080px;
     height: 256px; 
     margin-top: 200px; 
 }

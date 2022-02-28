@@ -24,8 +24,10 @@ export const NavbarMobile = () => {
     <div className="navbarMobile">
       <div className="navbarMobile-buttons">
         <div className="logo">
-          <img src={logo}></img>
-          Don Remolo
+          <Link to="/">
+            <img src={logo}></img>
+            Don Remolo
+          </Link>
         </div>
         <div className="navbarMobile-buttons_btn">
           <FontAwesomeIcon className="icon" icon={faShoppingCart} />

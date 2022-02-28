@@ -46,6 +46,10 @@ body {
     position: absolute;
     width: 1176px;
     height: 1176px;
+    min-width: 320px;
+    min-height: 320px;
+    max-width: 1176px;
+    max-height: 1176px;
     left: 284px;
     top: -687px;
     border-radius: 50%;
@@ -71,7 +75,7 @@ body {
         width: 100%;
         line-height: 1;
     }
-    .circle-bg {
+    .header-column_carousel {
         display: none;
     }
 }
