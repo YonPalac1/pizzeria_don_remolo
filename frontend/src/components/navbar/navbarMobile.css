@@ -1,7 +1,10 @@
 .navbarMobile {
     position: fixed;
     width: 100%;
-    background: #fff;
+    background: #ffffff;
+    padding: 10px;
+    z-index: 1000;
+    top: 0;
 }
 .navbarMobile-buttons {
     display: grid;
@@ -15,16 +18,19 @@
 .navbarMobile-buttons_btn .icon {
     margin-right: 20px;
 }
-.logo {
+.logo a {
     display: flex;
     align-items: center;
     font-weight: bold;
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
 }
 .logo img {
     width: 30px;
     margin-right: 10px;
 }
-@media screen and (min-width: 620px) {
+@media screen and (min-width: 720px) {
     .navbarMobile {
         display: none;
     }

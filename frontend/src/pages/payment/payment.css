@@ -1,0 +1,11 @@
+.pay_method {
+    background: linear-gradient(90.04deg, #C53D11 0.04%, #F98831 97.95%);
+    color: #fff;
+    padding-left: 30px;
+}
+.details_info div {
+    border-bottom: 1px #f1f1f1 solid;
+}
+.details_info div:nth-child(3) {
+    border-bottom: none;
+}

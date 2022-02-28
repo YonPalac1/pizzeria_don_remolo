@@ -4,11 +4,13 @@ const REGISTER = "REGISTER";
 const LOGIN = "LOGIN";
 const LOGOUT = "LOGOUT";
 const SESSION = "SESSION";
+const MODAL = "MODAL";
 
 const dataInicial = {
   ok: false,
   user: [],
   errors: [],
+  modal: false
 };
 
 //Reducer
@@ -42,6 +44,8 @@ export default function authReducer(state = dataInicial, action) {
         errors: null,
         ok: false,
        };
+    case MODAL:
+      return { ...state, modal: action.payload };
 
 
     default:
@@ -102,5 +106,11 @@ export const logoutAction = () => (dispatch) => {
   dispatch({
     type: LOGOUT,
     payload: false
+  });
+};
+export const modalAction = (modal) => (dispatch) => {
+  dispatch({
+    type: MODAL,
+    payload: modal
   });
 };

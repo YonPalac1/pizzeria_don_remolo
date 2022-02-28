@@ -22,8 +22,10 @@ export const Navbar = () => {
   return <div className='navbar'>
     <div className='navbar-column'>
       <div className="logo">
-        <img src={logo}></img>
-        Don Remolo
+        <Link to="/">
+          <img src={logo}></img>
+          Don Remolo
+        </Link>
       </div>
     </div>
     <div className='navbar-column links'>
@@ -32,7 +34,7 @@ export const Navbar = () => {
       <Link to="/">Bebidas</Link>
       <Link to="/">Postres</Link>
     </div>
-    <div className='navbar-column cart'>
+    <div className='navbar-column iconCart'>
       <FontAwesomeIcon icon={faShoppingCart} />
     </div>
   </div>;

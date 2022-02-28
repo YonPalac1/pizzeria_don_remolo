@@ -15,29 +15,24 @@ h3 {
     flex-direction: column;
     background: red;
     background: linear-gradient(139.61deg, #F2F2F1 11.51%, #C0C1C0 85.07%);
+    box-shadow: 0px 2.18018px 4.36036px rgba(218, 16, 11, 0.14), 0px 4.36036px 8.72072px rgba(218, 16, 11, 0.14);
     border-radius: 10px;
     padding: 12px;
     margin: 12px;
+    cursor: pointer;
 }
+
 .categorie-card.active {
     background: linear-gradient(139.61deg, #D85613 11.51%, #EB9F3F 85.07%);
 }
 .categorie-card.unactive {
-    background: linear-gradient(139.61deg, #F2F2F1 11.51%, #C0C1C0 85.07%);
+    background: #CA9C93;
+}
+.categorie-card:hover{
+    background: linear-gradient(139.61deg, #D85613 11.51%, #EB9F3F 85.07%);
 }
 .categorie-card span {
     font-weight: bold;
     font-size: 24px;
-}
-.categorie-card.active span {
     color: #fff;
-}
-.categorie-card_img {
-    padding: 10px 0;
-}
-.categorie-card_img .img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background-color: grey;
 }
