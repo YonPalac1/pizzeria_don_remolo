@@ -17,14 +17,26 @@
     width: 189px;
     height: 124px;
     background: aqua;
+    overflow: hidden;
+}
+.menu-card_img img {
+    width: 100%;
+    height: 100%;
 }
 .menu-card_details {
-    padding: 0 12px;
+    padding: 20px 12px;
     line-height: 20px;
 }
 .menu-card_details span {
     font-weight: bold;
     font-size: 24px;
+}
+.menu-card_details p {
+    font-size: 14px;
+    padding: 14px 0;
+}
+.menu-card_details b {
+    font-size: 16px;
 }
 .menu-card_btns {
     position: relative;

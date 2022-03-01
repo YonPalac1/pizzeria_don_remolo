@@ -14,7 +14,7 @@
 }
 
 .cart-body {
-    padding: 30px;
+    padding: 30px 100px 20px 10px;
 }
 
 .cart-body h5 {
@@ -27,6 +27,9 @@
     margin-top: 20px;
     gap: 10px;
 }
+.cart-body_input input {
+    border: 1px solid #eee;
+}
 .cart-body_input.names {
     flex-direction: row;
 }
@@ -35,6 +38,9 @@
 }
 .cart-body_input input {
     padding: 8px 12px;
+}
+.cart-body_input p label {
+    color: #444;
 }
 .cart-footer {
     display: flex;
@@ -59,5 +65,8 @@
 @media screen and (max-width: 720px) {
     .cart {
         grid-template-columns: auto;
+    }
+    .cart-body {
+        padding: 30px;
     }
 }

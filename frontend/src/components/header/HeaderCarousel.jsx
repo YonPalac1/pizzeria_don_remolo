@@ -1,20 +1,106 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { indexAction } from '../../redux/dataReducer'
+import pizza from '../../assets/images/pizza-circle.png'
+import empanadas from '../../assets/images/empanadas-circle.png'
+import postre from '../../assets/images/postre-circle.png'
 
-export const HeaderCarousel = () => {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
+
+
+export const HeaderCarousel = ({ carouselData }) => {
+  const dispatch = useDispatch()
+  const [index, setIndex] = useState(0)
+  const [initial, setInitial] = useState(true)
+
+  const [sateliteUno, setSateliteUno] = useState("uno")
+  const [sateliteDos, setSateliteDos] = useState("dos")
+  const [sateliteTres, setSateliteTres] = useState("tres")
+
+  useEffect(() => {
+
+    if(index > 0){
+      setInitial(true)
+    } else {
+      setInitial(false)
+    }
+
+    dispatch(indexAction(index))
+  }, [index])
+
+  const increase = (index) => {
+    if(index < 2){
+      index = index + 1
+      setIndex(index)
+    } else {
+      index = 0
+      setIndex(index)
+    }
+
+    if(index == 0) {
+      setSateliteUno("uno")
+      setSateliteDos("dos")
+      setSateliteTres("tres")
+    } else if (index == 1) {
+      setSateliteUno("tres")
+      setSateliteDos("uno")
+      setSateliteTres("dos")
+    } else if (index == 2) {
+      setSateliteUno("dos")
+      setSateliteDos("tres")
+      setSateliteTres("uno")
+    }
+    console.log(index)
+  };
+
+  const handleNextCarousel = () => {
+    increase(index);
+  }
+ 
   return (
     <header className="header">
         <section className='header-column_titles'>
             <div className='titles'>
                 <h1>Sabores caseros</h1>
-                <h3>La mejor pizza a domicilio</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio sit id enim non morbi aliquet id quis. Vivamus pretium dolor vitae netus ut laoreet nisl quisque.</p>
+                <h3>{ carouselData.subtitle }</h3>
+                <p>{ carouselData.description }</p>
             </div>
         </section>
+
         <section className='header-column_carousel'>
-            <div className='circle-bg'></div>
-            <div className='carousel'>
-              <div className='carousel-central-img'></div>
-            </div>
+
+          <div className='header-column_carousel_box'>
+              <div className={`circle-bg ${ carouselData.color }`}></div>
+              
+              <div className='carousel'>
+                <div className='carousel-central-img'>
+                  <img src={ carouselData.image }></img>
+                </div>
+
+                  <img className={`satelite ${sateliteUno}`} src={pizza}></img>
+                  <img className={`satelite ${sateliteDos}`} src={empanadas}></img>
+                  <img className={`satelite ${sateliteTres}`} src={postre}></img>
+
+              </div>
+
+
+          </div>
+
+          <div className='buttons'>
+            <button 
+                onClick={handleNextCarousel}
+                className='next'>
+                  <FontAwesomeIcon icon={faChevronRight} />
+                </button>
+                
+            <button 
+                onClick={handleNextCarousel}
+                className={initial ? 'back active' : 'back'}>
+                  <FontAwesomeIcon icon={faChevronLeft} />
+                </button>
+          </div>
         </section>
     </header>
   )

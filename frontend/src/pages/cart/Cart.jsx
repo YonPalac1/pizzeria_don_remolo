@@ -10,8 +10,6 @@ export const Cart = () => {
         <Navigation />
         <div className='cart'>
             <div className='cart-column'>
-                
-
                 <form>
                     <div className='cart-body'>
                         <h5>Contacto</h5>

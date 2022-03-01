@@ -19,7 +19,7 @@ export const Details = () => {
                             </div>
                             
                             <div>
-                                <h5>Ship <span>to Av Dto Alvarez</span></h5>
+                                <h5>Ship to<span> Av Dto Alvarez</span></h5>
                                 <a>Edit</a>
                             </div>
                             

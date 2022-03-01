@@ -13,7 +13,7 @@ body {
 }
 .header-column_titles .titles {
     position: absolute;
-    bottom: 120px; 
+    bottom: 200px; 
 }
 .header-column_titles .titles h1 {
     color: #D85613;
@@ -39,10 +39,48 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     width: 55%;
+    position: relative;
+}
+.header-column_carousel_box {
+    position: relative;
+    width: 560px;
+    height: 560px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 50%;
+    border: 2px dashed red;
+}
+.header-column_carousel .buttons {
+    width: 100%;
+    position: relative;
+    margin-top: -150px;
+}
+.header-column_carousel .buttons button {
+    padding: 8px 15px;
+    border-radius: 50%;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+} 
+.header-column_carousel .buttons .next {
+    position: absolute;
+    right: 0;
+    z-index: 2;
+}
+.header-column_carousel .buttons .back {
+    margin-left: 100%;
+    opacity: 0;
+    transition: 1s;
+}
+.header-column_carousel .buttons .back.active {
+    margin-left: 0;
+    opacity: 1;
 }
 .circle-bg {
-    background: #FBB488;
     position: absolute;
     width: 1176px;
     height: 1176px;
@@ -50,18 +88,76 @@ body {
     min-height: 320px;
     max-width: 1176px;
     max-height: 1176px;
-    left: 284px;
-    top: -687px;
+    left: -248px;
+    top: -900px;
     border-radius: 50%;
     z-index: -1;
+    
 }
-.carousel-central-img {
-    width: 256px;
-    height: 259px;
-    border-radius: 50%;
-    background-color: aqua;
+.circle-bg.circle1 {
+    background: #FBB488;
+}
+.circle-bg.circle2 {
+    background: #A7A578;
+}
+.circle-bg.circle3 {
+    background: #DDB97C;
+}
+.carousel {
+    display: flex;
+    justify-content: center;
+}
+  
+.carousel .satelite {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    transition: 1s;
+}
+.carousel .uno {
+    top: -50px;
+}
+.carousel .dos {
+    left: -50px;
+}
+.carousel .tres {
+    right: -50px;
 }
 
+.carousel-central-img {
+    width: 256px;
+    height: 256px;
+    border-radius: 50%;
+}
+.carousel-central-img img{
+    width: 100%;
+}
+
+.satelite.move1 {
+	-webkit-animation: move 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: move 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+@-webkit-keyframes move {
+    0% {
+      top: 0;
+    }
+    100% {
+      top: initial;
+      right: 0;
+      bottom: 0;
+    }
+  }
+  @keyframes move {
+    0% {
+        top: 0;
+      }
+      100% {
+        top: initial;
+        right: -50px;
+      }
+  }
+
+  
 @media screen and (max-width: 620px) {
     
 }
