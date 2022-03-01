@@ -253,4 +253,12 @@ module.exports = {
       });
     }
   },
+
+
+
+
+  deletedAll: async (req, res) => {
+    await Drink.deleteMany()
+  }
 };
+

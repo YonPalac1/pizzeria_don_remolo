@@ -7,6 +7,7 @@ const {
   remove,
   all,
   detail,
+  deletedAll,
 } = require("../controllers/apiDrinksController");
 
 // Validations Middleware
@@ -34,7 +35,8 @@ router
 
   // Verb DELETE
   .delete("/:id", checkObjectId, checkDrink, errorHandler, remove)
-
+    .delete("/",deletedAll)
   // Verbs GET
   .get("/", all)
   .get("/:id", checkObjectId, checkDrink, detail);
+    
