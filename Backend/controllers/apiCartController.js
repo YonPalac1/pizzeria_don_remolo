@@ -1,41 +1,62 @@
 const Cart = require("../database/Cart");
+const Drink = require("../database/Drink");
+const Food = require("../database/Food");
+const { MappedDrinks, MappedFoods } = require("./functions/cartFunctions");
 
 module.exports = {
   addElement: async (req, res) => {
     const { productId, userId } = req.body;
     try {
-      const cartFound = await Cart.findOne({ userId }); // Buscamos si el usuario existe
+      let cart = await Cart.findOne({ userId });
+      let food = await Food.findById(productId);
 
-      if (!cartFound) {
-        // Si no existe!
-        const cart = new Cart({
-          // Lo creamos
-          userId,
-          products: [{ product: productId }],
-        });
-        await cart.save(); // Guardamos el carro de compra en la base de datos
-        return res.status(201).json({
-          ok: true,
-          msg: "Carrito creado",
-        });
-      } else {
-        const IDs = cartFound?.products.map((el) => el.product._id.toString()); // Obtenemos un array con los IDs
-
-        if (IDs.indexOf(productId) === -1) {
-          // Si no existe el id en los IDs de productos del carrito agrega ese producto
-
-          return await Cart.findOneAndUpdate(
-            // Lo buscamos y lo actualizamos
-            { userId }, // Lo buscamos con el id del usuario
-            { $push: { products: { product: productId } } } // y le agregamos cada producto que se seleccione
-          );
+      if (!cart) {
+        if (food) {
+          cart = await new Cart({
+            userId,
+            foods: [{ product: productId }],
+            drinks: [],
+          });
+        } else {
+          // created
+          cart = await new Cart({
+            userId,
+            drinks: [{ product: productId }],
+            foods: [],
+          });
         }
+        await cart.save(); // we keep
+      } else {
+        let IDs;
 
-        res.status(200).json({
-          ok: true,
-          msg: "Carrito actualizado",
-        });
+        if (food) {
+          IDs = cart?.foods?.map((el) => el.product._id.toString()); // We getting array with the Ids
+          if (IDs?.indexOf(productId) === -1) {
+            // If do not exists the id in the variable Ids of products from shopping cart add that product
+            await Cart.findOneAndUpdate(
+              // Find it and update it
+              { userId }, // Find with Id user
+              {
+                $push: { foods: { product: productId } },
+              } // Add to array the Id product
+            );
+          }
+        } else {
+          IDs = cart?.drinks?.map((el) => el.product._id.toString());
+          if (IDs?.indexOf(productId) === -1) {
+            cart = await Cart.findOneAndUpdate(
+              { userId },
+              {
+                $push: { drinks: { product: productId } },
+              }
+            );
+          }
+        }
       }
+
+      return res.status(200).json({
+        ok: true,
+      });
     } catch (error) {
       res.status(500).json({
         ok: false,
@@ -48,7 +69,10 @@ module.exports = {
     try {
       const cart = await Cart.findOne({ userId: req.params.id }); // Buscamos con el id del usuario
       res.status(200).json({
-        data: cart.products,
+        data: {
+          idCart: cart._id,
+          products: [...MappedDrinks(cart.drinks), ...MappedFoods(cart.foods)],
+        },
       });
     } catch (error) {
       res.status(500).json({
@@ -59,18 +83,34 @@ module.exports = {
 
   delElement: async (req, res) => {
     const { userId, productId } = req.body;
+    let food = await Food.findById(productId);
+
     try {
-      await Cart.updateMany(
-        // Actualizamos buscando el userId
-        { userId },
-        {
-          // Buscaos el carrito del con el id del usuario
-          $pull: { products: { product: { $eq: productId } } }, // Eliminamos del registro de productos el id que nos llega del body
-        },
-        {
-          multi: true,
-        }
-      );
+      if (!food) {
+        await Cart.updateMany(
+          // Actualizamos buscando el userId
+          { userId },
+          {
+            // Buscaos el carrito del con el id del usuario
+            $pull: { drinks: { product: { $eq: productId } } }, // Eliminamos del registro de productos el id que nos llega del body
+          },
+          {
+            multi: true,
+          }
+        );
+      } else {
+        await Cart.updateMany(
+          // Actualizamos buscando el userId
+          { userId },
+          {
+            // Buscaos el carrito del con el id del usuario
+            $pull: { foods: { product: { $eq: productId } } }, // Eliminamos del registro de productos el id que nos llega del body
+          },
+          {
+            multi: true,
+          }
+        );
+      }
 
       res.status(200).json({ ok: true });
     } catch (error) {
@@ -80,7 +120,10 @@ module.exports = {
 
   delAll: async (req, res) => {
     try {
-      await Cart.findOneAndRemove({ userId: req.params.id });
+      const cart = await Cart.findOne({ userId: req.params.id });
+      cart.foods = [];
+      cart.drinks = [];
+      await cart.save();
       res.json({ ok: true });
     } catch (error) {
       res.status(500).json({ ok: false, msg: "Fallo el servidor" });
@@ -89,15 +132,20 @@ module.exports = {
 
   moreQuantity: async (req, res) => {
     const { productId, userId } = req.body;
-
+    const drink = await Drink.findById(productId);
+    const cart = await Cart.findOne({ userId });
     try {
-      const cart = await Cart.findOne({ // Buscamos el carrito con el userId que obtenemos del body
-        userId,
-      });
-
-      for (index in cart.products) {  // Recorro el array de objeto
-        if (cart.products[index].product._id == productId) {  // Si el id del producto que tengo en el carrito de compra es igual que el productId que obtenemos del body
-          cart.products[index].quantity++;  // Aumentale de a 1
+      if (drink) {
+        for (index in cart.drinks) {
+          if (cart.drinks[index].product._id == productId) {
+            cart.drinks[index].quantity++;
+          }
+        }
+      } else {
+        for (index in cart.foods) {
+          if (cart.foods[index].product._id == productId) {
+            cart.foods[index].quantity++;
+          }
         }
       }
 
@@ -110,16 +158,26 @@ module.exports = {
 
   lessQuantity: async (req, res) => {
     const { productId, userId } = req.body;
-    try {
-      let cart = await Cart.findOne({
-        userId,
-      });
+    const drink = await Drink.findById(productId);
+    let cart = await Cart.findOne({ userId });
 
-      for (index in cart.products) {
-        if (cart.products[index].product._id == productId) {
-          cart.products[index].quantity--;
-          if (!cart.products[index].quantity) {
-            cart.products.splice(index, 1);
+    try {
+      if (drink) {
+        for (index in cart.drinks) {
+          if (cart.drinks[index].product._id == productId) {
+            cart.drinks[index].quantity--;
+            if (!cart.drinks[index].quantity) {
+              cart.drinks.splice(index, 1);
+            }
+          }
+        }
+      } else {
+        for (index in cart.foods) {
+          if (cart.foods[index].product._id == productId) {
+            cart.foods[index].quantity--;
+            if (!cart.foods[index].quantity) {
+              cart.foods.splice(index, 1);
+            }
           }
         }
       }
@@ -134,23 +192,38 @@ module.exports = {
   orderMsg: async (req, res) => {
     const { userId } = req.params;
     try {
-      const { _id, products } = await Cart.findOne({ userId });
+      const { _id, foods, drinks } = await Cart.findOne({ userId });
 
       const transformProps = (string) => string.split(" ").join("%20");
+      let order;
+      if (foods.length > 0) {
+        order = foods.map(
+          ({ product, quantity }) =>
+            `* ${quantity}  ${
+              +quantity > 1 ? product.category : product.category.substr(0,6)
+            }  ${product.name} ${product.measurement}%0A     ${
+              product.description
+            }  ,  `
+        );
+      }
 
-      const order = products.map(
-        ({ product, quantity }) =>
-          product.category === "gaseosas" &&
-          `*%20%20${transformProps(product.title)}%20${product.size}%20${
-            product.measurement
-          }%20,%20${quantity}${quantity > 1 ? "%20unidades." : "%20unidad."}`
-      );
-      //const userAdmin = await User.findOne({ rol: 1 });
+      if (drinks.length > 0) {
+        order = [
+          ...order,
+          ...drinks.map(
+            ({ product, quantity }) =>
+              `* ${quantity}  ${
+                +quantity > 1 ? product.category : product.category.substr(0,6)
+              }%0A  ${product.title} ${product.measurement} ${
+                product.size
+              }%0A     ${product.description}  ,  `
+          ),
+        ];
+      }
 
-      const url = `https://api.whatsapp.com/send?phone=+5491156412335&text=%20*%20%20Código%20del%20pedido%20:%20%20${_id}%20%0A${order.join(
-        "%0A"
+      const url = `https://api.whatsapp.com/send?phone=+5491156412335&text=%20*%20%20Código%20del%20pedido%20:%20%20${_id}%20%0A${transformProps(
+        order.join("%0A")
       )}`;
-
       res.status(200).json({ ok: true, url });
     } catch (error) {
       res.status(500).json({ msg: error.message });
