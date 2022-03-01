@@ -1,16 +1,16 @@
 const { Schema, model } = require("mongoose");
 
 const foodSchema = new Schema({
-  name: String,
-  price: Number,
-  description: String,
-  image: Array,
-  measurement: { type: String, default: 0 },
-  preparationTimeMin: Number,
-  category: String,
-  show: { type: Number, default: 1 },
-  available: { type: Number, default: 1 },
-},{ versionKey: false });
+  name: String,  // nombre 
+  price: Number,  // precio
+  description: String, // descripción
+  image: Array, // imagen
+  measurement: { type: String, default: 0 }, // medición
+  preparationTimeMin: Number, // tiempo de preparación
+  category: String, // categoría
+  show: { type: Number, default: 1 }, // mostrar
+  available: { type: Number, default: 1 },  // disponible
+},{ versionKey: false }); 
 
 const Food = model("Food", foodSchema);
 

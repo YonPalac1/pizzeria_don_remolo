@@ -42,7 +42,11 @@ Content-Type: application/json
 
 
 ### OBTENER bebida por subcategoria
-GET http://localhost:3001/api/foods/category/empanadas
+GET http://localhost:3001/api/drinks/category/empanadas
 Content-Type: application/json
 
+
+### ELIMINAR TODA LAS BEBIDAS
+DELETE http://localhost:3001/api/drinks/
+Content-Type: application/json
 

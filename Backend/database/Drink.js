@@ -2,15 +2,15 @@ const { Schema, model } = require("mongoose");
 
 const drinkSchema = new Schema(
   {
-    brand: String,
-    image: Array,
-    title: String,
-    measurement: String,
-    size: Number,
-    show: { type: Number, default: 1 },
-    available: { type: Number, default: 1 },
-    price: Number,
-    category: String
+    brand: String, // marca
+    image: Array, // imagen
+    title: String, // titulo
+    measurement: String, // medición
+    size: Number, // tamaño
+    show: { type: Number, default: 1 }, // mostrar
+    available: { type: Number, default: 1 }, // disponible
+    price: Number,  // precio
+    category: String // categoría
   },
   { versionKey: false }
 );
