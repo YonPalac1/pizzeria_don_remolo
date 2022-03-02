@@ -18,6 +18,7 @@ export const HeaderCarousel = ({ carouselData }) => {
   const [sateliteUno, setSateliteUno] = useState("uno")
   const [sateliteDos, setSateliteDos] = useState("dos")
   const [sateliteTres, setSateliteTres] = useState("tres")
+  const [info, setInfo] = useState("active1")
 
   useEffect(() => {
 
@@ -30,6 +31,25 @@ export const HeaderCarousel = ({ carouselData }) => {
     dispatch(indexAction(index))
   }, [index])
 
+  const indexChange = (index) => {
+    if(index === 0) {
+      setSateliteUno("uno")
+      setSateliteDos("dos")
+      setSateliteTres("tres")
+      setInfo("active1")
+    } else if (index === 1) {
+      setSateliteUno("tres")
+      setSateliteDos("uno")
+      setSateliteTres("dos")
+      setInfo("active2")
+    } else if (index === 2) {
+      setSateliteUno("dos")
+      setSateliteDos("tres")
+      setSateliteTres("uno")
+      setInfo("active3")
+    }
+    
+  }
   const increase = (index) => {
     if(index < 2){
       index = index + 1
@@ -38,31 +58,29 @@ export const HeaderCarousel = ({ carouselData }) => {
       index = 0
       setIndex(index)
     }
-
-    if(index == 0) {
-      setSateliteUno("uno")
-      setSateliteDos("dos")
-      setSateliteTres("tres")
-    } else if (index == 1) {
-      setSateliteUno("tres")
-      setSateliteDos("uno")
-      setSateliteTres("dos")
-    } else if (index == 2) {
-      setSateliteUno("dos")
-      setSateliteDos("tres")
-      setSateliteTres("uno")
-    }
-    console.log(index)
+    indexChange(index)
+  };
+  const decrease = (index) => {
+    if(index === 1 || index === 2){
+      index = index - 1;
+      setIndex(index)
+    } else {
+      index = 2;
+    } 
+    indexChange(index)
   };
 
   const handleNextCarousel = () => {
     increase(index);
   }
+  const handleBackCarousel = () => {
+    decrease(index);
+  }
  
   return (
     <header className="header">
         <section className='header-column_titles'>
-            <div className='titles'>
+            <div className={`titles fadeIn ${info}`}>
                 <h1>Sabores caseros</h1>
                 <h3>{ carouselData.subtitle }</h3>
                 <p>{ carouselData.description }</p>
@@ -96,7 +114,7 @@ export const HeaderCarousel = ({ carouselData }) => {
                 </button>
                 
             <button 
-                onClick={handleNextCarousel}
+                onClick={handleBackCarousel}
                 className={initial ? 'back active' : 'back'}>
                   <FontAwesomeIcon icon={faChevronLeft} />
                 </button>

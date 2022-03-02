@@ -13,8 +13,60 @@ body {
 }
 .header-column_titles .titles {
     position: absolute;
-    bottom: 200px; 
+    bottom: 200px;
 }
+
+.header-column_titles .titles.fadeIn.active1 {
+    -webkit-animation-name: fadeIn1;
+    animation-name: fadeIn1;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.header-column_titles .titles.fadeIn.active2 {
+    -webkit-animation-name: fadeIn2;
+    animation-name: fadeIn2;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.header-column_titles .titles.fadeIn.active3 {
+    -webkit-animation-name: fadeIn3;
+    animation-name: fadeIn3;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+@-webkit-keyframes fadeIn1 {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+    }
+@keyframes fadeIn1 {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+} 
+
+@-webkit-keyframes fadeIn2 {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+    }
+    @keyframes fadeIn2 {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+} 
+@-webkit-keyframes fadeIn3 {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+    }
+    @keyframes fadeIn3 {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+} 
 .header-column_titles .titles h1 {
     color: #D85613;
     font-style: normal;
@@ -129,9 +181,43 @@ body {
     height: 256px;
     border-radius: 50%;
 }
-.carousel-central-img img{
+.carousel-central-img img {
     width: 100%;
+    
 }
+.carousel-central-img img.open {
+    -webkit-animation-name: aparecer;
+    animation-name: aparecer;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+@-webkit-keyframes  aparecer {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -2000px, 0);
+        transform: translate3d(0, -2000px, 0);
+        }
+        100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+@keyframes aparecer {
+    0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -2000px, 0);
+    transform: translate3d(0, -2000px, 0);
+    }
+    100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+    }
+} 
+    
 
 .satelite.move1 {
 	-webkit-animation: move 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
