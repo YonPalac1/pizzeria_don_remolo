@@ -18,7 +18,9 @@ export const MenuCard = ({ products }) => {
   
   return (
     <div className='menu-card'>
-          <div className='menu-card_img'></div>
+          <div className='menu-card_img'>
+            <img src={ products.image } />
+          </div>
           <div className='menu-card_details'>
               <span>{ products.name }</span>
               <p>{ products.ingredients }</p>

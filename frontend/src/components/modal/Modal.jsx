@@ -34,7 +34,7 @@ export const Modal = () => {
 
                   <div className='modal-card_body-photo'>
                     <div className='img'>
-                      <img href="/"></img>
+                      <img href={ product.image }></img>
                     </div>
                   </div>
 
