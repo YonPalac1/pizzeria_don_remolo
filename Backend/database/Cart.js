@@ -4,6 +4,7 @@ const cartSchema = new Schema(
   {
     userId: String, // Id del usuario
     payment: { type: String, default: "efectivo" }, // forma de pago
+    comment: {type:String, default: ""},
     foods: [
       // array de productos
       {

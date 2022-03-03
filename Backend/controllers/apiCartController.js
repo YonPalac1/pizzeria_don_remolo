@@ -68,16 +68,24 @@ module.exports = {
   getCart: async (req, res) => {
     try {
       const cart = await Cart.findOne({ userId: req.params.id }); // Buscamos con el id del usuario
-      res.status(200).json({
-        data: {
-          idCart: cart._id,
-          products: [...MappedDrinks(cart.drinks), ...MappedFoods(cart.foods)],
-        },
-      });
+      if(cart){
+
+       return res.status(200).json({
+          data: {
+            idCart: cart._id,
+            comment: cart.comment,
+            products: [...MappedDrinks(cart.drinks), ...MappedFoods(cart.foods)],
+          },
+        });
+
+      }
+      res.status(400).json({msg:'No existe ningún carrito de compra'})
     } catch (error) {
+
       res.status(500).json({
         msg: error.message,
       });
+
     }
   },
 
@@ -189,21 +197,28 @@ module.exports = {
     }
   },
 
-  orderMsg: async (req, res) => {
-    const { userId } = req.params;
+  commentAdd: async (req, res) => {
     try {
-      const { _id, foods, drinks } = await Cart.findOne({ userId });
+      const { comment, userId } = req.body;
+      const cart = await Cart.findOne({ userId });
+      cart.comment = comment;
+      await cart.save();
+      res.status(200).json({ ok: true });
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
+  orderMsg: async (req, res) => {
+    try {
+      const { _id, foods, drinks } = req.cart;
 
       const transformProps = (string) => string.split(" ").join("%20");
       let order;
       if (foods.length > 0) {
         order = foods.map(
           ({ product, quantity }) =>
-            `* ${quantity}  ${
-              +quantity > 1 ? product.category : product.category.substr(0,6)
-            }  ${product.name} ${product.measurement}%0A     ${
-              product.description
-            }  ,  `
+            `* ${quantity}  ${product.category}  ${product.name} ${product.measurement}%0A     ${product.description}  ,  `
         );
       }
 
@@ -212,11 +227,7 @@ module.exports = {
           ...order,
           ...drinks.map(
             ({ product, quantity }) =>
-              `* ${quantity}  ${
-                +quantity > 1 ? product.category : product.category.substr(0,6)
-              }%0A  ${product.title} ${product.measurement} ${
-                product.size
-              }%0A     ${product.description}  ,  `
+              `* ${quantity}  ${product.category}%0A  ${product.title} ${product.measurement} ${product.size}%0A     ${product.description}  ,  `
           ),
         ];
       }
@@ -224,6 +235,11 @@ module.exports = {
       const url = `https://api.whatsapp.com/send?phone=+5491156412335&text=%20*%20%20Código%20del%20pedido%20:%20%20${_id}%20%0A${transformProps(
         order.join("%0A")
       )}`;
+
+      setTimeout(async () => {
+        await Cart.findOneAndRemove({ _id: req.cart._id });
+      }, 1000);
+
       res.status(200).json({ ok: true, url });
     } catch (error) {
       res.status(500).json({ msg: error.message });

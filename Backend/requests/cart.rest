@@ -3,7 +3,7 @@ DELETE http://localhost:3001/api/cart
 Content-Type: application/json; charset=utf-8
 
 {
-    "productId":"6219c113276414f882fe9eca",
+    "productId":"6219bdd2827cc0c706dadad9",
     "userId":"61fefe099cd102d5143243eb"
 }
 
@@ -16,10 +16,9 @@ POST http://localhost:3001/api/cart/
 Content-Type: application/json; charset=utf-8
 
 {
-    "productId": "6219c113276414f882fe9eca",
+    "productId": "6219bdd2827cc0c706dadad9",
     "userId": "61fefe099cd102d5143243eb"
 }
-
 
 ### Eliminar todo el carrito
 DELETE http://localhost:3001/api/cart/61fefe099cd102d5143243eb
@@ -31,7 +30,7 @@ POST http://localhost:3001/api/cart/more
 Content-Type: application/json; charset=utf-8
 
 {
-"productId":"621d78c1d6eeb2d46f0995ae",
+"productId":"6219bdd2827cc0c706dadad9",
 "userId":"61fefe099cd102d5143243eb"
 }
 
@@ -40,7 +39,7 @@ POST http://localhost:3001/api/cart/less
 Content-Type: application/json; charset=utf-8
 
 {
-"productId":"621d78c1d6eeb2d46f0995ae",
+"productId":"6219bdd2827cc0c706dadad9",
 "userId":"61fefe099cd102d5143243eb"
 }
 
@@ -48,4 +47,12 @@ Content-Type: application/json; charset=utf-8
 GET http://localhost:3001/api/cart/order/61fefe099cd102d5143243eb
 Content-Type: application/json; charset=utf-8
 
+### Realizar un commentario
+POST http://localhost:3001/api/cart/comment
+Content-Type: application/json; charset=utf-8
+
+{
+    "comment":"quiero helado",
+    "userId":"61fefe099cd102d5143243eb"
+}
 

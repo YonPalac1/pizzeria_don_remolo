@@ -9,10 +9,11 @@ const {
   orderMsg,
   moreQuantity,
   lessQuantity,
+  commentAdd,
 } = require("../controllers/apiCartController");
 
 // Validations Middleware
-const { checkObjectId } = require("../validations/errorHandler");
+const { existProductsCart } = require("../validations/errorHandler");
 
 router
   // AGREGAR UN NUEVO PRODUCTO
@@ -33,6 +34,7 @@ router
   // ELIMINAR EL CARRITO
   .delete("/:id", delAll)
 
-
   // ENLACE PARA DIRECCIÓN A WHATSAPP
-  .get("/order/:userId", orderMsg);
+  .post("/comment",commentAdd)
+  .get("/order/:userId",existProductsCart ,orderMsg);
+

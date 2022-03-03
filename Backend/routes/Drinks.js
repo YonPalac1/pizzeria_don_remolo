@@ -13,6 +13,7 @@ const {
 // Validations Middleware
 const {
   drinkValidator,
+  drinkValidatorUpdate,
   errorHandler,
   checkDrink,
   checkObjectId,
@@ -24,11 +25,11 @@ router
   .post("/", drinkValidator, errorHandler, store)
 
   // Verb PUT
-  .put(
+  .patch(
     "/:id",
     checkObjectId,
     checkDrink,
-    drinkValidator,
+    drinkValidatorUpdate,
     errorHandler,
     update
   )

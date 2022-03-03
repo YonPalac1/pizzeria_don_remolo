@@ -7,25 +7,37 @@ const {
   remove,
   all,
   detail,
-  getAllCategory
+  getAllCategory,
 } = require("../controllers/apiFoodsController");
-const { checkObjectId,checkFood,foodValidator,errorHandler } = require("../validations/errorHandler");
+const {
+  checkObjectId,
+  checkFood,
+  foodValidator,
+  errorHandler,
+  foodValidatorUpdate,
+} = require("../validations/errorHandler");
 
 // Validations Middleware
 
 /* ADMIN POST */
 router
   // Verb POST
-  .post("/",foodValidator, errorHandler,store)
+  .post("/", foodValidator, errorHandler, store)
 
   // Verb PUT
-  .put("/:id",checkObjectId,checkFood, foodValidator,errorHandler,update)
+  .patch(
+    "/:id",
+    checkObjectId,
+    checkFood,
+    foodValidatorUpdate,
+    errorHandler,
+    update
+  )
 
   // Verb DELETE
-  .delete("/:id",checkObjectId,checkFood,remove)
+  .delete("/:id", checkObjectId, checkFood, remove)
 
   // Verbs GET
   .get("/", all)
 
-  .get("/:id",checkObjectId,checkFood, detail)
-  .get("/category/:category",getAllCategory)
+  .get("/:id", checkObjectId, checkFood, detail)

@@ -3,40 +3,32 @@ POST http://localhost:3001/api/foods
 Content-Type: application/json
 
 {
-  "name": "Carne suave",
-  "price": 120,
-  "description": "de carne sin condimentos fuertes",
+  "name": "Calabressa",
+  "price": 750,
+  "description": "Salsa, muzzarella, cantimpalo, aceitunas y orégano.",
   "measurement": "1",
-  "category": "empanadas"
+  "category": "pizzas",
+  "show": "0"
 }
 
-### EDITAMOS un alimento
-PUT http://localhost:3001/api/foods/6219c08c276414f882fe9ec4
+### PARCHE (UPDATE) un alimento
+PATCH http://localhost:3001/api/foods/621ed46b02cc41d85ff93777
 Content-Type: application/json
 
 {
-  "name": "torta",
-  "price": 120,
-  "description": "Chocolate",
-  "measurement": "1/2",
-  "category": "postres"
+   "price":1000
 }
 
 ### OBTENER todos los alimentos
-GET http://localhost:3001/api/foods
+# GET http://localhost:3001/api/foods?category=postres
+# GET http://localhost:3001/api/foods?show=1
+GET http://localhost:3001/api/foods?show=1&category=postres
 Content-Type: application/json
 
 ### ELIMINAR un alimento
-DELETE http://localhost:3001/api/foods/6219b008d1f4f856a0256795
+DELETE http://localhost:3001/api/foods/6219b1a2d45221fc82915d8d
 Content-Type: application/json
 
 ### OBTENER detalle de un producto
-GET http://localhost:3001/api/foods/6219b167d45221fc82915d8a
+GET http://localhost:3001/api/foods/6219bdfa1e55802efeb61087
 Content-Type: application/json
-
-
-### OBTENER alimentos por categoria
-GET http://localhost:3001/api/foods/category/empanadas
-Content-Type: application/json
-
-

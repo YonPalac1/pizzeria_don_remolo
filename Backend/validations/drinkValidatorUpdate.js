@@ -1,17 +1,15 @@
 const { body } = require("express-validator");
 const Drink = require("../database/Drink");
 
-const drinkValidator = [
+const drinkValidatorUpdate = [
   body("brand")
-    .notEmpty()
-    .withMessage("Marca requerida")
+  .optional({ nullable: true })
     .not()
     .isNumeric()
     .withMessage("Marca tiene que ser un texto"),
 
   body("title")
-    .notEmpty()
-    .withMessage("Titulo requerido")
+  .optional({ nullable: true })
     .not()
     .isNumeric()
     .withMessage("Titulo tiene que ser un texto")
@@ -20,8 +18,7 @@ const drinkValidator = [
     .withMessage("Titulo demasiado largo"),
 
   body("measurement")
-    .notEmpty()
-    .withMessage("Medición requerida")
+  .optional({ nullable: true })
     .bail()
     .isString()
     .withMessage("Medición tiene que ser un texto")
@@ -29,8 +26,7 @@ const drinkValidator = [
     .withMessage("Medición invalida ( l y ml )"),
 
   body("size")
-    .notEmpty()
-    .withMessage("Tamaño requerido")
+  .optional({ nullable: true })
     .bail()
     .isNumeric()
     .withMessage("Tamaño tiene que ser un número"),
@@ -52,21 +48,35 @@ const drinkValidator = [
     .withMessage("Disponible es invalido"),
 
   body("price")
-    .notEmpty()
-    .withMessage("Precio requerido")
+  .optional({ nullable: true })
     .bail()
     .isNumeric()
     .withMessage("Precio tiene que ser un número"),
 
   body("category")
-    .notEmpty()
-    .withMessage("Categoría requerido")
+  .optional({ nullable: true })
     .bail()
     .not()
     .isNumeric()
     .withMessage("Categoría tiene que ser un texto"),
 ];
 
+const checkDrink = async (req, res, next) => {
+  const drink = await Drink.findById(req.params.id);
+  if (!drink) {
+    return res.status(422).json({
+      meta: {
+        status: 422,
+        ok: false,
+      },
+      data: null,
+      errors: { msg: "La bebida no existe" },
+    });
+  }
+
+  next();
+};
 
 
-module.exports = { drinkValidator };
+
+module.exports = { drinkValidatorUpdate, checkDrink };
