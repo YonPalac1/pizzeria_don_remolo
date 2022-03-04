@@ -1,6 +1,7 @@
 const Food = require("../database/Food");
 const path = require("path");
 const { unlinkSync, existsSync } = require("fs");
+const { uploadInBucket } = require("../helpers/upload");
 
 const getPath = (
   filename // Function that return a path by every filename
@@ -13,7 +14,14 @@ module.exports = {
     const arrImages = files ? [files].flat(2) : null;
     let arrFilename = [];
 
-    if (arrImages) {
+    console.log(files)
+    try {
+     const x = await uploadInBucket(files,"avatars")
+     console.log(x)
+    } catch (error) {
+      console.log(error)
+    }
+    /* if (arrImages) {
       // If the value is truthy
       arrFilename = arrImages.map(
         // Mapped the filenames get the path complete
@@ -47,7 +55,7 @@ module.exports = {
         ok: false,
         errors: { msg: error.message },
       });
-    }
+    } */
   },
 
   update: async (req, res) => {
