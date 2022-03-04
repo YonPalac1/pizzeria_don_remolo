@@ -39,8 +39,8 @@ const foodValidator = [
     .isString()
     .withMessage("Categoría tiene que ser un texto")
     .bail()
-    .isIn(["pizzas", "empanadas", "postres"])
-    .withMessage("Categorías invalidas ( 'pizzas', 'empanadas', 'postres' )"),
+    .isIn(["pizzas", "empanadas", "postres", "promociones"])
+    .withMessage("Categorías invalidas ( 'pizzas', 'empanadas', 'postres', 'promociones' )"),
 
   body("show")
     .optional({ nullable: true })
