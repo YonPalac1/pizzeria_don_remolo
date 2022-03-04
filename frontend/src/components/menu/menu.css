@@ -4,6 +4,12 @@
     padding: 20px 0;
     gap: 20px;
     margin: 100px auto;
+    justify-content: center;
+}
+.menu .spin {
+    display: grid;
+    grid-column: auto;
+    justify-content: center;
 }
 .menu-card {
     background: #EBE8E2;

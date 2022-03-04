@@ -5,7 +5,7 @@
     grid-template-columns: auto auto;
 }
 .details {
-    padding: 20px;
+    padding: 30px 100px 20px 10px;
 }
 .details_info {
     border-radius: 10px;
@@ -51,7 +51,8 @@
 .details-footer {
     display: flex;
     justify-content: space-between;
-    padding: 20px;
+    align-items: center;
+    padding: 30px 100px 20px 10px;
 }
 .details-footer .btn-send {
     padding: 12px 15px;

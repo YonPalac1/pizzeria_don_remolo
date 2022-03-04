@@ -1,6 +1,6 @@
 .modal {
     position: fixed;
-    background: rgba(0,0,0,.3);
+    background-color: rgba(59, 59, 59, 0.3);
     z-index: 1;
     top: 0;
     bottom: 0;
@@ -9,6 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 3000;
 }
 
 .modal-card {

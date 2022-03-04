@@ -3,14 +3,12 @@ import Carousel from "react-multi-carousel";
 import { CardsCategories } from '../cardsCategories/CardsCategories'
 import "react-multi-carousel/lib/styles.css";
 import './categoriesSlide.css'
+import { useDispatch } from 'react-redux';
+import { allDataAction } from '../../redux/dataReducer';
 
 export const CategoriesSlide = () => {
-  const card_bg = {
-    active: "active",
-    unactive: "unactive"
-  }
+  const dispatch = useDispatch();
 
-  
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1030 },
@@ -28,6 +26,25 @@ export const CategoriesSlide = () => {
       slidesToSlide: 1, // optional, default to 1.
     },
   };
+  
+  const categories = [{
+    id: 1,
+    name: "pizzas"
+  },{
+    id: 2,
+    name: "empanadas"
+  },{
+    id: 3,
+    name: "bebidas"
+  },{
+    id: 4,
+    name: "postres"
+  }]
+  
+  const handleAllProducts = () => {
+    dispatch(allDataAction())
+  }
+
   return <>
     <h3>Nuestros sabores</h3>
     <Carousel
@@ -52,11 +69,16 @@ export const CategoriesSlide = () => {
       slidesToSlide={1}
       swipeable
     >
-      <CardsCategories name="Pizzas" bg={card_bg.active} />
-      <CardsCategories name="Empanadas" bg={card_bg.unactive} />
-      <CardsCategories name="Postres" bg={card_bg.unactive} />
-      <CardsCategories name="Bebidas" bg={card_bg.unactive} />
-      <CardsCategories name="Todos" bg={card_bg.unactive} />
+      {
+        categories.map(category => {
+          return <CardsCategories category={category} key={category.id} />
+        })
+      }
+    <div className='categories-cards' onClick={handleAllProducts}>
+        <div className='categorie-card'>
+            <span>Todos</span>
+        </div>
+    </div>
     </Carousel>
   </>
 }
