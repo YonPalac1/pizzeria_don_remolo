@@ -4,6 +4,7 @@ const MappedDrinks = (arr) =>
       quantity,
       product: { _id, brand, title, measurement, size, price, category, image },
     }) => {
+      console.log(_id)
       return {
         id: _id,
         brand,
@@ -23,7 +24,7 @@ const MappedFoods = (arr) =>
     ({
       quantity,
       product: {
-        id: _id,
+        _id,
         name,
         price,
         description,

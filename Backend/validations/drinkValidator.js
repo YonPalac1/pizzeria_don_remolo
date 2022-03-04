@@ -1,5 +1,4 @@
 const { body } = require("express-validator");
-const Drink = require("../database/Drink");
 
 const drinkValidator = [
   body("brand")

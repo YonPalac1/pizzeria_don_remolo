@@ -22,7 +22,7 @@ Content-Type: application/json
 ### OBTENER todos los alimentos
 # GET http://localhost:3001/api/foods?category=postres
 # GET http://localhost:3001/api/foods?show=1
-GET http://localhost:3001/api/foods?show=1&category=postres
+GET http://localhost:3001/api/foods?show=1&category=promociones
 Content-Type: application/json
 
 ### ELIMINAR un alimento

@@ -66,26 +66,28 @@ module.exports = {
   },
 
   getCart: async (req, res) => {
+    
     try {
       const cart = await Cart.findOne({ userId: req.params.id }); // Buscamos con el id del usuario
-      if(cart){
-
-       return res.status(200).json({
+      console.log(cart)
+      if (cart) {
+        return res.status(200).json({
           data: {
             idCart: cart._id,
             comment: cart.comment,
-            products: [...MappedDrinks(cart.drinks), ...MappedFoods(cart.foods)],
+            products: [
+              ...MappedDrinks(cart.drinks),
+              ...MappedFoods(cart.foods),
+            ], 
           },
         });
-
       }
-      res.status(400).json({msg:'No existe ningún carrito de compra'})
+      res.status(400).json({ msg: "No existe ningún carrito de compra" });
     } catch (error) {
-
+      console.log(error)
       res.status(500).json({
         msg: error.message,
       });
-
     }
   },
 

@@ -16,7 +16,7 @@ POST http://localhost:3001/api/cart/
 Content-Type: application/json; charset=utf-8
 
 {
-    "productId": "6219bdd2827cc0c706dadad9",
+    "productId": "62215627b0202a0d5d60f68c",
     "userId": "61fefe099cd102d5143243eb"
 }
 
