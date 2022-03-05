@@ -35,6 +35,8 @@ router
   .delete("/:id", delAll)
 
   // ENLACE PARA DIRECCIÓN A WHATSAPP
-  .post("/comment",commentAdd)
+  .patch("/comment",commentAdd)
+
+  // CREAR ORDEN - falta terminar
   .get("/order/:userId",existProductsCart ,orderMsg);
 

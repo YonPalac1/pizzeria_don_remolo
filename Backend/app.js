@@ -27,11 +27,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public"))); 
 app.use(cors());
-app.use(fileUpload({
-  useTempFiles:true,
-  tempFileDir:'/tmp/',
-  debug:true
-}));
+app.use(fileUpload());
 
 // Routes
 app.use("/api/users", usersRoutes);

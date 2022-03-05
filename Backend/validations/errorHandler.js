@@ -20,11 +20,7 @@ const errorHandler = (req, res, next) => {
     }
 
     return res.status(422).json({
-      meta: {
-        status: 422,
-        ok: false,
-      },
-      data: null,
+      ok: false,
       errors: errorsObjects,
     });
   }
@@ -36,12 +32,8 @@ const checkObjectId = (req, res, next) => {
 
   if (!isValid(req.params.id)) {
     return res.status(422).json({
-      meta: {
-        status: 422,
-        ok: false,
-      },
-      data: null,
-      errors: { msg: "El id es invalido" },
+      ok: false,
+      msg: "El id es invalido",
     });
   }
   next();
@@ -50,20 +42,20 @@ const checkObjectId = (req, res, next) => {
 const existProductsCart = async (req, res, next) => {
   try {
     const cart = await Cart.findOne({ userId: req.params.userId });
-  if (cart.foods.length || cart.drinks.length) {
-    req.cart = cart
-    return next()
-  }
-  res.status(400).json({
-    ok: false,
-    errors: { msg: "No existen productos en el carrito de compra" }
-  });
+    if (cart.foods.length || cart.drinks.length) {
+      req.cart = cart;
+      return next();
+    }
+    res.status(400).json({
+      ok: false,
+      msg: "No existen productos en el carrito de compra" 
+    });
   } catch (error) {
     res.status(500).json({
-      ok: false
+      ok: false,
+      msg:error.message
     });
   }
-  
 };
 
 module.exports = {

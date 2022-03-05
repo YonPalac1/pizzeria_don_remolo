@@ -202,9 +202,10 @@ module.exports = {
   commentAdd: async (req, res) => {
     try {
       const { comment, userId } = req.body;
-      const cart = await Cart.findOne({ userId });
-      cart.comment = comment;
-      await cart.save();
+      const cart = await Cart.findOneAndUpdate({ userId },{ 
+        comment: comment ? comment : cart.comment
+      });
+
       res.status(200).json({ ok: true });
     } catch (error) {
       console.log(error);

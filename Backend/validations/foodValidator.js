@@ -1,6 +1,5 @@
 const { body } = require("express-validator");
 
-
 const foodValidator = [
   body("name")
     .notEmpty()
@@ -27,7 +26,7 @@ const foodValidator = [
     .isString()
     .withMessage("Medición tiene que ser un texto")
     .bail()
-    .isIn(["1", "12", "6", "1/4", "1/2", ])
+    .isIn(["1", "12", "6", "1/4", "1/2"])
     .withMessage("Medición incorrecta ( '1', '12', '6', '1/4', '1/2')"),
 
   body("preparationTimeMin")
@@ -36,11 +35,15 @@ const foodValidator = [
     .withMessage("El tiempo tiene que ser numérico"),
 
   body("category")
+    .notEmpty()
+    .withMessage("Categoría requerida")
     .isString()
     .withMessage("Categoría tiene que ser un texto")
     .bail()
     .isIn(["pizzas", "empanadas", "postres", "promociones"])
-    .withMessage("Categorías invalidas ( 'pizzas', 'empanadas', 'postres', 'promociones' )"),
+    .withMessage(
+      "Categorías invalidas ( 'pizzas', 'empanadas', 'postres', 'promociones' )"
+    ),
 
   body("show")
     .optional({ nullable: true })

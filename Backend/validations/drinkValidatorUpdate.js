@@ -3,13 +3,13 @@ const Drink = require("../database/Drink");
 
 const drinkValidatorUpdate = [
   body("brand")
-  .optional({ nullable: true })
+    .optional({ nullable: true })
     .not()
     .isNumeric()
     .withMessage("Marca tiene que ser un texto"),
 
   body("title")
-  .optional({ nullable: true })
+    .optional({ nullable: true })
     .not()
     .isNumeric()
     .withMessage("Titulo tiene que ser un texto")
@@ -18,7 +18,7 @@ const drinkValidatorUpdate = [
     .withMessage("Titulo demasiado largo"),
 
   body("measurement")
-  .optional({ nullable: true })
+    .optional({ nullable: true })
     .bail()
     .isString()
     .withMessage("Medición tiene que ser un texto")
@@ -26,7 +26,7 @@ const drinkValidatorUpdate = [
     .withMessage("Medición invalida ( l y ml )"),
 
   body("size")
-  .optional({ nullable: true })
+    .optional({ nullable: true })
     .bail()
     .isNumeric()
     .withMessage("Tamaño tiene que ser un número"),
@@ -48,13 +48,13 @@ const drinkValidatorUpdate = [
     .withMessage("Disponible es invalido"),
 
   body("price")
-  .optional({ nullable: true })
+    .optional({ nullable: true })
     .bail()
     .isNumeric()
     .withMessage("Precio tiene que ser un número"),
 
   body("category")
-  .optional({ nullable: true })
+    .optional({ nullable: true })
     .bail()
     .not()
     .isNumeric()
@@ -65,18 +65,12 @@ const checkDrink = async (req, res, next) => {
   const drink = await Drink.findById(req.params.id);
   if (!drink) {
     return res.status(422).json({
-      meta: {
-        status: 422,
-        ok: false,
-      },
-      data: null,
-      errors: { msg: "La bebida no existe" },
+      ok: false,
+      msg: "La bebida no existe",
     });
   }
 
   next();
 };
-
-
 
 module.exports = { drinkValidatorUpdate, checkDrink };

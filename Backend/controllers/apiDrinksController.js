@@ -44,23 +44,13 @@ module.exports = {
 
       res.status(200).json({
         // Response from Api if all out good
-        meta: {
-          ok: true,
-          status: 200,
-          msg: "Bebida ingresada",
-        },
-        data: drink,
-        errors: null,
+        ok: true,
       });
     } catch (error) {
       // Response from Api if exists errors in the server
       res.status(500).json({
-        meta: {
-          ok: false,
-          status: 500,
-        },
-        data: null,
-        errors: { msg: error.message },
+        ok: false,
+        msg: error.message,
       });
     }
   },
@@ -111,8 +101,6 @@ module.exports = {
         }
       );
 
-      const drinkAfter = await Drink.findOne({ _id: req.params.id }); // Search the drink after
-
       let existsFileBefore = await Promise.all(
         // example [true ,true ,true]
         // The promises returns us a array with values booleans
@@ -154,12 +142,8 @@ module.exports = {
     } catch (error) {
       // Response from Api if exists errors in the server
       res.status(500).json({
-        meta: {
-          ok: false,
-          status: 500,
-        },
-        data: null,
-        errors: { msg: error.message },
+        ok: false,
+        msg: error.message,
       });
     }
   },
@@ -204,33 +188,21 @@ module.exports = {
     } catch (error) {
       res.status(500).json({
         ok: false,
-        errors: { msg: error.message },
+         msg: error.message
       });
     }
   },
   all: async (req, res) => {
-    const { show, category, available } = req.query;
+    const { show, available } = req.query;
     try {
       let drinks = await Drink.find();
-      if (show) {
-        drinks = await Drink.find({ show });
-      }
 
-      if (category) {
-        drinks = await Drink.find({ category });
-      }
-
-      if (available) {
-        drinks = await Drink.find({ available });
-      }
-
-      if (show && category) {
-        drinks = await Drink.find({ $and: [{ show }, { category }] });
-      } //
-
-      if (show && available) {
-        drinks = await Drink.find({ $and: [{ show }, { available }] });
-      }
+      if (show) drinks = await Drink.find({ show });
+      
+      if (available) drinks = await Drink.find({ available });
+      
+      if (show && available) drinks = await Drink.find({ $and: [{ show }, { available }] });
+      
 
       const drinksMapped = drinks.map(
         ({
@@ -242,7 +214,6 @@ module.exports = {
           description,
           image,
           category,
-          show,
         }) => ({
           _id,
           brand,
@@ -252,7 +223,6 @@ module.exports = {
           description,
           image,
           category,
-          show,
         })
       );
 
@@ -263,12 +233,8 @@ module.exports = {
       });
     } catch (error) {
       res.status(500).json({
-        meta: {
-          ok: false,
-          status: 500,
-        },
-        data: null,
-        errors: { msg: error.message },
+        ok: false,
+        msg: error.message,
       });
     }
   },
@@ -283,7 +249,6 @@ module.exports = {
         description,
         image,
         category,
-        show,
       } = await Drink.findById(req.params.id); // Return us one drink
 
       let drink = {
@@ -295,7 +260,6 @@ module.exports = {
         description,
         image,
         category,
-        show,
       };
 
       res.status(200).json({
@@ -306,7 +270,7 @@ module.exports = {
     } catch (error) {
       res.status(500).json({
         ok: false,
-        errors: { msg: error.message },
+         msg: error.message
       });
     }
   },

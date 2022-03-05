@@ -1,7 +1,6 @@
 const Food = require("../database/Food");
 const path = require("path");
 const { unlinkSync, existsSync } = require("fs");
-const { uploadInBucket } = require("../helpers/upload");
 
 const getPath = (
   filename // Function that return a path by every filename
@@ -14,14 +13,7 @@ module.exports = {
     const arrImages = files ? [files].flat(2) : null;
     let arrFilename = [];
 
-    console.log(files)
-    try {
-     const x = await uploadInBucket(files,"avatars")
-     console.log(x)
-    } catch (error) {
-      console.log(error)
-    }
-    /* if (arrImages) {
+    if (arrImages) {
       // If the value is truthy
       arrFilename = arrImages.map(
         // Mapped the filenames get the path complete
@@ -55,7 +47,7 @@ module.exports = {
         ok: false,
         errors: { msg: error.message },
       });
-    } */
+    }
   },
 
   update: async (req, res) => {
@@ -138,7 +130,7 @@ module.exports = {
 
       res.status(200).json({
         // Response from Api if all out good
-        ok: true
+        ok: true,
       });
     } catch (error) {
       // Response from Api if exists errors in the server
@@ -196,20 +188,20 @@ module.exports = {
   },
 
   all: async (req, res) => {
-    const { show, category ,available} = req.query;
+    const { show, category, available } = req.query;
     try {
-      let foods = await Food.find()
+      let foods = await Food.find();
 
       if (show) {
-        foods = await Food.find({ show }); 
+        foods = await Food.find({ show });
       }
-      
+
       if (category) {
-        foods = await Food.find({ category }); 
+        foods = await Food.find({ category });
       }
-      
-      if(available){
-        foods = await Food.find({ available }); 
+
+      if (available) {
+        foods = await Food.find({ available });
       }
 
       if (show && category) {
@@ -221,7 +213,7 @@ module.exports = {
       }
 
       const foodsMapped = foods.map(
-        ({ _id, measurement, price, description, image, category, name,show }) => ({
+        ({ _id, measurement, price, description, image, category, name }) => ({
           _id,
           name,
           measurement,
@@ -229,7 +221,6 @@ module.exports = {
           description,
           image,
           category,
-          show
         })
       );
 
@@ -278,9 +269,7 @@ module.exports = {
     }
   },
 
-
   deletedAll: async (req, res) => {
     await Food.deleteMany();
   },
-
 };
