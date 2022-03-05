@@ -2,9 +2,20 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Navigation } from '../../components/navigation/Navigation'
 import { CartDetails } from '../../components/cartDetails/CartDetails'
+import { useDispatch, useSelector } from "react-redux";
+import useForm from '../../hooks/useForm'
+import { infoAction } from '../../redux/cartReducer';
 import './cart.css'
 
 export const Cart = () => {
+    const dispatch = useDispatch();
+    const [formValues, handleChange] = useForm({ celphone: "", name: "", lastname: "", address: "", note: "" });
+    const {celphone, name, lastname, address, note} = formValues;
+    
+    const handleSubmit = () => {
+        dispatch(infoAction(formValues))
+    }
+
   return (
     <>
         <Navigation />
@@ -15,8 +26,12 @@ export const Cart = () => {
                         <h5>Contacto</h5>
                         <div className='cart-body_input'>
                             <input 
-                            name="email"
-                            placeholder='Mail o numero de celular'></input>
+                            name="celphone"
+                            value={celphone}
+                            onChange={handleChange}
+
+                            placeholder='Numero de celular'
+                            ></input>
 
                             <p>
                                 <input type="checkbox" id='checkbox'></input>
@@ -28,19 +43,29 @@ export const Cart = () => {
                         <div className='cart-body_input names'>
                             <input
                             name="name"
-                            placeholder='Nombre'></input>
+                            value={name}
+                            onChange={handleChange}
+                            placeholder='Nombre'
+                            ></input>
 
                             <input 
                             name="lastname"
-                            placeholder='Apellido'></input>
+                            value={lastname}
+                            onChange={handleChange}
+                            placeholder='Apellido'
+                            ></input>
                         </div>
                         <div className='cart-body_input'>
                             <input 
-                            name="street"
+                            name="address"
+                            value={address}
+                            onChange={handleChange}
                             placeholder='Nombre de la calle'></input>
                             
                             <input 
                             name="note"
+                            value={note}
+                            onChange={handleChange}
                             placeholder='Nota para el envio'></input>
 
                             <p>
@@ -55,7 +80,7 @@ export const Cart = () => {
 
                     <div className='cart-footer'>
                         <Link to="/">Volver al carrito</Link>
-                        <Link to="/details" className='btn-send'>Ir al envio</Link>
+                        <Link onClick={handleSubmit} to="/details" className='btn-send'>Ir al envio</Link>
                     </div>
                 </form>
             </div>

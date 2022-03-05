@@ -113,7 +113,7 @@
     display: flex;
     gap: 12px;
 }
-.modal-card_footer-buttons a {
+.modal-card_footer-buttons .btn-add-cart {
     padding: 10px 12px;
     border: none;
     border-radius: 12px;
@@ -125,17 +125,17 @@
     cursor: pointer;
 }
 
-.modal-card_footer-buttons a .icon {
+.modal-card_footer-buttons .btn-add-cart .icon {
     margin-right: 10px;
 }
-.modal-card_footer-buttons a p {
+.modal-card_footer-buttons .btn-add-cart p {
     display: none;
 }
 .modal-card_footer-buttons a:nth-child(1) {
     border: 2px solid #ccc;
     color: #000;
 }
-.modal-card_footer-buttons a:nth-child(2) {
+.modal-card_footer-buttons .btn-add-cart:nth-child(2) {
     background: #C53D11;
     color: #fff;
 }

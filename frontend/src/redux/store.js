@@ -4,10 +4,12 @@ import thunk from 'redux-thunk'
 
 import authReducer from './authReducer';
 import dataReducer from './dataReducer';
+import cartReducer from './cartReducer';
 
 const rootReducer = combineReducers({
     auth : authReducer,
     data : dataReducer,
+    cart : cartReducer,
 })
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
