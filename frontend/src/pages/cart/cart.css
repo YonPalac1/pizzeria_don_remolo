@@ -45,7 +45,9 @@
 .cart-footer {
     display: flex;
     justify-content: space-between;
-    padding: 20px
+    padding: 20px;
+    align-items: center;
+    padding: 30px 100px 20px 10px;
 }
 .cart-footer .btn-send {
     padding: 12px 15px;
@@ -65,8 +67,12 @@
 @media screen and (max-width: 720px) {
     .cart {
         grid-template-columns: auto;
+
     }
     .cart-body {
-        padding: 30px;
+        padding: 20px;
+    }
+    .cart-body_input p label{
+        font-size: 12px;
     }
 }

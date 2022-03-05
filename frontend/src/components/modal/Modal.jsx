@@ -27,7 +27,11 @@ export const Modal = () => {
                     onClick={()=>{setModal(false)}}
                     className='btn-close'>X</button>
                 <section className='modal-card_header'>
-                    <h2>{ product.name }</h2>
+                  { product.category !== "bebidas" ? 
+                  <h2>{ product.name }</h2>
+                  :  
+                  <h2>{ product.brand }</h2>
+                  }
                 </section>
 
                 <section className='modal-card_body'>
@@ -40,8 +44,13 @@ export const Modal = () => {
 
                   <div className='modal-card_body-details'>
                     <span>$ { product.price }</span>
-                    <h5>Ingredientes</h5>
-                    <p>{ product.ingredients }</p>
+                    <h5>Descripción</h5>
+                    
+                    { product.category !== "bebidas" ? 
+                      <p>{ product.description }</p>
+                    :
+                      <p>{ product.size } { product.measurement}</p>
+                    }
                     <div className='modal-card_body-addMore'>
                       <h5>Sumar al pedido</h5>
                     </div>

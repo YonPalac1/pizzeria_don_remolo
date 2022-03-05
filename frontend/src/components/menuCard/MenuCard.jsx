@@ -16,15 +16,23 @@ export const MenuCard = ({ products }) => {
       dispatch(productAction(products))
   }
   
-  return (
-    <div className='menu-card'>
+    return <div className='menu-card'>
           <div className='menu-card_img'>
             <img src={ products.image } />
           </div>
           <div className='menu-card_details'>
+            { products.category !== "bebidas" ?
+            <>
               <span>{ products.name }</span>
-              <p>{ products.ingredients }</p>
-              <b>$ { products.price }</b>
+              <p>{ products.description }</p>
+            </>
+              :
+            <>
+              <span>{ products.brand }</span>
+              <p>{ products.size } { products.measurement}</p>
+            </>
+            }
+            <b>$ { products.price }</b>
           </div>
           <div className='menu-card_btns'>
             <button
@@ -38,5 +46,4 @@ export const MenuCard = ({ products }) => {
           <Modal  />
         
     </div>
-  )
 }
