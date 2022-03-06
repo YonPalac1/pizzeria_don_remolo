@@ -16,6 +16,30 @@
 
 <p>y se abrirá una ventana en el puerto http://localhost:3000/</p>
 
+<p>Para traer cambios del repositorio a Local ejecutar: </p>
+
+#### git status
+
+#### git add .
+
+#### git status
+
+#### git commit -m "EJEMPLO"
+
+#### git pull
+
+#### npm i
+
+<p>Moverse a las carpetas de back y front con: </p>
+
+#### cd Backend
+
+#### cd frontend
+
+<p>Y ejecutar lo siguiente en ambos casos: </p>
+
+#### npm start
+
 
 ----------------------------------
 
