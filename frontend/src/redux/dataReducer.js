@@ -9,7 +9,9 @@ const INDEX = "INDEX";
 
 const dataInicial = {
     products: [],
-    product: {},
+    product: [],
+    cart: [],
+    total: 0,
     loading: true,
     modal: false,
     index: 0
@@ -23,15 +25,16 @@ export default function dataReducer(state = dataInicial, action) {
     
     case FILTER_CATEGORY:
       return { ...state, products: action.payload, loading: false };
+    
+    case DETAILS:
+      return { ...state, product: action.payload };
+        
     case LOADER:
       return {...state, loading: action.payload}
 
     case MODAL:
       return { ...state, modal: action.payload };
 
-    case DETAILS:
-      return { ...state, product: action.payload };
-    
     case INDEX:
       return { ...state, index: action.payload };
 
@@ -58,6 +61,13 @@ export const filterCategoryAction = (name) => async (dispatch) => {
   });
 };
 
+export const productAction = (details) => (dispatch) => {
+  dispatch({
+    type: DETAILS,
+    payload: details
+  });
+};
+
 export const loaderAction = (load) => async (dispatch) => {
   dispatch({
     type: LOADER,
@@ -71,12 +81,7 @@ export const modalAction = (modal) => (dispatch) => {
     payload: modal
   });
 };
-export const productAction = (details) => (dispatch) => {
-  dispatch({
-    type: DETAILS,
-    payload: details
-  });
-};
+
 export const indexAction = (i) => (dispatch) => {
   dispatch({
     type: INDEX,

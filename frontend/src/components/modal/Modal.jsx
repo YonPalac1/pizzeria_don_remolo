@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { modalAction } from '../../redux/authReducer'
+import { cartAction } from '../../redux/cartReducer'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartPlus, faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
@@ -16,6 +16,10 @@ export const Modal = () => {
     
     function setModal(modal) {
         dispatch(modalAction(modal))
+    }
+
+    const handleAddProduct = () => {
+      dispatch(cartAction(product))
     }
 
   return (
@@ -70,18 +74,18 @@ export const Modal = () => {
 
                   </div>
                   <div className='modal-card_footer-buttons'>
-                    <Link to="/">
+                    <Link className='btn-add-cart' onClick={handleAddProduct}  to="/">
                       <span>Agregar y seguir comprando</span>
                       <p>
                       <FontAwesomeIcon className='icon' icon={faCartPlus} />
                         Volver</p>
                     </Link>
 
-                    <Link to="/cart">
-                      <span>Agregar e ir a pagar</span>
-                      <p>
-                      <FontAwesomeIcon className='icon' icon={faCartArrowDown} />
-                      Pagar</p>
+                      <Link className='btn-add-cart' onClick={handleAddProduct}  to="/cart">
+                        <span>Agregar e ir a pagar</span>
+                        <p>
+                        <FontAwesomeIcon className='icon' icon={faCartArrowDown} />
+                        Pagar</p>
                       </Link>
                   </div>
                 </section>

@@ -9,6 +9,23 @@
 .cart-column_column.img {
     display: flex;
     gap: 30px; 
+    position: relative;
+}
+
+.cart-column_column.img .icon {
+    position: absolute;
+    right: 0;
+    bottom: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.cart-column_column.img .icon button {
+    border: none;
+    background: none;
+    font-size: 18px;
+    color: red;
+    cursor: pointer;
 }
 
 .cart-column_column.img img {
