@@ -32,6 +32,11 @@
     top: 3px;
 }
 
+.modal-card .btn-close:hover {
+    background-color: #C53D11;
+    transition: background-color .1s;
+}
+
 .modal-card_header {
     border-bottom: .5px solid #eee;
     padding-bottom: 13px;
