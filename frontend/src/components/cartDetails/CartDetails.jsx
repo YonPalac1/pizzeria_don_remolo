@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteAction, totalAction } from '../../redux/cartReducer'
+import { deleteAction, totalAction, cartAction } from '../../redux/cartReducer'
 
 import './cartDetails.css'
 
@@ -14,7 +14,11 @@ export const CartDetails = () => {
     const [isActive, setActive] = useState(false);
     
     useEffect(()=>{
-    }, [])
+        if(productCart.length){
+            const total = productCart.map(item => item.price )
+            dispatch(totalAction(total))
+        }
+    }, [productCart, type])
     
     const deleteProduct = (id) => {
         dispatch(deleteAction(id))
@@ -83,7 +87,11 @@ export const CartDetails = () => {
                 <div className='cart-column_column total'>
                     <div>
                         <h5>Total</h5>
-                        <span>$ { totals }</span>
+                        { !totals ?
+                            <span>$ 0</span>
+                            : 
+                            <span>$ { totals }</span>
+                        }
                     </div>
                 </div>
             </div>

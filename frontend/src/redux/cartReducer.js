@@ -9,7 +9,7 @@ const CHECKOUT = "CHECKOUT";
 
 const dataInicial = {
     cart: [],
-    total: [],
+    total: 0,
     info: [],
     shipping: "",
     checkout: []
@@ -26,7 +26,8 @@ export default function cartReducer(state = dataInicial, action) {
     
     case DELETE:
       const newData = state.cart.filter(data => data._id !== action.payload)
-      return { ...state, cart: newData};
+      const newTotal = newData.price - state.total;
+      return { ...state, cart: newData, total: newTotal};
     
     case INFO:
       return { ...state, info: action.payload};
@@ -50,7 +51,8 @@ export const cartAction = (cart) => (dispatch) => {
   });
 };
 
-export const totalAction = (total) => (dispatch) => {
+export const totalAction = (array) => (dispatch) => {
+  const total = array.reduce((acum, num)=> acum + num)
   dispatch({
     type: TOTAL,
     payload: total
