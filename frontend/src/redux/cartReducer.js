@@ -9,7 +9,7 @@ const CHECKOUT = "CHECKOUT";
 
 const dataInicial = {
     cart: [],
-    total: 0,
+    total: [],
     info: [],
     shipping: "",
     checkout: []
@@ -50,8 +50,7 @@ export const cartAction = (cart) => (dispatch) => {
   });
 };
 
-export const totalAction = (array) => (dispatch) => {
-  const total = array.reduce((acum, num)=> acum + num)
+export const totalAction = (total) => (dispatch) => {
   dispatch({
     type: TOTAL,
     payload: total

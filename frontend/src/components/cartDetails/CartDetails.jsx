@@ -14,11 +14,7 @@ export const CartDetails = () => {
     const [isActive, setActive] = useState(false);
     
     useEffect(()=>{
-        if(productCart.length){
-            const total = productCart.map(item => item.price )
-            dispatch(totalAction(total))
-        }
-    }, [productCart, type])
+    }, [])
     
     const deleteProduct = (id) => {
         dispatch(deleteAction(id))

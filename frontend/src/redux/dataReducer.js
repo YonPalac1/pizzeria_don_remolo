@@ -2,6 +2,7 @@ import axios from "axios";
 
 const ALL_PRODUCTS =  "ALL_PRODUCTS";
 const FILTER_CATEGORY = "FILTER_CATEGORY";
+const CATEGORY_ACTIVE = "CATEGORY_ACTIVE";
 const LOADER = "LOADER";
 const DETAILS =  "DETAILS";
 const MODAL = "MODAL";
@@ -10,6 +11,7 @@ const INDEX = "INDEX";
 const dataInicial = {
     products: [],
     product: [],
+    category_active: "",
     cart: [],
     total: 0,
     loading: true,
@@ -25,6 +27,9 @@ export default function dataReducer(state = dataInicial, action) {
     
     case FILTER_CATEGORY:
       return { ...state, products: action.payload, loading: false };
+
+    case CATEGORY_ACTIVE: 
+      return {...state, category_active: action.payload}
     
     case DETAILS:
       return { ...state, product: action.payload };
@@ -60,6 +65,13 @@ export const filterCategoryAction = (name) => async (dispatch) => {
     payload: foods.data.data
   });
 };
+
+export const nameCategoryAction = (name) => async (dispatch) => {
+  dispatch({
+    type: CATEGORY_ACTIVE,
+    payload: name
+  })
+}
 
 export const productAction = (details) => (dispatch) => {
   dispatch({
