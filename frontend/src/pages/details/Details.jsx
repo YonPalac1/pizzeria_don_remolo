@@ -12,8 +12,14 @@ export const Details = () => {
     const [check1, setCheck1] = useState(false)
     const [check2, setCheck2] = useState(false)
     const [option, setOption] = useState("")
+    const [errorMsg, setErrorMsg] = useState(false);
+    const [next, setNext] = useState(false);
  
-    useEffect(()=>{},[contact, option])
+    useEffect(()=>{
+        if(option){
+            setNext(true)
+        }
+    },[contact, option])
     
     const handleCheck = (e) => {
         setCheck2(false)
@@ -27,7 +33,11 @@ export const Details = () => {
     }
 
     const handleSubmit = () => {
-        dispatch(shippingAction(option))
+        if(next){
+            dispatch(shippingAction(option))
+        } else {
+            setErrorMsg(true)
+        }
     }
 
   return (
@@ -83,13 +93,20 @@ export const Details = () => {
                                 <span>$ 130</span>
                             </div>
                         </div>
-                        
-
+                    </div>
+                    <div>
+                        { errorMsg && 
+                            <span className='errorMsg'>Debe llenar todos los campos para continuar</span>
+                        }
                     </div>
 
                     <div className='details-footer'>
                         <Link  to="/cart">Volver al carrito</Link>
-                        <Link onClick={handleSubmit} to="/payment" className='btn-send'>Ir a pagar</Link>
+                        { !next ? 
+                            <Link onClick={handleSubmit} to="/details" className='btn-send'>Ir a pagar</Link>
+                        :
+                            <Link onClick={handleSubmit} to="/payment" className='btn-send'>Ir a pagar</Link>
+                        }
                     </div>
                 </form>
             </div>
