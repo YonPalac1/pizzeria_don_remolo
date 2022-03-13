@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Modal } from '../../components/modal/Modal';
 
+import { useLocation} from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { modalAction } from '../../redux/dataReducer'
 import { productAction } from '../../redux/dataReducer'
@@ -8,7 +9,31 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 
+
+
+
+
+
+
+
 export const MenuCard = ({ products }) => {
+
+
+
+   
+  const location = useLocation().pathname // Get route
+
+  useEffect(() => {
+    const ROUTE = '/';      
+    if (location == ROUTE) {
+  
+      console.log('IT IS WORKING')
+      console.log(location)
+      setModal(false)
+    }
+  });
+  
+
   const dispatch = useDispatch()
   
   function setModal(modal, products) {
