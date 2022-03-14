@@ -26,7 +26,8 @@ export default function cartReducer(state = dataInicial, action) {
     
     case DELETE:
       const newData = state.cart.filter(data => data._id !== action.payload)
-      return { ...state, cart: newData};
+      const newTotal = newData.price - state.total;
+      return { ...state, cart: newData, total: newTotal};
     
     case INFO:
       return { ...state, info: action.payload};

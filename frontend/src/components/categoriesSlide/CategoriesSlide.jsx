@@ -3,11 +3,12 @@ import Carousel from "react-multi-carousel";
 import { CardsCategories } from '../cardsCategories/CardsCategories'
 import "react-multi-carousel/lib/styles.css";
 import './categoriesSlide.css'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { allDataAction } from '../../redux/dataReducer';
 
 export const CategoriesSlide = () => {
   const dispatch = useDispatch();
+  const categoryActive = useSelector(state => state.data.category_active)
 
   const responsive = {
     desktop: {
@@ -71,7 +72,7 @@ export const CategoriesSlide = () => {
     >
       {
         categories.map(category => {
-          return <CardsCategories category={category} key={category.id} />
+          return <CardsCategories category={category} categoryActive={categoryActive} key={category.id} />
         })
       }
     <div className='categories-cards' onClick={handleAllProducts}>

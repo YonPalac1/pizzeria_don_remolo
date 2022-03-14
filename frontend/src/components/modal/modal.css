@@ -1,6 +1,6 @@
 .modal {
     position: fixed;
-    background-color: rgba(59, 59, 59, 0.3);
+    background-color: rgba(59, 59, 59, 0.5);
     z-index: 1;
     top: 0;
     bottom: 0;
@@ -30,6 +30,11 @@
     position: absolute;
     right: 3px;
     top: 3px;
+}
+
+.modal-card .btn-close:hover {
+    background-color: #C53D11;
+    transition: background-color .1s;
 }
 
 .modal-card_header {

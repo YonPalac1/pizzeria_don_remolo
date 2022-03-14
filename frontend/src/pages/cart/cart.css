@@ -63,7 +63,9 @@
     cursor: pointer;
     color: #000;
 }
-
+.errorMsg {
+    color: #C53D11;
+}
 @media screen and (max-width: 720px) {
     .cart {
         grid-template-columns: auto;
