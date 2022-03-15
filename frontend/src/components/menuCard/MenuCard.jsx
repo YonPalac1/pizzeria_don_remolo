@@ -26,8 +26,6 @@ export const MenuCard = ({ products }) => {
   useEffect(() => {
     const ROUTE = '/';      
     if (location == ROUTE) {
-  
-      console.log('IT IS WORKING')
       console.log(location)
       setModal(false)
     }
