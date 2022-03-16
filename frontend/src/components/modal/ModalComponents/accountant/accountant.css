@@ -1,0 +1,25 @@
+
+
+
+.cart-quantity-ct {
+    background-color: transparent;
+    outline: none;
+    padding: 0px 6px;
+    border: 1px solid rgba(0, 0, 0, .2);
+}
+
+.cart-quantity-label {
+    margin-right: 25px;
+    font-size: 13px;
+    text-transform: uppercase;
+    font-size: 500;
+}
+
+.cart-quantity-number {
+    margin: 0 12px;
+}
+
+.cart-quantitys {
+    width: 300px;
+    text-align: center;
+}
