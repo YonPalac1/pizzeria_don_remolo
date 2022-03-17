@@ -26,7 +26,7 @@ Content-Type: application/json
 }
 
 ### OBTENER todos los alimentos
-GET http://localhost:3001/api/foods
+GET http://localhost:9000/api/foods
 Content-Type: application/json
 
 ### ELIMINAR un alimento

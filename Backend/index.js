@@ -1,26 +1,25 @@
-require("dotenv").config(); // Setting environment variables
-
 const express = require("express");
+const mongoose = require("mongoose");
+require("dotenv").config();
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const createError = require("http-errors");
 const path = require("path");
-const app = express();
-const mongooseConnection = require("./database/connection");
 const cors = require("cors");
 const fileUpload = require("express-fileupload");
-
-/////////////// Connection to database /////////////
-mongooseConnection();
-///////////////////////////////////////////////////
+// settings
+const app = express();
+const port = process.env.PORT || 9000;
 
 // Routers
-const usersRoutes = require("./routes/users");
-const drinksRoutes = require("./routes/drinks");
-const cartRoutes = require("./routes/cart");
-const foodsRoutes = require("./routes/foods");
+const usersRoutes = require("./src/routes/users");
+const drinksRoutes = require("./src/routes/Drinks");
+const cartRoutes = require("./src/routes/cart");
+const foodsRoutes = require("./src/routes/Foods");
 
-// Middleware
+
+// middlewares
+app.use("/api", usersRoutes);
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -56,4 +55,12 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-module.exports = app;
+const uri = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@api-pizzeria.1bgkr.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`
+
+// mongodb connection
+mongoose.connect(uri)
+  .then(() => console.log("Connected to MongoDB Atlas"))
+  .catch((error) => console.error(error));
+
+// server listening
+app.listen(port, () => console.log("Server listening to", port));
