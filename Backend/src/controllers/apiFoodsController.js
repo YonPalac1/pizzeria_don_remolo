@@ -1,41 +1,22 @@
 const Food = require("../database/Food");
-const path = require("path");
-const { unlinkSync, existsSync } = require("fs");
-
-const getPath = (
-  filename // Function that return a path by every filename
-) => path.join(__dirname, "../public/archives/images/", filename);
+const { uploadInBucket } = require("../helpers/upload-S3");
 
 module.exports = {
   store: async (req, res) => {
-    // Constant variables
-    const files = req.files?.image;
-    const arrImages = files ? [files].flat(2) : null;
-    let arrFilename = [];
-
-    if (arrImages) {
-      // If the value is truthy
-      arrFilename = arrImages.map(
-        // Mapped the filenames get the path complete
-        (file) => `${new Date().getTime()}_${file.name}`
-      );
-    }
+    let files = [req.files.image]
+        .flat(3)
+        .map(async (file) => await uploadInBucket(file));
+      files = await(await Promise.all(files)).map((file) => file.Location);
 
     try {
       const newFood = new Food({
         // We create a new food
         ...req.body,
-        image: files ? arrFilename : ["default.png"],
+        image: files || ["https://ayudawp.com/wp-content/uploads/2016/01/icono-enlace-roto.png"],
       });
 
       // Save the food in database
-      const food = await newFood.save();
-
-      // Save archives of images
-      arrFilename.forEach((name) => {
-        files &&
-          arrImages.forEach(async (file) => await file.mv(getPath(name)));
-      });
+      await newFood.save();
 
       res.status(201).json({
         // Response from Api if all out good
@@ -51,20 +32,11 @@ module.exports = {
   },
 
   update: async (req, res) => {
-    // Constant variables
-    const files = req.files?.image;
-    const arrImages = files ? [files].flat(2) : null;
-    let arrFilename = [];
-
-    // Mapped the filenames
-    if (arrImages) {
-      // If the value is truthy
-      arrFilename = arrImages.map(
-        (file) => `${new Date().getTime()}_${file.name}`
-      );
-    }
-
     try {
+      let files = [req.files.image]
+          .flat(3)
+          .map(async (file) => await uploadInBucket(file));
+        files = await(await Promise.all(files)).map((file) => file.Location);
       const foodBefore = await Food.findOne({ _id: req.params.id }); // Search the food before
 
       const {
@@ -80,58 +52,25 @@ module.exports = {
       await Food.findOneAndUpdate(
         { _id: req.params.id },
         {
-          name: name ? name : foodBefore.name,
-          price: price ? +price : +foodBefore.price,
-          description: description ? description : foodBefore.description,
-          measurement: measurement ? measurement : foodBefore.measurement,
-          category: category ? category : foodBefore.category,
-          show: show ? +show : +foodBefore.show,
-          available: available ? +available : +foodBefore.available,
-          image: files ? arrFilename : foodBefore.image,
+          name: name || foodBefore.name,
+          price: price || +foodBefore.price,
+          description: description || foodBefore.description,
+          measurement: measurement || foodBefore.measurement,
+          category: category || foodBefore.category,
+          show: show || +foodBefore.show,
+          available: available || +foodBefore.available,
+          image: files || foodBefore.image,
         },
         {
           multi: true,
         }
       );
 
-      let existsFileBefore = await Promise.all(
-        // example [true ,true ,true]
-        // The promises returns us a array with values booleans
-        foodBefore.image // In the food before we mapped
-          .map((filenameBefore) =>
-            existsSync(
-              // Enter a path
-              getPath(filenameBefore) // Get path to directory specify
-            )
-          )
-      );
-
-      // Method .every() return us a boolean according to its condition in callback
-      existsFileBefore = existsFileBefore.every((isTrue) => isTrue);
-
-      // Delete archives before
-      if (files && existsFileBefore) {
-        await Promise.all(
-          foodBefore.image // In the food before we iterate
-            .map((filenameBefore) =>
-              unlinkSync(
-                // Enter a path
-                getPath(filenameBefore) // Get path to directory specify
-              )
-            )
-        );
-      }
-
-      // Save archives of images
-      arrFilename.forEach((name) => {
-        files &&
-          arrImages.forEach(async (file) => await file.mv(getPath(name)));
-      });
-
       res.status(200).json({
         // Response from Api if all out good
         ok: true,
       });
+
     } catch (error) {
       // Response from Api if exists errors in the server
       res.status(503).json({
@@ -144,37 +83,7 @@ module.exports = {
   remove: async (req, res) => {
     try {
       const { id: _id } = req.params;
-      const food = await Food.findById(_id);
-
       await Food.remove({ _id });
-
-      let existsFileBefore = await Promise.all(
-        // example [true ,true ,true] (true for each file)
-        // The promises returns us a array with values booleans
-        food.image // In the food before we mapped
-          .map((filenameBefore) =>
-            existsSync(
-              // Enter a path
-              getPath(filenameBefore) // Get path to directory specify
-            )
-          )
-      );
-
-      // Method .every() return us a boolean according to its condition in callback
-      existsFileBefore = existsFileBefore.every((isTrue) => isTrue);
-
-      // Delete archives before
-      if (existsFileBefore) {
-        await Promise.all(
-          food.image // In the food before we iterate
-            .map((filenameBefore) =>
-              unlinkSync(
-                // Enter a path
-                getPath(filenameBefore) // Get path to directory specify
-              )
-            )
-        );
-      }
 
       res.status(200).json({
         ok: true,
@@ -231,11 +140,7 @@ module.exports = {
       });
     } catch (error) {
       res.status(500).json({
-        meta: {
           ok: false,
-          status: 500,
-        },
-        data: null,
         errors: { msg: error.message },
       });
     }

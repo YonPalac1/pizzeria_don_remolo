@@ -1,46 +1,23 @@
 const Drink = require("../database/Drink");
-const path = require("path");
-const { validationResult } = require("express-validator");
-const { unlinkSync, existsSync } = require("fs");
-
-const getPath = (
-  filename // Function that return a path by every filename
-) => path.join(__dirname, "../public/archives/images/", filename);
+const { uploadInBucket } = require("../helpers/upload-S3");
 
 module.exports = {
   store: async (req, res) => {
-    // Constant variables
-    const files = req.files?.image;
-    const arrImages = files ? [files].flat(2) : null;
-    let arrFilename = [];
-
-    // get errors from express-validator
-    const errors = validationResult(req);
-    const errorsArr = errors.mapped(); // The mapped
-
-    if (arrImages) {
-      // If the value is truthy
-      arrFilename = arrImages.map(
-        // Mapped the filenames get the path complete
-        (file) => `${new Date().getTime()}_${file.name}`
-      );
-    }
-
     try {
+      let files = [req.files.image]
+        .flat(3)
+        .map(async (file) => await uploadInBucket(file));
+      files = await(await Promise.all(files)).map((file) => file.Location);
       const newDrink = new Drink({
         // We create a new drink
         ...req.body,
-        image: files ? arrFilename : ["default.png"],
+        image: files || [
+          "https://ayudawp.com/wp-content/uploads/2016/01/icono-enlace-roto.png",
+        ],
       });
 
       // Save the drink in database
-      const drink = await newDrink.save();
-
-      // Save archives of images
-      arrFilename.forEach((name) => {
-        files &&
-          arrImages.forEach(async (file) => await file.mv(getPath(name)));
-      });
+      await newDrink.save();
 
       res.status(200).json({
         // Response from Api if all out good
@@ -55,20 +32,11 @@ module.exports = {
     }
   },
   update: async (req, res) => {
-    // Constant variables
-    const files = req.files?.image;
-    const arrImages = files ? [files].flat(2) : null;
-    let arrFilename = [];
-
-    // Mapped the filenames
-    if (arrImages) {
-      // If the value is truthy
-      arrFilename = arrImages.map(
-        (file) => `${new Date().getTime()}_${file.name}`
-      );
-    }
-
     try {
+      let files = [req.files.image]
+      .flat(3)
+      .map(async (file) => await uploadInBucket(file));
+    files = await(await Promise.all(files)).map((file) => file.Location);
       const drinkBefore = await Drink.findOne({ _id: req.params.id }); // Search the drink before
 
       const {
@@ -86,54 +54,20 @@ module.exports = {
       await Drink.findOneAndUpdate(
         { _id: req.params.id },
         {
-          brand: brand ? brand : drinkBefore.brand,
-          price: price ? +price : +drinkBefore.price,
-          title: title ? title : drinkBefore.title,
-          size: size ? size : drinkBefore.size,
-          measurement: measurement ? measurement : drinkBefore.measurement,
-          category: category ? category : drinkBefore.category,
-          show: show ? +show : +drinkBefore.show,
-          available: available ? +available : +drinkBefore.available,
-          image: files ? arrFilename : drinkBefore.image,
+          brand: brand || drinkBefore.brand,
+          price: price || +drinkBefore.price,
+          title: title || drinkBefore.title,
+          size: size || drinkBefore.size,
+          measurement: measurement || drinkBefore.measurement,
+          category: category || drinkBefore.category,
+          show: show || +drinkBefore.show,
+          available: available || +drinkBefore.available,
+          image: files || drinkBefore.image,
         },
         {
           multi: true,
         }
       );
-
-      let existsFileBefore = await Promise.all(
-        // example [true ,true ,true]
-        // The promises returns us a array with values booleans
-        drinkBefore.image // In the drink before we mapped
-          .map((filenameBefore) =>
-            existsSync(
-              // Enter a path
-              getPath(filenameBefore) // Get path to directory specify
-            )
-          )
-      );
-
-      // Method .every() return us a boolean according to its condition in callback
-      existsFileBefore = existsFileBefore.every((isTrue) => isTrue);
-
-      // Delete archives before
-      if (files && existsFileBefore) {
-        await Promise.all(
-          drinkBefore.image // In the drink before we iterate
-            .map((filenameBefore) =>
-              unlinkSync(
-                // Enter a path
-                getPath(filenameBefore) // Get path to directory specify
-              )
-            )
-        );
-      }
-
-      // Save archives of images
-      arrFilename.forEach((name) => {
-        files &&
-          arrImages.forEach(async (file) => await file.mv(getPath(name)));
-      });
 
       res.status(200).json({
         // Response from Api if all out good
@@ -150,45 +84,16 @@ module.exports = {
   remove: async (req, res) => {
     try {
       const { id: _id } = req.params;
-      const drink = await Drink.findById(_id);
-
       await Drink.remove({ _id });
-
-      let existsFileBefore = await Promise.all(
-        // example [true ,true ,true] (true for each file)
-        // The promises returns us a array with values booleans
-        drink.image // In the drink before we mapped
-          .map((filenameBefore) =>
-            existsSync(
-              // Enter a path
-              getPath(filenameBefore) // Get path to directory specify
-            )
-          )
-      );
-
-      // Method .every() return us a boolean according to its condition in callback
-      existsFileBefore = existsFileBefore.every((isTrue) => isTrue);
-
-      // Delete archives before
-      if (existsFileBefore) {
-        await Promise.all(
-          drink.image // In the drink before we iterate
-            .map((filenameBefore) =>
-              unlinkSync(
-                // Enter a path
-                getPath(filenameBefore) // Get path to directory specify
-              )
-            )
-        );
-      }
 
       res.status(200).json({
         ok: true,
       });
+
     } catch (error) {
       res.status(500).json({
         ok: false,
-         msg: error.message
+        msg: error.message,
       });
     }
   },
@@ -198,11 +103,11 @@ module.exports = {
       let drinks = await Drink.find();
 
       if (show) drinks = await Drink.find({ show });
-      
+
       if (available) drinks = await Drink.find({ available });
-      
-      if (show && available) drinks = await Drink.find({ $and: [{ show }, { available }] });
-      
+
+      if (show && available)
+        drinks = await Drink.find({ $and: [{ show }, { available }] });
 
       const drinksMapped = drinks.map(
         ({
@@ -270,11 +175,10 @@ module.exports = {
     } catch (error) {
       res.status(500).json({
         ok: false,
-         msg: error.message
+        msg: error.message,
       });
     }
   },
-
   deletedAll: async (req, res) => {
     await Drink.deleteMany();
   },
