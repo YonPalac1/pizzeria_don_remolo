@@ -26,7 +26,7 @@ GET http://localhost:3001/api/foods
 Content-Type: application/json
 
 ### ELIMINAR un alimento
-DELETE http://localhost:3001/api/foods/6219b1a2d45221fc82915d8d
+DELETE http://localhost:3001/api/foods/6233757a53d8392131645aea
 Content-Type: application/json
 
 ### OBTENER detalle de un producto

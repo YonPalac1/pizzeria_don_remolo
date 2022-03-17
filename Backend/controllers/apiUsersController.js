@@ -3,38 +3,27 @@ const { hash } = require("bcrypt");
 
 module.exports = {
   register: async (req, res) => {
-
     try {
       const { email, name, password, rol } = req.body;
-      const newUser = new User({  // Creamos el usuario
+      const newUser = new User({
+        // Creamos el usuario
         email,
         name,
         password: await hash(password, 10),
         rol,
         created_at: new Date(),
       });
-      
-      const user = await newUser.save();  // Lo guardamos en la base de datos
 
-      return res.status(201).json({ 
-        meta: {
-          ok: true,
-          status: 201,
-          msg: "Usuario creado con existo",
-        },
+      const user = await newUser.save(); // Lo guardamos en la base de datos
+
+      return res.status(201).json({
+        ok: true,
         data: user,
-        errors: null,
       });
-
     } catch (error) {
-
       res.status(500).json({
-        meta: {
-          ok: false,
-          status: 500,
-        },
-        data: null,
-        errors: {msg: error.message},
+        ok: false,
+        errors: { msg: error.message },
       });
     }
   },
@@ -44,27 +33,17 @@ module.exports = {
       const { email } = req.body;
       const user = await User.findOne({ email }); // Esta función asíncrona nos devuelve un objeto con varias propiedades
       const {
-        _doc: { password, ...rest },  // Hacemos una d-estructuración anidada para extraer primero el objeto "_doc" y luego la propiedad password y el parámetro ...rest (resto de propiedades)
+        _doc: { password, ...rest }, // Hacemos una d-estructuración anidada para extraer primero el objeto "_doc" y luego la propiedad password y el parámetro ...rest (resto de propiedades)
       } = user;
 
       res.status(200).json({
-        meta: {
-          status: 200,
-          ok: true,
-        },
+        ok: true,
         data: rest, // Enviamos toda la información del cliente menos el password hashed
-        errors: null,
       });
-
     } catch (error) {
-
       res.status(500).json({
-        meta: {
-          ok: false,
-          status: 500,
-        },
-        data: null,
-        errors: {msg: error.message},
+        ok: false,
+        errors: { msg: error.message },
       });
     }
   },
