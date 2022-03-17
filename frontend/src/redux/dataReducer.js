@@ -7,6 +7,8 @@ const LOADER = "LOADER";
 const DETAILS =  "DETAILS";
 const MODAL = "MODAL";
 const INDEX = "INDEX";
+const PAGINATION = "PAGINATION";
+const PRODUCTS_BY_PAGE = "PRODUCTS_BY_PAGE"
 
 const dataInicial = {
     products: [],
@@ -16,7 +18,9 @@ const dataInicial = {
     total: 0,
     loading: true,
     modal: false,
-    index: 0
+    index: 0,
+    page: 1,
+    productsByPage: 10
 };
 
 //Reducer
@@ -42,7 +46,14 @@ export default function dataReducer(state = dataInicial, action) {
 
     case INDEX:
       return { ...state, index: action.payload };
+  
+    case PAGINATION:
+    return { ...state, page: action.payload };
 
+    case PRODUCTS_BY_PAGE:
+
+    return { ...state, productsByPage: action.payload };
+  
     
     default:
       return state;
@@ -100,3 +111,19 @@ export const indexAction = (i) => (dispatch) => {
     payload: i
   });
 };
+
+export const pageAction = (value) => (dispatch) => {
+  dispatch({
+    type: PAGINATION,
+    payload: value
+  });
+
+}
+
+export const productsByPageAction = (number) => (dispatch) => {
+  dispatch({
+    type: PRODUCTS_BY_PAGE,
+    payload: number
+  });
+
+}
