@@ -3,6 +3,7 @@ import { Banner } from '../../components/banner/Banner';
 import { CategoriesSlide } from '../../components/categoriesSlide/CategoriesSlide';
 import { Header } from '../../components/header/Header';
 import { Menu } from '../../components/menu/Menu';
+import { Pagination } from '../../components/pagination/Pagination';
 import { ShowMore } from '../../components/showMore/ShowMore';
 import './home.css'
 
@@ -12,7 +13,7 @@ export const Home = () => {
     <Header />
     <CategoriesSlide />
     <Menu />
-    <ShowMore />
+    <Pagination />
     <Banner />
   </div>
 };

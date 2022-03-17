@@ -9,24 +9,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 
-
-
-
-
-
-
-
 export const MenuCard = ({ products }) => {
 
-
-
-   
   const location = useLocation().pathname // Get route
 
   useEffect(() => {
     const ROUTE = '/';      
     if (location == ROUTE) {
-      console.log(location)
       setModal(false)
     }
   });
@@ -66,7 +55,7 @@ export const MenuCard = ({ products }) => {
             <FontAwesomeIcon icon={faPlus} />
           </button>
           </div>
-          <Modal  />
+          <Modal/>
         
     </div>
 }
