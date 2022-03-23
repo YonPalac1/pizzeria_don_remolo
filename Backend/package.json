@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev":"nodemon index.js"
   },
   "dependencies": {
     "aws-sdk": "^2.1095.0",

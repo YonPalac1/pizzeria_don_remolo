@@ -1,5 +1,5 @@
 ### CREAR un alimento ( pizza , empanadas o postres )
-POST http://localhost:3001/api/foods
+POST http://localhost:9000/api/foods
 Content-Type: application/json
 
 {
@@ -12,7 +12,7 @@ Content-Type: application/json
 }
 
 ### PARCHE (UPDATE) un alimento
-PATCH http://localhost:3001/api/foods/621ed46b02cc41d85ff93777
+PATCH http://localhost:9000/api/foods/621ed46b02cc41d85ff93777
 Content-Type: application/json
 
 {
@@ -20,15 +20,15 @@ Content-Type: application/json
 }
 
 ### OBTENER todos los alimentos
-# GET http://localhost:3001/api/foods?category=postres
-# GET http://localhost:3001/api/foods?show=1
-GET http://localhost:3001/api/foods
+# GET http://localhost:9000/api/foods?category=postres
+# GET http://localhost:9000/api/foods?show=1
+GET http://localhost:9000/api/foods
 Content-Type: application/json
 
 ### ELIMINAR un alimento
-DELETE http://localhost:3001/api/foods/6233757a53d8392131645aea
+DELETE http://localhost:9000/api/foods/6233757a53d8392131645aea
 Content-Type: application/json
 
 ### OBTENER detalle de un producto
-GET http://localhost:3001/api/foods/6219bdfa1e55802efeb61087
+GET http://localhost:9000/api/foods/6219bdfa1e55802efeb61087
 Content-Type: application/json
