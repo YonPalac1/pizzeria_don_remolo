@@ -1,9 +1,9 @@
 ### Obtener todas las bebidas
-GET http://localhost:3001/api/drinks/
+GET http://localhost:9000/api/drinks/
 Content-Type: application/json; charset=utf-8
 
 ### Crear una bebida
-POST http://localhost:3001/api/drinks/
+POST http://localhost:9000/api/drinks/
 Content-Type: application/json; charset=utf-8
 
 {
@@ -16,7 +16,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### Editar una bebida
-PATCH http://localhost:3001/api/drinks/621ed9fec1169c55452bdfe2
+PATCH http://localhost:9000/api/drinks/621d78c1d6eeb2d46f0995ae
 Content-Type: application/json; charset=utf-8
 
 {
@@ -24,25 +24,25 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### OBTENER detalle de bebida
-GET http://localhost:3001/api/drinks/621d78c1d6eeb2d46f0995ae
+GET http://localhost:9000/api/drinks/621d78c1d6eeb2d46f0995ae
 Content-Type: application/json
 
 ### OBTENER todas las bebidas
-GET http://localhost:3001/api/drinks
+GET http://localhost:9000/api/drinks
 Content-Type: application/json
 
 ### ELIMINAR una bebida
-DELETE http://localhost:3001/api/drinks/62155ce4d73535f90bf388f2
+DELETE http://localhost:9000/api/drinks/62155ce4d73535f90bf388f2
 Content-Type: application/json
 
 
 
 ### OBTENER bebida por subcategoria
-GET http://localhost:3001/api/drinks/category/empanadas
+GET http://localhost:9000/api/drinks/category/empanadas
 Content-Type: application/json
 
 
 ### ELIMINAR TODA LAS BEBIDAS
-DELETE http://localhost:3001/api/drinks/
+DELETE http://localhost:9000/api/drinks/
 Content-Type: application/json
 
