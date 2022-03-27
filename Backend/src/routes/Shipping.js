@@ -10,6 +10,9 @@ const {
 
 /* ADMIN POST */
 router
+  // Verbs GET
+  .get("/", all)
+  
   // Verb POST
   .post("/", store)
 
@@ -17,7 +20,4 @@ router
   .patch("/cancel/:id", cancel)
 
   // Verb DELETE
-  .patch("/enable/:id", enable)
-
-  // Verbs GET
-  .get("/", all)
+  .patch("/enable/:id", enable);

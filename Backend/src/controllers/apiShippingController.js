@@ -58,7 +58,4 @@ module.exports = {
     }
   },
 
-  deletedAll: async (req, res) => {
-    await Food.deleteMany();
-  },
 };
