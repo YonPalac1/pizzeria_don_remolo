@@ -16,7 +16,7 @@ const usersRoutes = require("./src/routes/Users");
 const drinksRoutes = require("./src/routes/Drinks");
 const cartRoutes = require("./src/routes/Cart");
 const foodsRoutes = require("./src/routes/Foods");
-const shippingRoutes = require("./src/routes/Shipping");
+const shippingRoutes = require("./src/routes/Order");
 
 
 // middlewares
@@ -34,7 +34,7 @@ app.use("/api/users", usersRoutes);
 app.use("/api/drinks", drinksRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/foods", foodsRoutes);
-app.use("/api/shipping", shippingRoutes);
+app.use("/api/order", shippingRoutes);
 
 
 app.use("/*", (req, res) => {
