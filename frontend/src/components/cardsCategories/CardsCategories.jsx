@@ -22,6 +22,6 @@ export const CardsCategories = ({category, categoryActive}) => {
             <span>{category.name}</span>
         </div>
     </div>
-    </>
+    </> 
   )
 }
