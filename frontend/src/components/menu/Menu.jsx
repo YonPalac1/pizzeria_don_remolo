@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { allDataAction, pageAction } from '../../redux/dataReducer'
+import { allDataAction } from '../../redux/dataReducer'
 import {MenuCard} from '../menuCard/MenuCard'
 import spin from '../../assets/images/spin.gif'
 import './menu.css'
-import { Pagination } from '../pagination/Pagination'
-
 
 export const Menu = () => {
 
-  let pagina = useSelector(state => state.data.page)
-  let porPagina = useSelector(state => state.data.productsByPage)
+  let page = useSelector(state => state.data.page)
+  let byPage = useSelector(state => state.data.productsByPage)
 
 
   const loader = useSelector(state => state.data.loading)
@@ -21,7 +19,7 @@ export const Menu = () => {
   useEffect(()=>{
     try {
       dispatch(allDataAction())
-  
+   
     } catch(err){console.log(err)}
   }, [dispatch])
 
@@ -33,8 +31,8 @@ export const Menu = () => {
     </div>
     :
     products.slice (
-      (pagina - 1) * porPagina,
-      (pagina - 1) * porPagina + porPagina).map((product) => {
+      (page - 1) * byPage,
+      (page - 1) * byPage + byPage).map((product) => {
        return <MenuCard products={product} key={product._id} />
     
     }) }

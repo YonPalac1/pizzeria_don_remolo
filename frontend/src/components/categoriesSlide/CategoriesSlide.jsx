@@ -49,7 +49,7 @@ export const CategoriesSlide = () => {
   return <>
     <h3>Nuestros sabores</h3>
     <Carousel
-       additionalTransfrom={0}
+        additionalTransfrom={0}
         arrows={false}
         autoPlay={false}
         centerMode={false}
@@ -64,11 +64,11 @@ export const CategoriesSlide = () => {
         minimumTouchDrag={80}
         renderButtonGroupOutside={false}
         renderDotsOutside={false}
-      responsive={responsive}
-      showDots={false}
-      sliderClass=""
-      slidesToSlide={1}
-      swipeable
+        responsive={responsive}
+        showDots={false}
+        sliderClass=""
+        slidesToSlide={1}
+        swipeable
     >
       {
         categories.map(category => {
