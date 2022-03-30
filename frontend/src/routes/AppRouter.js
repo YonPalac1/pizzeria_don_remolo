@@ -13,6 +13,8 @@ import { NavbarMobile } from '../components/navbar/NavbarMobile.jsx';
 import { sessionAction } from '../redux/authReducer.js';
 import { Details } from '../pages/details/Details.jsx';
 
+import { Layout } from '../layout/Layout.jsx';
+
 const AppRouter = () => {
     const logged = useSelector(store => store.auth.ok)
     const dispatch = useDispatch()
@@ -25,9 +27,10 @@ const AppRouter = () => {
     }, [])
 
     return (
-        <Router>
-            <Navbar />
-            <NavbarMobile />
+        
+   
+        <Router>  
+            <Layout>             
             <Routes>
                 <Route path='/login' element={
                     logged ? 
@@ -46,7 +49,9 @@ const AppRouter = () => {
                 <Route path='/details' element={<Details />} />
                 <Route path='/payment' element={<Payment />} />
             </Routes>
+            </Layout>
         </Router>
+  
     )
 }
 
