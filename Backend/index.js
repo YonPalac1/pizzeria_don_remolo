@@ -12,10 +12,11 @@ const app = express();
 const port = process.env.PORT || 9000;
 
 // Routers
-const usersRoutes = require("./src/routes/users");
+const usersRoutes = require("./src/routes/Users");
 const drinksRoutes = require("./src/routes/Drinks");
-const cartRoutes = require("./src/routes/cart");
+const cartRoutes = require("./src/routes/Cart");
 const foodsRoutes = require("./src/routes/Foods");
+const shippingRoutes = require("./src/routes/Order");
 
 
 // middlewares
@@ -33,11 +34,14 @@ app.use("/api/users", usersRoutes);
 app.use("/api/drinks", drinksRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/foods", foodsRoutes);
+app.use("/api/order", shippingRoutes);
+
 
 app.use("/*", (req, res) => {
   res.status(404).json({
+    ok:false,
     status: 404,
-    error: "Not found",
+    msg: "Not found",
   });
 });
 

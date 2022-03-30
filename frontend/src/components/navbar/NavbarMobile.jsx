@@ -9,6 +9,9 @@ import { faShoppingCart, faBurger } from '@fortawesome/free-solid-svg-icons'
 import './navbarMobile.css'
 import logo from '../../assets/images/logo.jpg'
 
+
+
+// Hacer funcion de desplegado
 export const NavbarMobile = () => {
   const logged = useSelector(store => store.auth.ok)
   const dispatch = useDispatch()
