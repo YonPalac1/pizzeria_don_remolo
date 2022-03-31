@@ -20,12 +20,7 @@ PATCH http://localhost:9000/api/drinks/621d78c1d6eeb2d46f0995ae
 Content-Type: application/json; charset=utf-8
 
 {
-"brand":"coca cola",
-"title":"coca cola zero",
-"measurement":"l",
-"size":1,
-"price":200,
-"category": "empanadas"
+"category": "bebidas"
 }
 
 ### OBTENER detalle de bebida

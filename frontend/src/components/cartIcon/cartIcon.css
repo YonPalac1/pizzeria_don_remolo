@@ -1,0 +1,17 @@
+.icon-button {
+    background: none;
+    border: none;
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    border-radius: 50%;
+    background-color: #D85613;
+    padding: 18px 20px;
+    font-size: 22px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.icon-button:hover {
+    background-color: #d18b69;
+}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { loginAction } from '../redux/authReducer';
 import useForm from '../hooks/useForm'
@@ -9,6 +9,10 @@ export const Login = () => {
     const [formValues, handleChange] = useForm({ email: '', password: '' })
     const { email, password } = formValues;
     const errors = useSelector(state => state.auth.errors)
+
+    useEffect(() => {
+        console.log(errors)
+    }, [errors])
 
     // Submit
     const handleSubmit = (e) => {
