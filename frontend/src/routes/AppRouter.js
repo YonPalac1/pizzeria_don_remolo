@@ -7,6 +7,7 @@ import { Register } from '../pages/Register.jsx';
 import { Home } from '../pages/home/Home.jsx';
 import { Cart } from '../pages/cart/Cart.jsx';
 import { Payment } from '../pages/payment/Payment.jsx';
+import { Success } from '../pages/success/Success.jsx'
 
 import { Navbar } from '../components/navbar/Navbar.jsx';
 import { NavbarMobile } from '../components/navbar/NavbarMobile.jsx';
@@ -48,6 +49,7 @@ const AppRouter = () => {
                 <Route path='/cart' element={<Cart />} />
                 <Route path='/details' element={<Details />} />
                 <Route path='/payment' element={<Payment />} />
+                <Route path='/success' element={<Success />} />
             </Routes>
             </Layout>
         </Router>
