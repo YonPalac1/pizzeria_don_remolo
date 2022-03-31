@@ -4,6 +4,12 @@
     color: #000;
     padding: 8px 12px;
     cursor: pointer;
+    text-align: center;
+    background: none;
+}
+.buttonsSigin.user {
+    display: flex;
+    flex-direction: column;
 }
 
 .buttonsSigin:nth-child(1) {
@@ -22,4 +28,19 @@
 .buttonsSigin:hover {
     background-color: #d87544;
     color: #fff;
+}
+
+.dropdown {
+    border-top: 1px solid #d87544;
+    padding: 12px 0 8px;
+    display: none;
+    position: relative;
+}
+
+.dropdown.active {
+    display: block;
+}
+
+.dropdown:hover {
+    background-color: #59250c;
 }

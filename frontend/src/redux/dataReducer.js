@@ -61,8 +61,8 @@ export default function dataReducer(state = dataInicial, action) {
 }
 
 export const allDataAction = () => async (dispatch) => {
-  const foods = await axios.get('http://localhost:3001/api/foods')
-  const drinks = await axios.get('http://localhost:3001/api/drinks')
+  const foods = await axios.get('http://localhost:9000/api/foods')
+  const drinks = await axios.get('http://localhost:9000/api/drinks')
   dispatch({
     type: ALL_PRODUCTS,
     payload: [...drinks.data.data, ...foods.data.data]
@@ -70,7 +70,7 @@ export const allDataAction = () => async (dispatch) => {
 };
 
 export const filterCategoryAction = (name) => async (dispatch) => {
-  const foods = await axios.get(`http://localhost:3001/api/foods?show=1&category=${name}`)
+  const foods = await axios.get(`http://localhost:9000/api/foods?show=1&category=${name}`)
   dispatch({
     type: FILTER_CATEGORY,
     payload: foods.data.data
