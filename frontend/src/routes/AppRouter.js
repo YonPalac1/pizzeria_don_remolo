@@ -7,8 +7,8 @@ import {
 } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Login } from "../pages/Login.jsx";
-import { Register } from "../pages/Register.jsx";
+import { Login } from "../pages/LoginRegister/Login.jsx";
+import { Register } from "../pages/LoginRegister/Register.jsx";
 import { Home } from "../pages/home/Home.jsx";
 import { Cart } from "../pages/cart/Cart.jsx";
 import { Payment } from "../pages/payment/Payment.jsx";

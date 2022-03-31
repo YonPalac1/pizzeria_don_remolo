@@ -12,7 +12,7 @@ export const Layout = () => {
     <>
     {!logged ? (
       <LoginRegister />
-    ) : rol === 1 ? (
+    ) : rol === 2 ? (
       <AdminMenu />
     ) : (
       <UserMenu />
