@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Navigation } from '../../components/navigation/Navigation'
 import { CartDetails } from '../../components/cartDetails/CartDetails'
-import { useDispatch, useSelector } from "react-redux";
-import useForm from '../../hooks/useForm'
+import { useDispatch } from "react-redux";
+// import useForm from '../../hooks/useForm'
 import { infoAction } from '../../redux/cartReducer';
 import './cart.css'
 

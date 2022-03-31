@@ -21,7 +21,7 @@ export const Pagination = () => {
    
 
   //const maximo = maht.round(((products.length / porPagina) + 0.5)) It will get the next value, so then you will use it for validate above a new page, and you wont lost any card
-  console.log(maximo)
+  // console.log(maximo)
 
   const nextPage = () => {
     setInput (parseInt(input) + 1);
@@ -39,7 +39,7 @@ export const Pagination = () => {
   const onKeyDown = e => {
     const value = parseInt(e.target.value)
 
-    if (e.keyCode == 13) {
+    if (e.keyCode === 13) {
       console.log(maximo)
       dispatch(pageAction(value))
       if ( value < 1 || value > Math.ceil (maximo) ||isNaN (value)

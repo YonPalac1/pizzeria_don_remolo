@@ -1,19 +1,18 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCartPlus, faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
 import { modalAction } from '../../redux/authReducer'
 import { cartAction } from '../../redux/cartReducer'
 import { Accountant } from './ModalComponents/accountant/Accountant'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartPlus, faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
-
 import './modal.css'
 
 export const Modal = () => {
 
     const [handleValue, setHandleValue] = useState(1)
 
-    const productCart = useSelector(state => state.cart.cart)
+    // const productCart = useSelector(state => state.cart.cart)
     const viewModal = useSelector(state => state.data.modal)
     const product = useSelector(state => state.data.product)
     const dispatch = useDispatch()
@@ -49,7 +48,7 @@ export const Modal = () => {
     const loadValue = (product) => {
 
         product.count > 1 ? product.price = product.count * product.price:
-        console.log('not add')
+        console.log('')
 
     }
 
@@ -77,7 +76,7 @@ export const Modal = () => {
 
                             <div className='modal-card_body-photo'>
                                 <div className='img'>
-                                    <img href={product.image}></img>
+                                    <img href={product.image} alt='product'></img>
                                 </div>
                             </div>
 

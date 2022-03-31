@@ -5,7 +5,6 @@ import './ItemFooter.css'
 
 export const ItemFooter = ({item}) => {
 
-    console.log(item)
     const {link } = item
 
   return (
