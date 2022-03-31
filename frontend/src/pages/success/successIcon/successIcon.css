@@ -1,0 +1,11 @@
+.circle{
+   color: #C53D11;
+   width: 20vh;
+   height: 20vh;
+   -moz-border-radius: 50%;
+   -webkit-border-radius: 50%;
+   border-radius: 50%;
+    
+}
+
+ 

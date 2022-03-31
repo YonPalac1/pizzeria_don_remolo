@@ -1,6 +1,8 @@
-import React, { useEffect, useState} from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { makeOrder } from '../../redux/cartReducer'
+import { SuccessIcon } from './successIcon/SuccessIcon'
+
 export const Success = () => {
 
     const order = useSelector(state => state.cart.order)
@@ -9,7 +11,7 @@ export const Success = () => {
     // useEffect(() => {
     //   order !== 
     // })
-    const orderStatus = useSelector(state => state.cart.orderStatus)
+    // const orderStatus = useSelector(state => state.cart.orderStatus)
         
     const dispatch = useDispatch();
 
@@ -21,7 +23,10 @@ export const Success = () => {
 
     // console.log(orderStatus)
   return (
-    <div>Success</div>
+    <div>
+      <SuccessIcon/>
+      
+    </div>
   )
 }
  
