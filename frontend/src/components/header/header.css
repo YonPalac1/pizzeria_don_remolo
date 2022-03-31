@@ -110,6 +110,7 @@ body {
     width: 100%;
     position: relative;
     margin-top: -150px;
+    background-color: none;
 }
 .header-column_carousel .buttons button {
     padding: 8px 15px;
@@ -124,14 +125,12 @@ body {
     z-index: 2;
 }
 .header-column_carousel .buttons .back {
-    margin-left: 100%;
-    opacity: 0;
-    transition: 1s;
-}
-.header-column_carousel .buttons .back.active {
     margin-left: 0;
     opacity: 1;
+    transition: 1s;
+
 }
+
 .circle-bg {
     position: absolute;
     width: 1176px;

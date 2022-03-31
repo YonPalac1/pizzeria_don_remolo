@@ -13,23 +13,11 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 export const HeaderCarousel = ({ carouselData }) => {
   const dispatch = useDispatch()
   const [index, setIndex] = useState(0)
-  const [initial, setInitial] = useState(true)
 
   const [sateliteUno, setSateliteUno] = useState("uno")
   const [sateliteDos, setSateliteDos] = useState("dos")
   const [sateliteTres, setSateliteTres] = useState("tres")
   const [info, setInfo] = useState("active1")
-
-  useEffect(() => {
-
-    if(index > 0){
-      setInitial(true)
-    } else {
-      setInitial(false)
-    }
-
-    dispatch(indexAction(index))
-  }, [index])
 
   const indexChange = (index) => {
     if(index === 0) {
@@ -115,7 +103,7 @@ export const HeaderCarousel = ({ carouselData }) => {
                 
             <button 
                 onClick={handleBackCarousel}
-                className={initial ? 'back active' : 'back'}>
+                className='back'>
                   <FontAwesomeIcon icon={faChevronLeft} />
                 </button>
           </div>

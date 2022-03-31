@@ -49,7 +49,7 @@ export const Modal = () => {
     const loadValue = (product) => {
 
         product.count > 1 ? product.price = product.count * product.price:
-        console.log('not add')
+        console.log()
 
     }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Banner } from '../../components/banner/Banner';
+import { CartIcon } from '../../components/cartIcon/CartIcon';
 import { CategoriesSlide } from '../../components/categoriesSlide/CategoriesSlide';
 import { Header } from '../../components/header/Header';
 import { Menu } from '../../components/menu/Menu';
@@ -15,5 +16,6 @@ export const Home = () => {
     <Menu />
     <Pagination />
     <Banner />
+    <CartIcon />
   </div>
 };

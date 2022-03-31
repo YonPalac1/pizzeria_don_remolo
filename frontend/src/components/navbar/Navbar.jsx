@@ -4,15 +4,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { logoutAction } from '../../redux/authReducer';
 import { column_titles } from '../../utils/Navbar.util';
 import { Item } from './Item/Item'
-
-// import {  DirectLink, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
-
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
-
-import './navbar.css'
 import logo from '../../assets/images/logo.jpg'
+import './navbar.css'
+import { Layout } from '../layout/Layout';
 
 export const Navbar = () => {
     const logged = useSelector(store => store.auth.ok)
@@ -44,7 +38,7 @@ export const Navbar = () => {
 
         </div>
         <div className='navbar-column iconCart'>
-           <Link to="/cart"> <FontAwesomeIcon icon={faShoppingCart} /> </Link>
+           <Layout />
         </div>
     </div>;
 };
