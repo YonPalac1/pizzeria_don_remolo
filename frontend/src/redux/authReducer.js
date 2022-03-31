@@ -13,19 +13,21 @@ const dataInicial = {
   user: [],
   errors: [],
   modal: false,
+  rol: 0,
 };
 
 //Reducer
 export default function authReducer(state = dataInicial, action) {
   switch (action.type) {
-    case REGISTER:      
+    case REGISTER:
       return {
         ...state,
         user: action.payload.data,
+        rol: action.payload.data.rol,
         errors: action.payload.data.errors,
         ok: action.payload.ok,
       };
-    case REGISTER_FAIL:      
+    case REGISTER_FAIL:
       return {
         ...state,
         errors: action.payload.errors,
@@ -37,6 +39,7 @@ export default function authReducer(state = dataInicial, action) {
       return {
         ...state,
         user: action.payload.data,
+        rol: action.payload.data.rol,
         errors: action.payload.errors,
         ok: action.payload.ok,
       };
@@ -47,7 +50,13 @@ export default function authReducer(state = dataInicial, action) {
         ok: action.payload.ok,
       };
     case SESSION:
-      return { ...state, user: action.payload, errors: null, ok: true };
+      return { ...state, 
+        user: action.payload, 
+        rol: action.payload.rol,
+        errors: null, 
+        ok: true 
+      };
+
     case LOGOUT:
       localStorage.removeItem("user");
       return { ...state, user: null, errors: null, ok: false };
@@ -72,7 +81,7 @@ export const registerAction = (data) => async (dispatch) => {
           "Access-Control-Allow-Origin": "*",
         },
       }
-      );
+    );
     dispatch({
       type: REGISTER,
       payload: res.data,
@@ -104,7 +113,7 @@ export const loginAction = (data) => async (dispatch) => {
       payload: res.data,
     });
   } catch (err) {
-    console.log(err)
+    console.log(err);
     dispatch({
       type: LOGIN_FAIL,
       payload: err.response.data,
