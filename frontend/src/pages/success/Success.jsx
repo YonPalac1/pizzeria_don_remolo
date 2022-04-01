@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { makeOrder } from '../../redux/cartReducer'
 import { SuccessIcon } from './successIcon/SuccessIcon'
+import { message } from '../../utils/Success.utils'
+
 
 export const Success = () => {
 
@@ -12,12 +14,15 @@ export const Success = () => {
     //   order !== 
     // })
     // const orderStatus = useSelector(state => state.cart.orderStatus)
-        
+
+    const orderId = 20;  //we need this data from the endpoind
     const dispatch = useDispatch();
+    const flag = 'takeAway'
 
     useEffect(() => {
       dispatch(makeOrder(order))
     },[Success])
+    
         
 
 
@@ -25,7 +30,17 @@ export const Success = () => {
   return (
     <div>
       <SuccessIcon/>
-      
+      <span>Pedido confirmado</span>
+      <span>Orden #{orderId}</span>
+      <span>
+          
+        {
+          flag === 'takeAway' ? message.toTakeAway:
+          message.toHome 
+            
+        }
+
+      </span>
     </div>
   )
 }
