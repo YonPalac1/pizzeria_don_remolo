@@ -25,12 +25,19 @@
     color: #ccc;
     font-weight: lighter;
 }
-.details_info div h5 span {
+.details_info div input.unactive {
     color: #000;
+    border: none;
+    font-size: 18px;
+    margin-top: -5px;
+    margin-left: 10px;
 }
-.details_info div a {
+.details_info div .edit {
     color: lightskyblue;
     cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 18px;
 }
 
 .details_details h5 {
