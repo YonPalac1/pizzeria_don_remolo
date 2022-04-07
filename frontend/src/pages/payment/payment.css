@@ -3,7 +3,7 @@
     color: #fff;
     padding-left: 30px;
     cursor: pointer;
-    text-align: center;
+    width: 100%;
 }
 .details_info div {
     border-bottom: 1px #f1f1f1 solid;

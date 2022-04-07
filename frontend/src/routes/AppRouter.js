@@ -18,6 +18,7 @@ import { Navbar } from "../components/navbar/Navbar.jsx";
 import { NavbarMobile } from "../components/navbar/NavbarMobile.jsx";
 import { sessionAction } from "../redux/authReducer.js";
 import { Details } from "../pages/details/Details.jsx";
+import { NotFound } from "./NotFound.jsx";
 
 import { Layout } from "../layout/Layout.jsx";
 import { PrivateRoutes } from "./PrivateRoutes";
@@ -52,9 +53,10 @@ const AppRouter = () => {
           <Route path="/payment" element={<Payment />} />
           <Route path="/success" element={<Success />} />
           <Route
-            path='/backoffice/*'
-            element={rol === 1 ? <PrivateRoutes /> : <Navigate to='/' />}
+            path="/backoffice/*"
+            element={rol === 1 ? <PrivateRoutes /> : <Navigate to="/" />}
           />
+          <Route path="/*" component={<NotFound />} />
         </Routes>
       </Layout>
     </Router>
