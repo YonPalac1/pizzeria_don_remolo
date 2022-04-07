@@ -57,7 +57,7 @@ export const Login = () => {
           </div>
 
           <div className="inputs">
-            <button type="submit">Registrarse</button>
+            <button type="submit">Ingresar</button>
           </div>
         </form>
         <div className="form-container_img">
