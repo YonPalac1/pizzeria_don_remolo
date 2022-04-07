@@ -24,7 +24,7 @@ export const Login = () => {
   return (
     <div className="form-container">
       <div className="form-container_text">
-        <h3>Ingresa</h3>
+        <h3>Iniciar sesión</h3>
       </div>
       <div className="form">
         <form onSubmit={handleSubmit} className="form_login">
