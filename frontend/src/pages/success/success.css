@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&family=Poppins:wght@500&display=swap');
+
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16vh;
+   
+   
+}
+
+.span1{
+    color: #272727;
+    font-family: 'Poppins', sans-serif;
+    font-size: 26px;
+}
+
+.span2{
+    color: #EB9F3F;
+    line-height:18.23px;
+    text-transform: uppercase;
+    padding: 12px
+}
+
+.span3{
+
+    font-family: 'DM Sans', sans-serif;
+    color: #656565;
+    font-weight: 14px;
+}
+
+.circle{
+    color: #C53D11;
+    width: 16vh;
+    height: 16vh;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    padding: 16px;
+ }
+ 
+  
