@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&family=Poppins:wght@500&display=swap');
+.circle{
+    color: #C53D11 !important;
+    width: 16vh;
+    height: 16vh;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    padding: 16px;
+ }
+ 
+ .errorICon{
+    color: #C53D11;
+    width: 16vh;
+    height: 16vh;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    padding: 16px;
+
+ } 
