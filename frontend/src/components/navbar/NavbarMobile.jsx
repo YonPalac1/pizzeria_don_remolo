@@ -8,6 +8,7 @@ import { faShoppingCart, faBurger } from '@fortawesome/free-solid-svg-icons'
 
 import './navbarMobile.css'
 import logo from '../../assets/images/logo.jpg'
+import { Layout } from '../layout/Layout';
 
 
 
@@ -33,8 +34,7 @@ export const NavbarMobile = () => {
           </Link>
         </div>
         <div className="navbarMobile-buttons_btn">
-          <FontAwesomeIcon className="icon" icon={faShoppingCart} />
-          <FontAwesomeIcon className="icon" icon={faBurger} />
+          <Layout />
         </div>
       </div>
       <div className="collapse">

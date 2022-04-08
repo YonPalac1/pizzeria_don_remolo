@@ -33,7 +33,7 @@ export const Register = () => {
   return (
     <div className="form-container">
       <div className="form-container_text">
-        <h3>Registrate</h3>
+        <h3>Crear cuenta</h3>
       </div>
       <div className="form">
         <form onSubmit={handleSubmit} className="form_login">

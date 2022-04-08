@@ -27,7 +27,7 @@ const dataInicial = {
 export default function dataReducer(state = dataInicial, action) {
   switch (action.type) {
     case ALL_PRODUCTS:
-      return { ...state, products: action.payload, loading: false };
+      return { ...state, products: action.payload, loading: false, category_active: null };
     
     case FILTER_CATEGORY:
       return { ...state, products: action.payload, loading: false };

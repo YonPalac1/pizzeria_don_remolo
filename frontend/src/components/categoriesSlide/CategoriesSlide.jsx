@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Carousel from "react-multi-carousel";
 import { CardsCategories } from '../cardsCategories/CardsCategories'
 import "react-multi-carousel/lib/styles.css";
@@ -9,6 +9,7 @@ import { allDataAction } from '../../redux/dataReducer';
 export const CategoriesSlide = () => {
   const dispatch = useDispatch();
   const categoryActive = useSelector(state => state.data.category_active)
+  const [active, setActive] = useState(false)
 
   const responsive = {
     desktop: {
@@ -41,6 +42,14 @@ export const CategoriesSlide = () => {
     id: 4,
     name: "postres"
   }]
+
+  useEffect(() => {
+    if(categoryActive){
+      setActive(false)
+    } else {
+      setActive(true)
+    }
+  }, [categoryActive])
   
   const handleAllProducts = () => {
     dispatch(allDataAction())
@@ -76,7 +85,7 @@ export const CategoriesSlide = () => {
         })
       }
     <div className='categories-cards' onClick={handleAllProducts}>
-        <div className='categorie-card'>
+        <div className={`categorie-card ${active ? "active" : "unactive"}`}>
             <span>Todos</span>
         </div>
     </div>

@@ -44,3 +44,9 @@
 .dropdown:hover {
     background-color: #59250c;
 }
+
+@media screen and (max-width: 500px) {
+    .buttonsSigin {
+        font-size: 12px;
+    }
+}
