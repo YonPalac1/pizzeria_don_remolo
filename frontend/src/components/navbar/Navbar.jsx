@@ -32,7 +32,7 @@ export const Navbar = () => {
            
             {
                 column_titles.map(category => {
-                return <Item category={category} />
+                return <Item category={category} key={category} />
             })
       }
 

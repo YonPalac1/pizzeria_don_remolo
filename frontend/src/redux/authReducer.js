@@ -35,7 +35,6 @@ export default function authReducer(state = dataInicial, action) {
       };
 
     case LOGIN:
-      localStorage.setItem("user", JSON.stringify(action.payload.data));
       return {
         ...state,
         user: action.payload.data,
@@ -94,7 +93,7 @@ export const registerAction = (data) => async (dispatch) => {
   }
 };
 
-export const loginAction = (data) => async (dispatch) => {
+export const loginAction = (data, check) => async (dispatch) => {
   try {
     const json = JSON.stringify(data);
     const res = await axios.post(
@@ -108,6 +107,9 @@ export const loginAction = (data) => async (dispatch) => {
         },
       }
     );
+    if (check) {
+      localStorage.setItem("user", JSON.stringify(res.data.data))
+    }
     dispatch({
       type: LOGIN,
       payload: res.data,

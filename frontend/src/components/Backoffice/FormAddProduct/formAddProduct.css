@@ -1,0 +1,30 @@
+.form {
+    max-width: 800px;
+    margin: auto;
+}
+.form form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form form input,
+.form form select,
+.form form .button {
+    padding: 8px 12px;
+    margin: 5px 0;
+}
+
+.form form .button {
+    background-color: #d87544;
+    text-align: center;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.form-image {
+    width: 100%;
+}
+.form-image img {
+    width: 100%;
+}

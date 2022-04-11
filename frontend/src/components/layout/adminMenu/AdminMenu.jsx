@@ -23,8 +23,10 @@ export const AdminMenu = () => {
       <p>
         <FontAwesomeIcon icon={faUser} /> Administrador
       </p>
-      <div onClick={logout} className={`dropdown ${dropdown && "active"}`}>
-        <span>Logout</span>
+      <div className={`dropdown ${dropdown && "active"}`}>
+        <span><Link to="/backoffice/admin" >Administrar</Link></span>
+      
+        <span onClick={logout}>Logout</span>
       </div>
     </button>
   );

@@ -1,8 +1,8 @@
 import React,{ useEffect, useState} from 'react'
 import { useDispatch } from 'react-redux';
-import { filterCategoryAction, nameCategoryAction, loaderAction } from '../../../redux/dataReducer';
 import { animateScroll as scroll , Link  } from 'react-scroll'
 import { Link as Li, useLocation } from 'react-router-dom';
+import { filterCategoryAction, nameCategoryAction, loaderAction } from '../../../redux/dataReducer';
 
 export const Item = ({category}) => {
 
@@ -30,8 +30,8 @@ export const Item = ({category}) => {
       console.log(err)
     }
   }
-   const ScrollDown = <Link onClick={()=>handleFilterCategories(category)} smooth={true} duration={500} delay={1000}>{category}</Link> 
-   const goHome = <Link onClick={()=>handleFilterCategories(category)} smooth={true} duration={500} delay={1000}><Li to="/" >{category}</Li> </Link>
+   const ScrollDown = <Link onClick={()=>handleFilterCategories(category)} smooth={true} duration={500} delay={1000} to="/">{category}</Link> 
+   const goHome = <Link onClick={()=>handleFilterCategories(category)} smooth={true} duration={500} delay={1000} to="/">{category} </Link>
 
   return(
     <>

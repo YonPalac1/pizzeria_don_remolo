@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginAction } from "../../redux/authReducer";
 import useForm from "../../hooks/useForm";
@@ -6,19 +6,26 @@ import "./forms.css";
 
 export const Login = () => {
   const dispatch = useDispatch();
+  const [check, setCheck] = useState(false)
   const [formValues, handleChange] = useForm({ email: "", password: "" });
   const { email, password } = formValues;
   const errors = useSelector((state) => state.auth.errors);
 
   useEffect(() => {
-    console.log(errors);
   }, [errors]);
-
+  
+  const handleCheck = (e) => {
+    if (e.target.checked) {
+      setCheck(true)
+    } else {
+      setCheck(false)
+    }
+  }
   // Submit
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(loginAction(formValues));
+    dispatch(loginAction(formValues, check));
   };
 
   return (
@@ -55,6 +62,10 @@ export const Login = () => {
               {errors && errors["password"]?.msg}
             </div>
           </div>
+          <label>
+            <input type="checkbox" name="remember" onChange={handleCheck} />
+            Mantener sesión abierta
+          </label>
 
           <div className="inputs">
             <button type="submit">Ingresar</button>

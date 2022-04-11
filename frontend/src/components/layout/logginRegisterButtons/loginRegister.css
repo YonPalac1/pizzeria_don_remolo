@@ -7,10 +7,6 @@
     text-align: center;
     background: none;
 }
-.buttonsSigin.user {
-    display: flex;
-    flex-direction: column;
-}
 
 .buttonsSigin:nth-child(1) {
     border: 1px solid #D85613;
@@ -36,13 +32,21 @@
     display: none;
     position: relative;
 }
-
-.dropdown.active {
-    display: block;
+.dropdown a {
+    background-color: none;
+    text-decoration: none;
+    color: #D85613;
 }
 
-.dropdown:hover {
+.dropdown.active {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown span:hover,
+.dropdown span:hover a {
     background-color: #59250c;
+    color: #fff;
 }
 
 @media screen and (max-width: 500px) {

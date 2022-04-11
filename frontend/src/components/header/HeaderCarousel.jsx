@@ -19,7 +19,6 @@ export const HeaderCarousel = ({ carouselData }) => {
   const [sateliteTres, setSateliteTres] = useState("tres");
 
   useEffect(() => {
-    console.log(carouselData);
   }, []);
 
   const indexChange = (index) => {
