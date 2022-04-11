@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const ALL_PRODUCTS =  "ALL_PRODUCTS";
+const ALL_PRODUCTS = "ALL_PRODUCTS";
 const FILTER_CATEGORY = "FILTER_CATEGORY";
 const CATEGORY_ACTIVE = "CATEGORY_ACTIVE";
 const LOADER = "LOADER";
-const DETAILS =  "DETAILS";
+const DETAILS = "DETAILS";
 const MODAL = "MODAL";
 const INDEX = "INDEX";
 const PAGINATION = "PAGINATION";
@@ -25,105 +25,105 @@ const dataInicial = {
 
 //Reducer
 export default function dataReducer(state = dataInicial, action) {
-  switch (action.type) {
-    case ALL_PRODUCTS:
-      return { ...state, products: action.payload, loading: false, category_active: null };
-    
-    case FILTER_CATEGORY:
-      return { ...state, products: action.payload, loading: false };
+    switch (action.type) {
+        case ALL_PRODUCTS:
+            return { ...state, products: action.payload, loading: false, category_active: null };
 
-    case CATEGORY_ACTIVE: 
-      return {...state, category_active: action.payload}
-    
-    case DETAILS:
-      return { ...state, product: action.payload };
-        
-    case LOADER:
-      return {...state, loading: action.payload}
+        case FILTER_CATEGORY:
+            return { ...state, products: action.payload, loading: false };
 
-    case MODAL:
-      return { ...state, modal: action.payload };
+        case CATEGORY_ACTIVE:
+            return { ...state, category_active: action.payload }
 
-    case INDEX:
-      return { ...state, index: action.payload };
-  
-    case PAGINATION:
-    return { ...state, page: action.payload };
+        case DETAILS:
+            return { ...state, product: action.payload };
 
-    case PRODUCTS_BY_PAGE:
+        case LOADER:
+            return { ...state, loading: action.payload }
 
-    return { ...state, productsByPage: action.payload };
-  
-    
-    default:
-      return state;
-  }
+        case MODAL:
+            return { ...state, modal: action.payload };
+
+        case INDEX:
+            return { ...state, index: action.payload };
+
+        case PAGINATION:
+            return { ...state, page: action.payload };
+
+        case PRODUCTS_BY_PAGE:
+
+            return { ...state, productsByPage: action.payload };
+
+
+        default:
+            return state;
+    }
 }
 
 export const allDataAction = () => async (dispatch) => {
-  const foods = await axios.get('http://localhost:9000/api/foods')
-  const drinks = await axios.get('http://localhost:9000/api/drinks')
-  dispatch({
-    type: ALL_PRODUCTS,
-    payload: [...drinks.data.data, ...foods.data.data]
-  });
+    const foods = await axios.get('http://localhost:9000/api/foods')
+    const drinks = await axios.get('http://localhost:9000/api/drinks')
+    dispatch({
+        type: ALL_PRODUCTS,
+        payload: [...drinks.data.data, ...foods.data.data]
+    });
 };
 
 export const filterCategoryAction = (name) => async (dispatch) => {
-  const foods = await axios.get(`http://localhost:9000/api/foods?show=1&category=${name}`)
-  dispatch({
-    type: FILTER_CATEGORY,
-    payload: foods.data.data
-  });
+    const foods = await axios.get(`http://localhost:9000/api/foods?show=1&category=${name}`)
+    dispatch({
+        type: FILTER_CATEGORY,
+        payload: foods.data.data
+    });
 };
 
 export const nameCategoryAction = (name) => async (dispatch) => {
-  dispatch({
-    type: CATEGORY_ACTIVE,
-    payload: name
-  })
+    dispatch({
+        type: CATEGORY_ACTIVE,
+        payload: name
+    })
 }
 
 export const productAction = (details) => (dispatch) => {
-  dispatch({
-    type: DETAILS,
-    payload: details
-  });
+    dispatch({
+        type: DETAILS,
+        payload: details
+    });
 };
 
 export const loaderAction = (load) => async (dispatch) => {
-  dispatch({
-    type: LOADER,
-    payload: load
-  });
+    dispatch({
+        type: LOADER,
+        payload: load
+    });
 };
 
 export const modalAction = (modal) => (dispatch) => {
-  dispatch({
-    type: MODAL,
-    payload: modal
-  });
+    dispatch({
+        type: MODAL,
+        payload: modal
+    });
 };
 
 export const indexAction = (i) => (dispatch) => {
-  dispatch({
-    type: INDEX,
-    payload: i
-  });
+    dispatch({
+        type: INDEX,
+        payload: i
+    });
 };
 
 export const pageAction = (value) => (dispatch) => {
-  dispatch({
-    type: PAGINATION,
-    payload: value
-  });
+    dispatch({
+        type: PAGINATION,
+        payload: value
+    });
 
 }
 
 export const productsByPageAction = (number) => (dispatch) => {
-  dispatch({
-    type: PRODUCTS_BY_PAGE,
-    payload: number
-  });
+    dispatch({
+        type: PRODUCTS_BY_PAGE,
+        payload: number
+    });
 
 }
