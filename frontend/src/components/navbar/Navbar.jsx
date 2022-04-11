@@ -19,26 +19,31 @@ export const Navbar = () => {
     const handleLogout = () => {
         dispatch(logoutAction())
     }
-    return <div className='navbar'>
-        <div className='navbar-column'>
-            <div className="logo">
-                <Link to="/">
-                    <img src={logo}></img>
-                    Don Remolo
-                </Link>
+    return (
+
+
+        <div className='navbar'>
+            <div className='navbar-column'>
+                <div className="logo">
+                    <Link to="/">
+                        <img src={logo}></img>
+                        Don Remolo
+                    </Link>
+                </div>
+            </div>
+            <div className='navbar-column links'>
+
+                {
+                    column_titles.map(category => {
+                        return <Item category={category} />
+                    })
+                }
+
+            </div>
+            <div className='navbar-column iconCart'>
+                <Layout />
             </div>
         </div>
-        <div className='navbar-column links'>
-           
-            {
-                column_titles.map(category => {
-                return <Item category={category} />
-            })
-      }
 
-        </div>
-        <div className='navbar-column iconCart'>
-           <Layout />
-        </div>
-    </div>;
+    )
 };
