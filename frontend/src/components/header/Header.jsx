@@ -23,7 +23,7 @@ export const Header = () => {
     color: "circle2"
   }, {
     id: 3,
-    subtitle: "Delicatesens para tu paladar",
+    subtitle: "Delicias para tu paladar",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio sit id enim non morbi aliquet id quis. Vivamus pretium dolor vitae netus ut laoreet nisl quisque.",
     image: postre,
     color: "circle3"

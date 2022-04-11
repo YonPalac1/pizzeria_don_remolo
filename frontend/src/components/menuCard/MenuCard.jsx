@@ -8,62 +8,62 @@ import { modalAction, productAction } from "../../redux/dataReducer";
 import { cartAction } from '../../redux/cartReducer'
 
 export const MenuCard = ({ products }) => {
-  const location = useLocation().pathname; // Get route
-  const product = useSelector(state => state.data.product);
+    const location = useLocation().pathname; // Get route
+    const product = useSelector(state => state.data.product);
 
-  useEffect(() => {
-    const ROUTE = "/";
-    if (location == ROUTE) {
-      setModal(false);
+    useEffect(() => {
+        const ROUTE = "/";
+        if (location == ROUTE) {
+            setModal(false);
+        }
+    }, []);
+
+    const dispatch = useDispatch();
+
+    function setModal(modal, products) {
+        dispatch(modalAction(modal));
+        dispatch(productAction(products));
     }
-  }, []);
 
-  const dispatch = useDispatch();
+    function handleAddProduct(products) {
+        dispatch(cartAction(products))
+    }
 
-  function setModal(modal, products) {
-    dispatch(modalAction(modal));
-    dispatch(productAction(products));
-  }
-
-  function handleAddProduct(products){
-    dispatch(cartAction(products)) 
-  }
-
-  return (
-    <div className="menu-card">
-      <div
-        className="menu-card_img"
-        onClick={() => {
-          setModal(true, products);
-        }}
-      >
-        <button className="btn-modal">
-          <FontAwesomeIcon icon={faInfo} />
-        </button>
-        <img src="./images/logo.png" />
-      </div>
-      <div className="menu-card_details">
-        {products.category !== "bebidas" ? (
-          <>
-            <span>{products.name}</span>
-          </>
-        ) : (
-          <>
-            <span>{products.brand}</span>
-            <p>
-              {products.size} {products.measurement}
-            </p>
-          </>
-        )}
-        <div className="card_footer">
-          <b>$ {products.price}</b>
-          <button onClick={()=>handleAddProduct(products)}>
-            <FontAwesomeIcon icon={faCartShopping} />{" "}
-            Carrito
-            </button>
+    return (
+        <div className="menu-card">
+            <div
+                className="menu-card_img"
+                onClick={() => {
+                    setModal(true, products);
+                }}
+            >
+                <button className="btn-modal">
+                    <FontAwesomeIcon icon={faInfo} />
+                </button>
+                <img src="./images/logo.png" />
+            </div>
+            <div className="menu-card_details">
+                {products.category !== "bebidas" ? (
+                    <>
+                        <span>{products.name}</span>
+                    </>
+                ) : (
+                    <>
+                        <span>{products.brand}</span>
+                        <p>
+                            {products.size} {products.measurement}
+                        </p>
+                    </>
+                )}
+                <div className="card_footer">
+                    <b>$ {products.price}</b>
+                    <button onClick={() => handleAddProduct(products)}>
+                        <FontAwesomeIcon icon={faCartShopping} />{" "}
+                        Carrito
+                    </button>
+                </div>
+            </div>
+            <Modal />
         </div>
-      </div>
-      <Modal />
-    </div>
-  );
+    );
 };
