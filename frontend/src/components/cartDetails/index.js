@@ -4,4 +4,4 @@ import { Send } from "./cartCompornents/Send";
 import { Subtotal } from "./cartCompornents/Subtotal";
 import { Total } from "./cartCompornents/Total";
 
-export { CartProduct, Coupon, Send, Subtotal, Total }
+export { CartProduct, Coupon, Send, Subtotal, Total };
