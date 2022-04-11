@@ -6,7 +6,7 @@ export const Send = ({type}) => {
         <h5>Envio</h5>
         {
             type === "" ?
-                <span>Se calculará en el siguinte paso</span>
+                <span>Se calculará en el siguiente paso</span>
                 :
                 type !== "local" ?
                     <p>$ 130</p>
