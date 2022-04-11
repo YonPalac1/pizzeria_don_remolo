@@ -9,30 +9,30 @@ const SESSION = "SESSION";
 const MODAL = "MODAL";
 
 const dataInicial = {
-  ok: false,
-  user: [],
-  errors: [],
-  modal: false,
-  rol: 0,
+    ok: false,
+    user: [],
+    errors: [],
+    modal: false,
+    rol: 0,
 };
 
 //Reducer
 export default function authReducer(state = dataInicial, action) {
-  switch (action.type) {
-    case REGISTER:
-      return {
-        ...state,
-        user: action.payload.data,
-        rol: action.payload.data.rol,
-        errors: action.payload.data.errors,
-        ok: action.payload.ok,
-      };
-    case REGISTER_FAIL:
-      return {
-        ...state,
-        errors: action.payload.errors,
-        ok: action.payload.ok,
-      };
+    switch (action.type) {
+        case REGISTER:
+            return {
+                ...state,
+                user: action.payload.data,
+                rol: action.payload.data.rol,
+                errors: action.payload.data.errors,
+                ok: action.payload.ok,
+            };
+        case REGISTER_FAIL:
+            return {
+                ...state,
+                errors: action.payload.errors,
+                ok: action.payload.ok,
+            };
 
     case LOGIN:
       return {
@@ -56,41 +56,41 @@ export default function authReducer(state = dataInicial, action) {
         ok: true 
       };
 
-    case LOGOUT:
-      localStorage.removeItem("user");
-      return { ...state, user: null, errors: null, ok: false };
-    case MODAL:
-      return { ...state, modal: action.payload };
+        case LOGOUT:
+            localStorage.removeItem("user");
+            return { ...state, user: null, errors: null, ok: false };
+        case MODAL:
+            return { ...state, modal: action.payload };
 
-    default:
-      return state;
-  }
+        default:
+            return state;
+    }
 }
 
 export const registerAction = (data) => async (dispatch) => {
-  try {
-    const json = JSON.stringify(data);
-    const res = await axios.post(
-      "http://localhost:9000/api/users/register",
-      json,
-      {
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-      }
-    );
-    dispatch({
-      type: REGISTER,
-      payload: res.data,
-    });
-  } catch (err) {
-    dispatch({
-      type: REGISTER_FAIL,
-      payload: err.response.data,
-    });
-  }
+    try {
+        const json = JSON.stringify(data);
+        const res = await axios.post(
+            "http://localhost:9000/api/users/register",
+            json,
+            {
+                mode: "no-cors",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                },
+            }
+        );
+        dispatch({
+            type: REGISTER,
+            payload: res.data,
+        });
+    } catch (err) {
+        dispatch({
+            type: REGISTER_FAIL,
+            payload: err.response.data,
+        });
+    }
 };
 
 export const loginAction = (data, check) => async (dispatch) => {
@@ -124,22 +124,22 @@ export const loginAction = (data, check) => async (dispatch) => {
 };
 
 export const sessionAction = (data) => (dispatch) => {
-  const user = JSON.parse(data);
-  dispatch({
-    type: SESSION,
-    payload: user,
-  });
+    const user = JSON.parse(data);
+    dispatch({
+        type: SESSION,
+        payload: user,
+    });
 };
 
 export const logoutAction = () => (dispatch) => {
-  dispatch({
-    type: LOGOUT,
-    payload: false,
-  });
+    dispatch({
+        type: LOGOUT,
+        payload: false,
+    });
 };
 export const modalAction = (modal) => (dispatch) => {
-  dispatch({
-    type: MODAL,
-    payload: modal,
-  });
+    dispatch({
+        type: MODAL,
+        payload: modal,
+    });
 };

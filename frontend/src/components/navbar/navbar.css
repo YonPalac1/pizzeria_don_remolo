@@ -4,6 +4,7 @@
     padding: 12px;
     max-width: 1080px;
     margin: auto;
+    margin-bottom: 14vh;
 }
 .navbar-column.links a {
     text-decoration: none;

@@ -10,7 +10,7 @@ const ORDER = "ORDER";
 const ORDER_STATUS = "ORDER_STATUS";
 
 const dataInicial = {
-    cart: [], 
+    cart: [],
     total: 0,
     info: [],
     shipping: "",
@@ -42,10 +42,10 @@ export default function cartReducer(state = dataInicial, action) {
         case CHECKOUT:
             return { ...state, checkout: action.payload };
 
-        case ORDER: 
+        case ORDER:
             return { ...state, order: action.payload };
 
-        case ORDER_STATUS: 
+        case ORDER_STATUS:
             return { ...state, orderStatus: action.payload };
         default:
             return state;
@@ -106,16 +106,16 @@ export const saveOrder = (order) => (dispatch) => {
 export const makeOrder = (order) => async (dispatch) => {
     const json = JSON.stringify(order);
     const res = await axios.post(
-      "http://localhost:9000/api/order",
-      
-      {json},
-      {
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-      }
+        "http://localhost:9000/api/order",
+
+        { json },
+        {
+            mode: "no-cors",
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+            },
+        }
     )
 
     dispatch({

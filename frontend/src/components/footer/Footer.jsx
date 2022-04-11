@@ -2,13 +2,17 @@ import React from 'react';
 import './footer.css';
 import { meetUs, help, ordersAndDelivery, icons } from '../../utils/Footer.utils';
 import { Icon } from './Icon/Icon';
-import { ItemMap } from './ItemMap/ItemMap'
+import { ItemMap } from './ItemMap/ItemMap';
+import { Subscribe } from './subscribe/Subscribe';
+
+
 
 export const Footer = () => {
     return (
 
 
-        <footer>
+        <footer className='main-footer'>
+            
             <div className='footer'>
                 <div className='footer-column'>
                     <span>Conocenos</span>
@@ -23,6 +27,7 @@ export const Footer = () => {
                     <ItemMap array={ordersAndDelivery} />
                 </div>
             </div>
+
             <div className='footer'>
                 <span>Social</span>
                 <div className='footer-social'>
@@ -33,6 +38,10 @@ export const Footer = () => {
                         })
                     }
                 </div>
+            </div>
+
+            <div className='footer'>
+                <Subscribe/>
             </div>
 
 

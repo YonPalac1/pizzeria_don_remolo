@@ -1,15 +1,15 @@
-footer {
+.main-footer{
+    margin-top: 20vh;
     background: #1D1F22; 
-    margin-top: 50px;
 }
-
+ 
 .footer {
     display: flex;
     justify-content: space-between;
     max-width: 1080px;
     margin: auto;
     color: #fff;
-    padding: 50px 13px;
+    padding: 20px 13px;
 }
 
 .footer-column {
