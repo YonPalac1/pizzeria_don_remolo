@@ -3,6 +3,7 @@ import './footer.css';
 import { meetUs, help, ordersAndDelivery, icons } from '../../utils/Footer.utils';
 import { Icon } from './Icon/Icon';
 import { ItemMap } from './ItemMap/ItemMap'
+import { Subscribe } from './subscribe/Subscribe'
 
 export const Footer = () => {
     return (
@@ -33,6 +34,11 @@ export const Footer = () => {
                         })
                     }
                 </div>
+            </div>
+
+
+            <div className='footer'>
+                <Subscribe/>
             </div>
 
 

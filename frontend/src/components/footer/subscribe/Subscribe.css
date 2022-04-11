@@ -1,0 +1,30 @@
+.email{
+    display: flex;
+}
+
+
+
+.button{
+    background-color: #EB9F3F;
+    width: 10vh;
+    height: 3vh;
+    color: white;
+    text-transform: uppercase;
+    border: none;
+    outline: none;
+     
+
+}
+
+.input{
+    height: 3vh;
+}
+
+.error{
+    background-color: #f4eadf;
+    width: 14vh;
+    height: 4vh;
+    color: rgb(81, 7, 7);
+    text-transform: uppercase;
+    font-size: 1vh;
+}
