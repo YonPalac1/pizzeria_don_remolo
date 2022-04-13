@@ -1,13 +1,15 @@
 import React from 'react';
 import Tr from './tr/Tr';
+import './Table.css'
 
 export default function Table({orders}) {
+ 
   return (
-    <table class="default">
+    <table className='table'>
 
         {
-            orders.map(order => {
-                return  <Tr order={order} /> 
+            orders.map(orderObj => {
+                return  <Tr orderObj={orderObj} /> 
             })
         }
 

@@ -1,87 +1,38 @@
 import React from 'react'
 import Table from '../table/Table'
 
+import './OrdersConstrol.css'
+
+import { orders, tittlesValues } from '../../utils/OrdersControl.util'
+
+
 export default function OrdersControl() {
 
-    const tittlesValues = [  {
-
-        order: 'N° de Orden',
-    },
-    {
-        client: 'Cliente'
-    },
-    {
-        orderState: 'Estado de pedido'
-    },
-    {
-        paymentState: 'Estado de pago'
-    },
-    {
-        total: 'Total'
-    }
-]
-
-
-const orders = [  {
-
-    order: 'S000083',
-    client: 'Ramiro Gonzalez',
-    orderState: 'delivered',
-    paymentState: 'paid',
-    total : 6000
-},
-{
-    order: 'S000083',
-    client: 'Ramiro Gonzalez',
-    orderState: 'delivered',
-    paymentState: 'paid',
-    total : 6000
-},
-{
-    order: 'S000083',
-    client: 'Ramiro Gonzalez',
-    orderState: 'delivered',
-    paymentState: 'paid',
-    total : 6000
-},
-{
-    order: 'S000083',
-    client: 'Ramiro Gonzalez',
-    orderState: 'delivered',
-    paymentState: 'paid',
-    total : 6000
-},
-{
-    order: 'S000083',
-    client: 'Ramiro Gonzalez',
-    orderState: 'delivered',
-    paymentState: 'paid',
-    total : 6000
-}
-
-
-]
 
 
 
 
 
+    return (
+        <div className='main-div-orders-control'>
 
-  return (
-      <div>
-          
-    <div className='main-div-orders-control'>
-        
-        {
-            tittlesValues.map(tittle => {
-                return <span>{tittle} </span>
-            })
-        }
+            <div className='child-div-content'>
+                <div className='child-div-orders-control'>
 
-    </div>
+                    {
+                        tittlesValues.map(title => {
+                            return <span>{title.title} </span>
+                        })
+                    }
 
-        <Table orders={orders} />
+                </div>
 
-    </div>
-  )
+                <Table orders={orders} />
+
+
+
+            </div>
+
+        </div>
+    )
 }

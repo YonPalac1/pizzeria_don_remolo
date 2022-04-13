@@ -1,0 +1,100 @@
+.tr {
+    display: flex;
+    justify-content: space-around;
+
+    border-top: 1px solid black;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.order {
+    color: #436BAA;
+    text-transform: uppercase;
+
+}
+
+
+.client {
+    font-weight: 700;
+}
+
+.orderState {
+    padding: 0.5em 2em;
+    color: #24BDC7;
+    border-radius: 5px;
+    background-color: #24BDC71A;
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.orderState:hover {
+    background-color: #24BDC71A;
+}
+
+.paymentState {
+    padding: 0.5em 2em;
+    color: #616161;
+    border-radius: 5px;
+    background-color: #7000FF1A;
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.paymentState:hover {
+    background-color: #7000FF1A;
+}
+
+.cancel {
+
+    padding: 0.5em 2em;
+
+    color: #E80000;
+    border-radius: 5px;
+    background-color: #E80000;
+    cursor: pointer;
+    font-weight: 700;
+    opacity: 0.1;
+    text-transform: uppercase;
+
+}
+
+.pending {
+    padding: 0.5em 2em;
+
+    color: #FF9900;
+    border-radius: 5px;
+    background-color: rgba(255, 153, 0, 0.1);
+    ;
+    cursor: pointer;
+    font-weight: 700;
+    opacity: 0.1;
+    text-transform: uppercase;
+}
+
+.paid {
+    padding: 0.5em 2em;
+
+    color: #16C35B;
+    border-radius: 5px;
+    background-color: #16C35B;
+    cursor: pointer;
+    font-weight: 700;
+    opacity: 0.1;
+    text-transform: uppercase;
+}
+
+.delivered {
+
+    padding: 0.5em 2em;
+
+    color: #16C31E;
+    border-radius: 5px;
+    background-color: #436BAA;
+    cursor: pointer;
+    font-weight: 700;
+    opacity: 0.1;
+    text-transform: uppercase;
+
+}
