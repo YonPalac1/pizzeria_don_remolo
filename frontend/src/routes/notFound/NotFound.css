@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@800;900&display=swap');
+
+.circle-notFound {
+    border-radius: 10%;
+    background-color: #F4E4D5;
+    width: 520px;
+    height: 520px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    align-items: center;
+    
+    
+}
+
+.notFound {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+/* .span404{
+    font-family: 'Inter', sans-serif;
+    font-size: 5em;
+
+    unicode-bidi:bidi-override;
+    direction:rtl;
+}
+
+
+.span404::first-letter{
+    color:#FA692B;
+  }
+
+  */
+
+  
+
+ .span404{
+    font-family: 'Inter', sans-serif;
+    font-size: 5em;
+ 
+}
+.span404::first-letter{
+    color:#FA692B;
+  }
+
+
+  .span404::after {
+    content: attr(data-end) ;
+    color: #FA692B ;
+}
+ 
+ 
+
+.spanMessage404{
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 2em;
+}
+.spanMessageOpps{
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 0.8em;
+}
+
+.button404{
+   cursor: pointer;
+    border: solid black 2px;
+    background-color: #fff;
+    padding: 1vh 6vh;
+     
+    box-shadow: 2px 2px 0px #FA692B;
+    
+}
+
+ 
+  .button404:hover {
+    color: #FA692B;
+    background: #CFCFCF;
+  }
+  
