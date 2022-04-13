@@ -22,7 +22,7 @@ export const orders = [{
     order: 'S000083',
     client: 'Ramiro Gonzalez',
     orderState: 'delivered',
-    paymentState: 'paid',
+    paymentState: 'pending',
     total: 6000
 },
 {
@@ -42,7 +42,7 @@ export const orders = [{
 {
     order: 'S000083',
     client: 'Ramiro Gonzalez',
-    orderState: 'delivered',
+    orderState: 'cancel',
     paymentState: 'paid',
     total: 6000
 },
@@ -50,7 +50,7 @@ export const orders = [{
     order: 'S000083',
     client: 'Ramiro Gonzalez',
     orderState: 'delivered',
-    paymentState: 'paid',
+    paymentState: 'taken',
     total: 6000
 }
 

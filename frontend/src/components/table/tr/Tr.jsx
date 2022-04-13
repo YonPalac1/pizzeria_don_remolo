@@ -10,10 +10,9 @@ export default function Tr({orderObj}) {
         <tr className='tr'>
             <td className='order'>{order}</td>
             <td className='client'>{client}</td>
-            <td className='orderState'>{orderState}</td>
-            <td className='paymentState'>{paymentState}</td>
+            <td className={orderState}>{orderState}</td>
+            <td className={paymentState}>{paymentState}</td>
             <td className='total'>${total}</td>
-         
         </tr>
     )
 }

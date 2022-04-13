@@ -18,7 +18,7 @@
     font-weight: 700;
 }
 
-.orderState {
+.taken {
     padding: 0.5em 2em;
     color: #24BDC7;
     border-radius: 5px;
@@ -32,7 +32,7 @@
     background-color: #24BDC71A;
 }
 
-.paymentState {
+.refunded {
     padding: 0.5em 2em;
     color: #616161;
     border-radius: 5px;
@@ -42,7 +42,7 @@
     text-transform: uppercase;
 }
 
-.paymentState:hover {
+.refunded:hover {
     background-color: #7000FF1A;
 }
 
@@ -52,10 +52,9 @@
 
     color: #E80000;
     border-radius: 5px;
-    background-color: #E80000;
+    background-color: rgba(232, 0, 0, .1);
     cursor: pointer;
     font-weight: 700;
-    opacity: 0.1;
     text-transform: uppercase;
 
 }
@@ -69,7 +68,7 @@
     ;
     cursor: pointer;
     font-weight: 700;
-    opacity: 0.1;
+ 
     text-transform: uppercase;
 }
 
@@ -78,10 +77,10 @@
 
     color: #16C35B;
     border-radius: 5px;
-    background-color: #16C35B;
+    background-color: rgba(22, 195, 91, .1);
     cursor: pointer;
     font-weight: 700;
-    opacity: 0.1;
+     
     text-transform: uppercase;
 }
 
@@ -91,10 +90,10 @@
 
     color: #16C31E;
     border-radius: 5px;
-    background-color: #436BAA;
+    background-color: rgba(67, 107, 170,.1);
     cursor: pointer;
     font-weight: 700;
-    opacity: 0.1;
+  
     text-transform: uppercase;
 
 }
