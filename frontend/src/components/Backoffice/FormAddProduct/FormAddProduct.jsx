@@ -1,30 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import useForm from "../../../hooks/useForm";
-import { addNewProductAction } from "../../../redux/crudReducer";
+import { useDispatch, useSelector } from "react-redux";
+import { addNewProductAction, editProductAction } from "../../../redux/crudReducer";
 import "./formAddProduct.css";
 
 export const FormAddProduct = () => {
   const dispatch = useDispatch();
+  const dataToEdit = useSelector(state => state.crud.product);
   const [file, setFile] = useState();
   const [images, setImages] = useState([]);
   const [imageUrls, setImageUrls] = useState([]);
-  const [form, handleChange] = useForm({
+  const initialForm = {
     name: "",
     price: 0,
     description: "",
     measurement: 0,
     category: "",
     show: 0,
-  }); 
-  const { name, price, description, measurement, category, show } = form;
-
+  }; 
+  const [form, setForm] = useState(initialForm);
+  
   useEffect(() => {
     if (images.length < 1) return;
     const newImageUrls = [];
     images.forEach((image) => newImageUrls.push(URL.createObjectURL(image)));
     setImageUrls(newImageUrls);
-    console.log(images)
   }, [images]);
 
   const handleChangeImage = (e) => {
@@ -32,6 +31,14 @@ export const FormAddProduct = () => {
     setFile(e.target.files[0]);
     setImages([...e.target.files]);
   };
+
+  useEffect(() => {
+    if(dataToEdit){
+      setForm(dataToEdit)
+    } else {
+      setForm(initialForm)
+    }
+  }, [dataToEdit])
 
   const categories = [
     {
@@ -52,9 +59,20 @@ export const FormAddProduct = () => {
     },
   ];
 
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addNewProductAction(form, file));
+    if(!dataToEdit){
+      dispatch(addNewProductAction(form, file));
+    } else {
+      dispatch(editProductAction(form));
+    }
   };
 
   return (
@@ -76,7 +94,7 @@ export const FormAddProduct = () => {
         <input
           name="name"
           type="text"
-          value={name}
+          value={form.name}
           onChange={handleChange}
           placeholder="Nombre"
         ></input>
@@ -84,7 +102,7 @@ export const FormAddProduct = () => {
         <input
           name="price"
           type="number"
-          value={price}
+          value={form.price}
           onChange={handleChange}
           placeholder="Precio"
         ></input>
@@ -92,7 +110,7 @@ export const FormAddProduct = () => {
         <input
           name="description"
           type="text"
-          value={description}
+          value={form.description}
           onChange={handleChange}
           placeholder="Descripcion"
         ></input>
@@ -100,25 +118,25 @@ export const FormAddProduct = () => {
         <input
           name="measurement"
           type="number"
-          value={measurement}
+          value={form.measurement}
           onChange={handleChange}
           placeholder="Cantidad"
         ></input>
 
-        <select name="category" value={category} onChange={handleChange}>
+        <select name="category" value={form.category} onChange={handleChange}>
           <option value="0">Categoria</option>
-          {categories.map((category) => {
-            return <option value={category.name} key={category.id}>{category.name}</option>;
+          {categories.map((category, i = 0) => {
+            return <option value={category.name} key={i++}>{category.name}</option>;
           })}
         </select>
 
-        <select name="show" value={show} onChange={handleChange}>
+        <select name="show" value={form.show} onChange={handleChange}>
           <option value="0">Mostrar</option>
           <option value="1">Si</option>
           <option value="0">No</option>
         </select>
 
-        <button type="submit" className="button">
+        <button type="submit" className="button-send">
           {" "}
           Enviar
         </button>

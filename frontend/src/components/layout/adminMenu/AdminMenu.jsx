@@ -25,7 +25,7 @@ export const AdminMenu = () => {
       </p>
       <div className={`dropdown ${dropdown && "active"}`}>
         <span><Link to="/backoffice/admin" >Administrar</Link></span>
-      
+        
         <span onClick={logout}>Logout</span>
       </div>
     </button>
