@@ -6,14 +6,15 @@ import { allProductsAction, deleteProductAction, productToEditDataAction } from 
 export const TableProducts = ({ icons }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const category_active = useSelector((state) => state.data.category_active);
   const products = useSelector((state) => state.crud.products);
   const key = useSelector((state) => state.crud.keywords);
 
   useEffect(() => {
-    if(!key){
+    if(!key && !category_active){
       dispatch(allProductsAction());
     }
-  }, [products]);
+  }, []);
 
   const deleteProduct = (id) => {
     if(window.confirm("Desea eliminar este producto?")){
