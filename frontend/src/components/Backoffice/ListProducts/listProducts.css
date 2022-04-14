@@ -1,0 +1,78 @@
+.list-products-container {
+    max-width: 1024px;
+    margin: auto;
+}
+
+.list-products-container .filters {
+    display: flex;
+    justify-content: space-between;
+}
+
+.list-products-container form {
+    display: flex;
+}
+
+.list-products-container form input {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+}
+
+.list-products-container form button {
+    background: none;
+    border: 1px solid #ccc;
+    border-radius: 0 5px 5px 0  ;
+    padding: 8px 8px;
+    cursor: pointer;
+}
+
+.filtros-categorias-backoffice {
+    display: flex;
+    padding: 0px;
+}
+.filtros-categorias-backoffice .categories-cards .categorie-card {
+    box-shadow: none;
+    background: none;
+    padding: 0;
+}
+.filtros-categorias-backoffice .categories-cards .categorie-card span {
+    color: #000; 
+    font-size: 18px;
+    font-weight: lighter;
+}
+
+.filtros-categorias-backoffice .categories-cards .categorie-card span:hover {
+    color: #ccc; 
+}
+
+.filtros-categorias-backoffice .categories-cards .categorie-card.active span {
+    color: #ccc; 
+}
+
+.list-products {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 3px 0 0; 
+}
+
+.list-products-buttons button {
+    margin-left: 5px;
+    padding: 5px 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.list-products-buttons button:nth-child(1) {
+    background: red;
+}
+.list-products-buttons button:nth-child(2) {
+    background: yellow;
+}
+
+h5 {
+    margin-top: 50px;
+    font-size: 20px;
+} 

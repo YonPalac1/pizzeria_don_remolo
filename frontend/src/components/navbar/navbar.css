@@ -10,6 +10,7 @@
     text-decoration: none;
     margin: 0 12px;
     color: #000;
+    cursor: pointer;
 }
 .navbar-column.links a:hover {
     color: #D85613;

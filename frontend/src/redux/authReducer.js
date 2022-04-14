@@ -34,29 +34,27 @@ export default function authReducer(state = dataInicial, action) {
                 ok: action.payload.ok,
             };
 
-        case LOGIN:
-            localStorage.setItem("user", JSON.stringify(action.payload.data));
-            return {
-                ...state,
-                user: action.payload.data,
-                rol: action.payload.data.rol,
-                errors: action.payload.errors,
-                ok: action.payload.ok,
-            };
-        case LOGIN_FAIL:
-            return {
-                ...state,
-                errors: action.payload.errors,
-                ok: action.payload.ok,
-            };
-        case SESSION:
-            return {
-                ...state,
-                user: action.payload,
-                rol: action.payload.rol,
-                errors: null,
-                ok: true
-            };
+    case LOGIN:
+      return {
+        ...state,
+        user: action.payload.data,
+        rol: action.payload.data.rol,
+        errors: action.payload.errors,
+        ok: action.payload.ok,
+      };
+    case LOGIN_FAIL:
+      return {
+        ...state,
+        errors: action.payload.errors,
+        ok: action.payload.ok,
+      };
+    case SESSION:
+      return { ...state, 
+        user: action.payload, 
+        rol: action.payload.rol,
+        errors: null, 
+        ok: true 
+      };
 
         case LOGOUT:
             localStorage.removeItem("user");
@@ -95,31 +93,34 @@ export const registerAction = (data) => async (dispatch) => {
     }
 };
 
-export const loginAction = (data) => async (dispatch) => {
-    try {
-        const json = JSON.stringify(data);
-        const res = await axios.post(
-            "http://localhost:9000/api/users/login",
-            json,
-            {
-                mode: "no-cors",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Access-Control-Allow-Origin": "*",
-                },
-            }
-        );
-        dispatch({
-            type: LOGIN,
-            payload: res.data,
-        });
-    } catch (err) {
-        console.log(err);
-        dispatch({
-            type: LOGIN_FAIL,
-            payload: err.response.data,
-        });
+export const loginAction = (data, check) => async (dispatch) => {
+  try {
+    const json = JSON.stringify(data);
+    const res = await axios.post(
+      "http://localhost:9000/api/users/login",
+      json,
+      {
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    );
+    if (check) {
+      localStorage.setItem("user", JSON.stringify(res.data.data))
     }
+    dispatch({
+      type: LOGIN,
+      payload: res.data,
+    });
+  } catch (err) {
+    console.log(err);
+    dispatch({
+      type: LOGIN_FAIL,
+      payload: err.response.data,
+    });
+  }
 };
 
 export const sessionAction = (data) => (dispatch) => {

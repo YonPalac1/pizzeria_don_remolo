@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { filterCategoryAction, nameCategoryAction, loaderAction } from '../../../redux/dataReducer';
 import { animateScroll as scroll, Link } from 'react-scroll'
 import { Link as Li, useLocation } from 'react-router-dom';
+import { filterCategoryAction, nameCategoryAction, loaderAction } from '../../../redux/dataReducer';
 
 export const Item = ({ category }) => {
 
