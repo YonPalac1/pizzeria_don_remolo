@@ -6,50 +6,50 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import "./cartIcon.css";
 
 export const CartIcon = () => {
-  const productCart = useSelector((state) => state.cart.cart);
-  const totals = useSelector((state) => state.cart.total);
-  const [openCart, setOpenCart] = useState(false);
+    const productCart = useSelector((state) => state.cart.cart);
+    const totals = useSelector((state) => state.cart.total);
+    const [openCart, setOpenCart] = useState(false);
 
-  useEffect(() => {
-  }, [productCart, totals]);
+    useEffect(() => {
+    }, [productCart, totals]);
 
-  const showCart = () => {
-    setOpenCart(!openCart)
-  }
+    const showCart = () => {
+        setOpenCart(!openCart)
+    }
 
 
-  return (
-    <>
-      <button className="icon-button" onClick={showCart}>
-        <FontAwesomeIcon icon={faShoppingCart} />{" "}
-      </button>
+    return (
+        <>
+            <button className="icon-button" onClick={showCart}>
+                <FontAwesomeIcon icon={faShoppingCart} />{" "}
+            </button>
 
-      <div className={`menu_cart ${openCart && "active"}`}>
-        <div className="container_cart">
-          {productCart.length ? (
-            productCart.map((product) => {
-              return (
-                <div className="image_content">
-                  <img src="./images/logo.png"></img>
-                  <div className="product_info">
-                    <span className="name_product">{product.name}</span>
-                    <span>${product.price}</span>
-                  </div>
+            <div className={`menu_cart ${openCart && "active"}`}>
+                <div className="container_cart">
+                    {productCart.length ? (
+                        productCart.map((product) => {
+                            return (
+                                <div className="image_content">
+                                    <img src="./images/logo.png"></img>
+                                    <div className="product_info">
+                                        <span className="name_product">{product.name}</span>
+                                        <span>${product.price}</span>
+                                    </div>
+                                </div>
+                            );
+                        })
+                    ) : (
+                        <div className="msg_empty">
+                            <span> No hay productos en el carrito</span>
+                        </div>
+                    )}
                 </div>
-              );
-            })
-          ) : (
-            <div className="msg_empty">
-              <span> No hay productos en el carrito</span>
+                <div className="total_footer">
+                    <h3>Total:</h3>
+                    <span>$ {totals}</span>
+                </div>
+                <Link to="/cart" className="link_cart"> Ir al carrito</Link>
             </div>
-          )}
-        </div>
-        <div className="total_footer">
-          <h3>Total:</h3>
-          <span>$ {totals}</span>
-        </div>
-        <Link to="/cart" className="link_cart"> Ir al carrito</Link>
-      </div>
-    </>
-  );
+        </>
+    );
 };

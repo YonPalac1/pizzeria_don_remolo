@@ -58,3 +58,17 @@ export const orders = [{
 ]
 
 
+export const searchUsingButton = [ 
+    {
+        item: 'All'
+    },
+    {
+        item: 'Pendientes'
+    },
+    {
+        item: 'Completados'
+    },
+    {
+        item: 'Reintegrados'
+    }
+]
