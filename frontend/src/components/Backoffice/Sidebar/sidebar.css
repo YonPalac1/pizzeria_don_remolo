@@ -1,0 +1,28 @@
+.sidebar {
+    padding: 40px 20px;
+    left: 0;
+    border-right: 1px solid #ccc;
+    top: 0;
+    bottom: 0;
+    height: 100vh; 
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+}
+.sidebar .image img {
+    width: 100px;
+}
+.sidebar ul li {
+    list-style: none;
+    padding: 10px;
+}
+.sidebar ul li a {
+    text-decoration: none;
+    color: #999;
+}
+.sidebar ul li a:hover {
+    color: #000;
+}

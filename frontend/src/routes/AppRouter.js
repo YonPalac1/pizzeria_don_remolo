@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
-    Navigate,
-    
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
 } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -14,7 +13,7 @@ import { Home } from "../pages/home/Home.jsx";
 import { Cart } from "../pages/cart/Cart.jsx";
 import { Payment } from "../pages/payment/Payment.jsx";
 import { Success } from "../pages/success/Success.jsx";
- 
+
 import { sessionAction } from "../redux/authReducer.js";
 import { Details } from "../pages/details/Details.jsx";
 import { NotFound } from "./notFound/NotFound.jsx";
@@ -23,54 +22,49 @@ import { Layout } from "../layout/Layout.jsx";
 import { PrivateRoutes } from "./PrivateRoutes";
 
 const AppRouter = () => {
-    const logged = useSelector((store) => store.auth.ok);
-    const rol = useSelector((store) => store.auth.rol);
-    const dispatch = useDispatch();
+  const logged = useSelector((store) => store.auth.ok);
+  const rol = useSelector((store) => store.auth.rol);
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        const loggedUser = window.localStorage.getItem("user");
-        if (loggedUser) {
-            dispatch(sessionAction(loggedUser));
-        }
-    }, []);
+  useEffect(() => {
+    const loggedUser = window.localStorage.getItem("user");
+    if (loggedUser) {
+      dispatch(sessionAction(loggedUser));
+    }
+  }, []);
 
-    return (
-        <Router>
-            <Layout>
-                <Routes>
-                  
-                    <Route
-                        exact
-                        path="/login"
-                        element={logged ? <Navigate to="/" /> : <Login />}
-                    />
-                    <Route
-                        exact
-                        path="/register"
-                        element={logged ? <Navigate to="/" /> : <Register />}
-                    />
-                    <Route exact path="/" element={<Home />} />
-                    <Route exact path="/cart" element={<Cart />} />
-                    <Route exact path="/details" element={<Details />} />
-                    <Route exact path="/payment" element={<Payment />} />
-                    <Route exact path="/success" element={<Success />} />
-            
-                    <Route
-                        path="/backoffice/*"
-                        element={rol === 1 ? <PrivateRoutes /> : <Navigate to="/" />}
-                    />
-                     
-                    <Route path='*' element={<NotFound />} />
-                   
+  return (
+    <Router>
+      <Layout>
+        <Routes>
+          <Route
+            exact
+            path="/login"
+            element={logged ? <Navigate to="/" /> : <Login />}
+          />
+          <Route
+            exact
+            path="/register"
+            element={logged ? <Navigate to="/" /> : <Register />}
+          />
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/cart" element={<Cart />} />
+          <Route exact path="/details" element={<Details />} />
+          <Route exact path="/payment" element={<Payment />} />
+          <Route exact path="/success" element={<Success />} />
+        </Routes>
+      </Layout>
+      
+      <Routes>
+        <Route
+          path="/backoffice/*"
+          element={rol === 1 ? <PrivateRoutes /> : <Navigate to="/" />}
+        />
 
-                </Routes>
-            </Layout>
-        </Router>
-    );
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Router>
+  );
 };
 
 export default AppRouter;
-
-
-
- 

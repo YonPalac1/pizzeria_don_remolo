@@ -31,10 +31,6 @@ export const Navbar = () => {
         {column_titles.map((category) => {
           return <Item category={category} key={category} />;
         })}
-
-        {column_titles.map((category) => {
-          return <Item category={category} />;
-        })}
       </div>
       <div className="navbar-column iconCart">
         <Layout />
