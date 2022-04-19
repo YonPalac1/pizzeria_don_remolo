@@ -1,7 +1,11 @@
 import React from "react";
-import { FormAddProduct } from "../../components/Backoffice/FormAddProduct/FormAddProduct";
+import { Sidebar } from "../../components/Backoffice/Sidebar/Sidebar";
 
-export const Backoffice = () => {
+export const Backoffice = ({ children }) => {
 
-  return <FormAddProduct />;
+  return <>
+    <Sidebar />
+    { children }
+  </>
+  
 };

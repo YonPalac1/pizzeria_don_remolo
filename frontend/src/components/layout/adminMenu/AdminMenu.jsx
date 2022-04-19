@@ -24,7 +24,7 @@ export const AdminMenu = () => {
         <FontAwesomeIcon icon={faUser} /> Administrador
       </p>
       <div className={`dropdown ${dropdown && "active"}`}>
-        <span><Link to="/backoffice/admin" >Administrar</Link></span>
+        <span><Link to="/backoffice/" >Administrar</Link></span>
         
         <span onClick={logout}>Logout</span>
       </div>

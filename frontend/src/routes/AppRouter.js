@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
-    Navigate,
-    
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
 } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -14,7 +13,7 @@ import { Home } from "../pages/home/Home.jsx";
 import { Cart } from "../pages/cart/Cart.jsx";
 import { Payment } from "../pages/payment/Payment.jsx";
 import { Success } from "../pages/success/Success.jsx";
- 
+
 import { sessionAction } from "../redux/authReducer.js";
 import { Details } from "../pages/details/Details.jsx";
 import { NotFound } from "./notFound/NotFound.jsx";
@@ -24,16 +23,16 @@ import { PrivateRoutes } from "./PrivateRoutes";
 import OrdersControl from "../components/ordersControl/OrdersControl.jsx";
 
 const AppRouter = () => {
-    const logged = useSelector((store) => store.auth.ok);
-    const rol = useSelector((store) => store.auth.rol);
-    const dispatch = useDispatch();
+  const logged = useSelector((store) => store.auth.ok);
+  const rol = useSelector((store) => store.auth.rol);
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        const loggedUser = window.localStorage.getItem("user");
-        if (loggedUser) {
-            dispatch(sessionAction(loggedUser));
-        }
-    }, []);
+  useEffect(() => {
+    const loggedUser = window.localStorage.getItem("user");
+    if (loggedUser) {
+      dispatch(sessionAction(loggedUser));
+    }
+  }, []);
 
     return (
         <Router>
@@ -68,14 +67,12 @@ const AppRouter = () => {
                     <Route path='*' element={<NotFound />} />
                    
 
-                </Routes>
-            </Layout>
-        </Router>
-    );
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+
+      </Layout>
+    </Router>
+  );
 };
 
 export default AppRouter;
-
-
-
- 

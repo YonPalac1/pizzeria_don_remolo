@@ -5,6 +5,8 @@
     max-width: 1080px;
     margin: auto;
     margin-bottom: 14vh;
+    z-index: 1000;
+    position: relative;
 }
 .navbar-column.links a {
     text-decoration: none;
