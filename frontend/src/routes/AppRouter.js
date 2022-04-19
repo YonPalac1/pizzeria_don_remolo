@@ -51,7 +51,7 @@ const AppRouter = () => {
                     />
                     {/* <Route exact path="/" element={<Home />} /> */}
 
-                    <Route exact path="/" element={<OrdersControl/>} />
+                    <Route exact path="/" element={<Home />} />
                     <Route exact path="/cart" element={<Cart />} />
                     <Route exact path="/details" element={<Details />} />
                     <Route exact path="/payment" element={<Payment />} />
