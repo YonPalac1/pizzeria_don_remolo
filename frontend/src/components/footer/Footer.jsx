@@ -31,12 +31,12 @@ export const Footer = () => {
             <div className='footer'>
                 <span>Social</span>
                 <div className='footer-social'>
-                    {
+                    {/* {
 
                         icons.map(item => {
                             return <Icon key={item.id} item={item} />
                         })
-                    }
+                    } */}
                 </div>
             </div>
 

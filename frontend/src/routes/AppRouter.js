@@ -21,6 +21,7 @@ import { NotFound } from "./notFound/NotFound.jsx";
 
 import { Layout } from "../layout/Layout.jsx";
 import { PrivateRoutes } from "./PrivateRoutes";
+import OrdersControl from "../components/ordersControl/OrdersControl.jsx";
 
 const AppRouter = () => {
     const logged = useSelector((store) => store.auth.ok);
@@ -49,17 +50,21 @@ const AppRouter = () => {
                         path="/register"
                         element={logged ? <Navigate to="/" /> : <Register />}
                     />
-                    <Route exact path="/" element={<Home />} />
+                    {/* <Route exact path="/" element={<Home />} /> */}
+
+                    <Route exact path="/" element={<OrdersControl/>} />
                     <Route exact path="/cart" element={<Cart />} />
                     <Route exact path="/details" element={<Details />} />
                     <Route exact path="/payment" element={<Payment />} />
                     <Route exact path="/success" element={<Success />} />
             
+
                     <Route
                         path="/backoffice/*"
                         element={rol === 1 ? <PrivateRoutes /> : <Navigate to="/" />}
                     />
                      
+
                     <Route path='*' element={<NotFound />} />
                    
 

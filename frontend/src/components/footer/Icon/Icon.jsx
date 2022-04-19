@@ -3,9 +3,15 @@ import { Link } from 'react-router-dom'
 
 
 export const Icon = ({item}) => {
+
+    const { link, CLASS_NAME } = item;
+  
+
   return (
-   
-   <Link to={item.link}><i className={item.CLASS_NAME}></i></Link> 
+  
+    <item.iconSvg>
+      <Link to={link}><i className={CLASS_NAME}>{item.iconSvg}</i></Link> 
+   </item.iconSvg>
   )
 }
 

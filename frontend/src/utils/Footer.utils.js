@@ -1,3 +1,6 @@
+import { Facebook, Youtube, Google, Twitter, Pinterest } from '../components/footer/svg/Icons.svg'
+
+
 export const meetUs = [
     
     {
@@ -59,30 +62,41 @@ export const icons = [
     {
         CLASS_NAME: 'icon',
         link: '/',
-        id: '0'
+        id: '0',
+        iconSvg: Facebook
+     },
+
+    {
+        CLASS_NAME: 'icon',
+        link: '/',
+        id: '1',
+        iconSvg: Twitter
+    },
+    {
+        CLASS_NAME: 'icon',
+        link: '/',
+        id: '2',
+        iconSvg: Youtube
     },
 
     {
         CLASS_NAME: 'icon',
         link: '/',
-        id: '1'
-    },
-    {
-        CLASS_NAME: 'icon',
-        link: '/',
-        id: '2'
+        id: '3',
+        iconSvg: Pinterest
     },
 
     {
         CLASS_NAME: 'icon',
         link: '/',
-        id: '3'
-    },
-
-    {
-        CLASS_NAME: 'icon',
-        link: '/',
-        id: '4'
+        id: '4',
+        iconSvg: Google
     }
         
     ]  
+
+
+
+
+
+    
