@@ -1,0 +1,97 @@
+.backofffice {
+    display: grid;
+    width: 1024px;
+    margin: auto;
+    padding: 20px;
+}
+.orders-container {
+    color: rgb(36, 36, 36);
+    margin-top: 30px;
+}
+.orders-container h2 {
+    font-weight: lighter;
+    margin-top: 20px;
+    line-height: 15px;
+}
+.orders-container span {
+    font-weight: lighter;
+    font-size: 15px;
+}
+.orders-incomings_container {
+    display: grid;
+    grid-template-columns: auto auto;
+    margin-top: 30px;
+}
+
+.orders-incomings_container .orders-incomings_title {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.orders-incomings_container .orders-incomings_title h4 {
+    font-size: 22px;
+    font-weight: 100;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.orders-incomings_container .orders-incomings_title a {
+    color: rgb(255, 60, 0);
+    text-decoration: none;
+}
+
+.orders-incomings {
+    padding-top: 20px;
+}
+.orders-incomings .register {
+    display: flex;
+    justify-content: space-between;
+}
+.orders-incomings .register .open-modal {
+    border: none;
+    padding: 3px 8px;
+    cursor: pointer;
+    background: none;
+}
+.orders-incomings .register .open-modal:hover {
+    background: lightblue;
+}
+.orders-incomings .register span {
+    background-color: lightblue;
+    color: rgb(63, 109, 124);
+    padding: 5px 6px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.orders-incomings .register .buttons-add button {
+    padding: 4px 8px;
+    background: none;
+    border: 1px solid lightblue;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+}
+.orders-incomings .register .buttons-add button:hover {
+    background-color: lightblue;
+}
+
+.type-orders {
+    padding: 0 20px;
+}
+.type-orders .register {
+    margin-top: 20px;
+}
+.type-orders .register span {
+    background: none;
+}
+.type-orders .register .buttons-add button {
+    background: none;
+    border: 1px solid green;
+    color: green;
+}
+.type-orders .register .buttons-add button:nth-child(2) {
+    background: none;
+    border: 1px solid red;
+    color: red;
+}

@@ -6,17 +6,13 @@ import { NavbarMobile } from "../components/navbar/NavbarMobile";
 
 export const Layout = ({ children }) => {
   const location = useLocation().pathname;
-  const [flag, setFlag] = useState(true);
 
   useEffect(() => {
-    if (location === "/backoffice/") {
-      setFlag(false);
-    }
   }, [Layout]);
 
   return (
     <>
-      {!flag ? (
+      {location === "/backoffice/" || location === "/backoffice/list-products" || location === "/backoffice/add-products" ? (
         <></>
       ) : (
         <>

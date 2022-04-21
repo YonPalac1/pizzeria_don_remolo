@@ -1,11 +1,10 @@
-import React from "react";
-import { Sidebar } from "../../components/Backoffice/Sidebar/Sidebar";
+import React from 'react'
+import OrdersControl from '../../components/Backoffice/ordersControl/OrdersControl'
+import { RecentOrders } from '../../components/Backoffice/ordersControl/RecentOrders'
 
-export const Backoffice = ({ children }) => {
-
-  return <>
-    <Sidebar />
-    { children }
+export const Backoffice = () => {
+  return (<>
+    <RecentOrders />
   </>
-  
-};
+  )
+}
