@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { ListProducts } from "../components/Backoffice/ListProducts/ListProducts";
 import { BackofficeLayout } from "../layout/BackofficeLayout/BackofficeLayout";
-import { Backoffice } from "../pages/Backoffice/backoffice"
+import { Backoffice } from "../pages/Backoffice/Backoffice"
 
 export const PrivateRoutes = () => {
   return (
