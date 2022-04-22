@@ -69,12 +69,9 @@ export const allProductsAction = () => async (dispatch) => {
   });
 };
 
-export const addNewProductAction = (data, file) => async (dispatch) => {
-  const newInfo = { ...data, image: file}
-  console.log(newInfo)
-  try {
-    const json = JSON.stringify(newInfo);
-    const res = await axios.post("http://localhost:9000/api/foods/", json, {
+export const addNewProductAction = (data) => async (dispatch) => {
+  try {    
+    const res = await axios.post("http://localhost:9000/api/foods/", data, {
       mode: "no-cors",
       headers: {
         "Content-Type": "application/json",

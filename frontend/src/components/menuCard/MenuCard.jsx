@@ -40,7 +40,7 @@ export const MenuCard = ({ products }) => {
                 <button className="btn-modal">
                     <FontAwesomeIcon icon={faInfo} />
                 </button>
-                <img src="./images/logo.png" />
+                <img src={products.image} />
             </div>
             <div className="menu-card_details">
                 {products.category !== "bebidas" ? (

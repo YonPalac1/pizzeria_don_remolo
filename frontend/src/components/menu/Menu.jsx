@@ -19,7 +19,6 @@ export const Menu = () => {
     useEffect(() => {
         try {
             dispatch(allDataAction())
-
         } catch (err) { console.log(err) }
     }, [dispatch])
 
