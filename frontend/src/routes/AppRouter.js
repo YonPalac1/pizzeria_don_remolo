@@ -6,22 +6,15 @@ import {
   Navigate,
 } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
-import { Login } from "../pages/LoginRegister/Login.jsx";
-import { Register } from "../pages/LoginRegister/Register.jsx";
-import { Home } from "../pages/home/Home.jsx";
-import { Cart } from "../pages/cart/Cart.jsx";
-import { Payment } from "../pages/payment/Payment.jsx";
-import { Success } from "../pages/success/Success.jsx";
-
 import { sessionAction } from "../redux/authReducer.js";
-import { Details } from "../pages/details/Details.jsx";
-import { NotFound } from "./notFound/NotFound.jsx";
+import { Login, Register, Home, Cart, Payment, Success, Layout, PrivateRoutes, NotFound, Details } from './index'
 
-import { Layout } from "../layout/Layout.jsx";
-import { PrivateRoutes } from "./PrivateRoutes";
+
+
+
 
 const AppRouter = () => {
+
   const logged = useSelector((store) => store.auth.ok);
   const rol = useSelector((store) => store.auth.rol);
   const dispatch = useDispatch();

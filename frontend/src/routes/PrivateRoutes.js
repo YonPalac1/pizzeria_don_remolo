@@ -1,8 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { ListProducts } from "../components/Backoffice/ListProducts/ListProducts";
-import { Backoffice } from "../pages/backoffice/Backoffice";
- 
+
+import { ListProducts, Backoffice,BackofficeLayout } from './index'
 
 export const PrivateRoutes = () => {
   return (
