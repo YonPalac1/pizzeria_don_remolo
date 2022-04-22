@@ -1,9 +1,7 @@
 .banner {
- 
-    
     justify-content: center;
     align-items: center;
-    width: 100vh;
     height: 40vh; 
     margin-top: 200px; 
+    width: 100%;
 }

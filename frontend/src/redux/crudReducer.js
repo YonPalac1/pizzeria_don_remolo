@@ -69,17 +69,19 @@ export const allProductsAction = () => async (dispatch) => {
   });
 };
 
-export const addNewProductAction = (data) => async (dispatch) => {
+export const addNewProductAction = (data, file) => async (dispatch) => {
+  const newInfo = { ...data, image: file}
+  console.log(newInfo)
   try {
-    const json = JSON.stringify(data);
-    const res = await axios.post("http://localhost:9000/api/foods/", data, {
+    const json = JSON.stringify(newInfo);
+    const res = await axios.post("http://localhost:9000/api/foods/", json, {
       mode: "no-cors",
       headers: {
-        "Content-Type": "multipart/form-data",
+        "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
       },
     });
-    
+    console.log(res)  
     dispatch({
       type: ADD_PRODUCT,
       payload: res.data,

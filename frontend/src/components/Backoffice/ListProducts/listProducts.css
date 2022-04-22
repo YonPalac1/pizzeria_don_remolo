@@ -1,11 +1,26 @@
 .list-products-container {
     max-width: 1024px;
-    margin: auto;
+    margin: 50px auto;
 }
 
 .list-products-container .filters {
     display: flex;
     justify-content: space-between;
+}
+
+.list-products-container .title-table {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+.list-products-container .title-table button {
+    background: rgb(255, 60, 0);
+    border-radius: 5px;
+    padding: 5px 12px;
+    color: #fff;
+    text-decoration: none;
+    border: none; 
+    cursor: pointer;
 }
 
 .list-products-container form {
@@ -48,13 +63,25 @@
     color: #ccc; 
 }
 
+.table-list_header {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    background: rgb(255, 60, 0);
+    margin-top: 12px;
+    color: #fff;
+}
+
 .list-products {
     display: flex;
     justify-content: space-between;
-    border: 1px solid #ccc;
     border-radius: 5px;
     padding: 5px;
     margin: 3px 0 0; 
+}
+
+.list-products:hover {
+    background: #ccc;
 }
 
 .list-products-buttons button {
@@ -72,7 +99,7 @@
     background: yellow;
 }
 
+
 h5 {
-    margin-top: 50px;
     font-size: 20px;
 } 

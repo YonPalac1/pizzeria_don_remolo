@@ -21,7 +21,6 @@ import { NotFound } from "./notFound/NotFound.jsx";
 import { Layout } from "../layout/Layout.jsx";
 import { PrivateRoutes } from "./PrivateRoutes";
 
-
 const AppRouter = () => {
   const logged = useSelector((store) => store.auth.ok);
   const rol = useSelector((store) => store.auth.rol);
@@ -34,43 +33,37 @@ const AppRouter = () => {
     }
   }, []);
 
-    return (
-        <Router>
-            <Layout>
-                <Routes>
-                  
-                    <Route
-                        exact
-                        path="/login"
-                        element={logged ? <Navigate to="/" /> : <Login />}
-                    />
-                    <Route
-                        exact
-                        path="/register"
-                        element={logged ? <Navigate to="/" /> : <Register />}
-                    />
-                    {/* <Route exact path="/" element={<Home />} /> */}
+  return (
+    <Router>
+      <Layout>
+        <Routes>
+          <Route
+            exact
+            path="/login"
+            element={logged ? <Navigate to="/" /> : <Login />}
+          />
+          <Route
+            exact
+            path="/register"
+            element={logged ? <Navigate to="/" /> : <Register />}
+          />
+          {/* <Route exact path="/" element={<Home />} /> */}
 
-                    <Route exact path="/" element={<Home />} />
-                    <Route exact path="/cart" element={<Cart />} />
-                    <Route exact path="/details" element={<Details />} />
-                    <Route exact path="/payment" element={<Payment />} />
-                    <Route exact path="/success" element={<Success />} />
-            
-
-                    <Route
-                        path="/backoffice/*"
-                        element={rol === 1 ? <PrivateRoutes /> : <Navigate to="/" />}
-                    />
-                     
-
-                    <Route path='*' element={<NotFound />} />
-                   
-
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/cart" element={<Cart />} />
+          <Route exact path="/details" element={<Details />} />
+          <Route exact path="/payment" element={<Payment />} />
+          <Route exact path="/success" element={<Success />} />
         <Route path="*" element={<NotFound />} />
-      </Routes>
-
+        </Routes>
       </Layout>
+      
+      <Routes>
+        <Route
+          path="/backoffice/*"
+          element={rol === 1 ? <PrivateRoutes /> : <Navigate to="/" />}
+        />
+      </Routes>
     </Router>
   );
 };

@@ -24,7 +24,7 @@ export const Search = ({ icon }) => {
         onChange={handleInputChange}
         value={keywords}
         type="search"
-        placeholder="Buscar"
+        placeholder="Buscar por nombre"
       ></input>
       <button type="submit">{icon}</button>
     </form>
