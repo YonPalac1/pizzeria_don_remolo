@@ -1,74 +1,57 @@
-export const tittlesValues = [{
+export const orders  = [{
 
-    title: 'N° de Orden',
+    picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYgO3fm3d_UcdvascBahHhqu3z-uXB-mUzQg&usqp=CAU',
+    client: 'Martin Salem',
+    date: '10 abr, 2022',
+    state: 'Enviado',
+    price: '2.100',
+    type: 'Retirar en el local'
+
 },
 {
-    title: 'Cliente'
+
+    picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYgO3fm3d_UcdvascBahHhqu3z-uXB-mUzQg&usqp=CAU',
+    client: 'Martin Salem',
+    date: '10 abr, 2022',
+    state: 'Enviado',
+    price: '2.100',
+    type: 'Retirar en el local'
+
 },
 {
-    title: 'Estado de pedido'
-},
-{
-    title: 'Estado de pago'
-},
-{
-    title: 'Total'
+
+    picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYgO3fm3d_UcdvascBahHhqu3z-uXB-mUzQg&usqp=CAU',
+    client: 'Martin Salem',
+    date: '10 abr, 2022',
+    state: 'Enviado',
+    price: '2.100',
+    type: 'Retirar en el local'
+
 }
-]
-
-
-export const orders = [{
-
-    order: 'S000083',
-    client: 'Ramiro Gonzalez',
-    orderState: 'delivered',
-    paymentState: 'pending',
-    total: 6000
-},
-{
-    order: 'S000083',
-    client: 'Ramiro Gonzalez',
-    orderState: 'delivered',
-    paymentState: 'paid',
-    total: 6000
-},
-{
-    order: 'S000083',
-    client: 'Ramiro Gonzalez',
-    orderState: 'delivered',
-    paymentState: 'paid',
-    total: 6000
-},
-{
-    order: 'S000083',
-    client: 'Ramiro Gonzalez',
-    orderState: 'cancel',
-    paymentState: 'paid',
-    total: 6000
-},
-{
-    order: 'S000083',
-    client: 'Ramiro Gonzalez',
-    orderState: 'delivered',
-    paymentState: 'taken',
-    total: 6000
-}
-
 
 ]
 
 
-export const searchUsingButton = [ 
+ 
+
+
+export const tittlesValues = [ 
     {
-        item: 'All'
+        item: 'Foto'
     },
     {
-        item: 'Pendientes'
+        item: 'Nombre Cliente'
     },
     {
-        item: 'Completados'
+        item: 'Fecha'
     },
     {
-        item: 'Reintegrados'
+        item: 'Estado'
+    },
+    {
+        item: 'Precio'
+    },
+    {
+        item: 'Más info'
     }
 ]

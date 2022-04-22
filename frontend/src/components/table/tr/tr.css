@@ -2,9 +2,8 @@
     display: flex;
     justify-content: space-around;
 
-    border-top: 1px solid black;
-    padding-top: 1em;
-    padding-bottom: 1em;
+    width: 100%;
+  
 }
 
 .order {
@@ -14,7 +13,7 @@
 }
 
 
-.client {
+td {
     font-weight: 700;
 }
 
@@ -97,3 +96,37 @@
     text-transform: uppercase;
 
 }
+
+
+
+.img-td{
+    border-radius: 28px;
+}
+
+
+/* 
+768px */
+
+/*           TABLET         RESPONSIVE          */
+
+@media(min-width:768px) {
+
+
+    .img-td{
+        width: 5vh;
+        height: 5vh;
+        margin-top: 1vh;
+    }
+    
+    td{
+        margin: 2vh 0;
+        
+    }
+
+
+
+ }
+
+ @media(min-width:1024px) {
+
+  }

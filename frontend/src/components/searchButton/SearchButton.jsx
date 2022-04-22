@@ -1,5 +1,7 @@
 import React from 'react'
 
+import './SearchButton.css';
+
 export const SearchButton = ({item})=> {
 
     const callApi = () => {
@@ -7,7 +9,7 @@ export const SearchButton = ({item})=> {
     }
 
   return (
-    <span onClick={callApi}>
+    <span onClick={callApi} className='item-Search-button'>
         {item}
     </span>
   )

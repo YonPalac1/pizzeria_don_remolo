@@ -1,12 +1,14 @@
 .main-div-orders-control{
-    border:  solid black 2px;
-    width: 80%;
+   
+    width: 90%;
     border-radius: 12px;
- 
+    margin: 0 auto;
+    
 }
 
 .child-div-content{
-    margin: 4em 8em;
+    width: 100%;
+    margin-top: 3vh;
 
 }
 
@@ -15,4 +17,24 @@
     display: flex;
     justify-content: space-around;
     margin-bottom: 1.5em;
+}
+
+.div-item-search{
+    display: flex;
+    justify-content: center;
+
+}
+
+
+
+
+
+@media(min-width:1024px) {
+
+
+    .div-item-search{
+       
+       
+    }
+    
 }

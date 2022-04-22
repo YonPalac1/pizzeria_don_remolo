@@ -4,6 +4,14 @@ import './Table.css'
 
 export default function Table({orders}) {
  
+    // picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYgO3fm3d_UcdvascBahHhqu3z-uXB-mUzQg&usqp=CAU',
+    // client: 'Martin Salem',
+    // date: '10 abr, 2022',
+    // state: 'enviado',
+    // price: '2.100',
+    // type: 'Retirar en el local'
+
+ 
   return (
     <table className='table'>
 

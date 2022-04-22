@@ -1,0 +1,19 @@
+.item-Search-button{
+    color: #ADB5BD;
+  
+}
+
+
+
+@media(min-width:1024px) {
+
+
+    .item-Search-button{
+       
+        width: 14vh;
+        margin-left: 2vh;
+        margin-right: 2vh;
+    }
+    
+    
+}
