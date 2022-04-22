@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { ListProducts } from "../components/Backoffice/ListProducts/ListProducts";
 import { FormAddProduct } from "../components/Backoffice/FormAddProduct/FormAddProduct";
 import { Backoffice } from "../pages/backoffice/Backoffice";
-import OrdersControl from "../components/Backoffice/ordersControl/OrdersControl";
+import { OrdersControl } from "../components/Backoffice/ordersControl/OrdersControl";
 
 export const PrivateRoutes = () => {
   return (
