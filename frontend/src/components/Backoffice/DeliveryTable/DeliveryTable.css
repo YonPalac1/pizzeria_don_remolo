@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+
+
+.title-delivery {
+    margin-left: 2vh;
+    font-weight: 400;
+    line-height: 40px;
+    font-size: 28px;
+    font-family: 'Barlow', sans-serif;
+
+}
+
+/* 
+768px */
+
+/*           TABLET         RESPONSIVE          */
+
+@media(min-width:768px) {
+
+
+    .title-delivery {
+        margin-left: 2vh;
+        font-weight: 400;
+        line-height: 40px;
+        font-size: 28px;
+        font-family: 'Barlow', sans-serif;
+
+    }
+
+
+}
+
+
+/* 
+1024px */
+
+/*           DESKTOP         RESPONSIVE          */
+
+@media(min-width:1024px) {
+
+    .title-delivery {
+        margin-left: 2vh;
+        font-weight: 400;
+        line-height: 40px;
+        font-size: 28px;
+        font-family: 'Barlow', sans-serif;
+
+    }
+
+
+
+
+}

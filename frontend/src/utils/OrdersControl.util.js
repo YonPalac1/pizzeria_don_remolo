@@ -31,6 +31,38 @@ export const orders  = [{
 
 ]
 
+export const ordersDelivery = [
+    {
+
+        picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYgO3fm3d_UcdvascBahHhqu3z-uXB-mUzQg&usqp=CAU',
+        delivery: 'Martin Salem',
+        time: '10:30',
+        status: 'Enviado',
+        orderStatus: '2.100',
+        
+    
+    },
+    {
+    
+        picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYgO3fm3d_UcdvascBahHhqu3z-uXB-mUzQg&usqp=CAU',
+        delivery: 'Martin Salem',
+        time: '10:30',
+        status: 'Pendiente',
+        orderStatus: '2.100',
+      
+    
+    },
+    {
+    
+        picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYgO3fm3d_UcdvascBahHhqu3z-uXB-mUzQg&usqp=CAU',
+        delivery: 'Martin Salem',
+        time: '10:30',
+        status: 'Cancelado',
+        orderStatus: '2.100',
+        
+    
+    }
+]
 
  
 

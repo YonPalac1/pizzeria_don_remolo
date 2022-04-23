@@ -18,7 +18,7 @@
     color: gray;
 }
 
-.mobile {
+.mobile-pedidos {
     width: 6vw;
     height: 6vw;
     border: solid 3px;
@@ -26,7 +26,7 @@
     padding: 5px;
 }
 
-.desktop {
+.desktop-pedidos {
     display: none;
 
 }
@@ -40,11 +40,11 @@
 @media(min-width:768px) {
 
 
-    .mobile {
+    .mobile-pedidos {
         display: none;
     }
 
-    .desktop {
+    .desktop-pedidos {
         display: flex;
         text-align: center;
         justify-content: center;
@@ -64,11 +64,11 @@
 @media(min-width:1024px) {
 
 
-    .mobile {
+    .mobile-pedidos {
         display: none;
     }
 
-    .desktop {
+    .desktop-pedidos {
         display: flex;
         align-items: center;
         justify-content: center;

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import './tr.css'
+// import './tr.css'
 import { StateTd } from './StateTd/StateTd'
 import { withGetScreen } from 'react-getscreen'
 import { DateTd } from './DateTd/DateTd'
@@ -14,12 +14,12 @@ export default function Tr({ orderObj }) {
 
     return (
         <>
-            <tr className='tr'>
-                <img className='img-td' src={picture} alt="image" />
-                <td className='client font-mobile'>{client}</td>
-                <td className='date font-mobile'>{date}</td>
+            <tr className='tr-pedidos'>
+                <img className='img-td-pedidos-pedidos' src={picture} alt="image" />
+                <td className='td-pedidos client-pedidos font-mobile-pedidos'>{client}</td>
+                <td className='td-pedidos date-pedidos font-mobile-pedidos'>{date}</td>
                 <StateTd state={state} />
-                <td className='total font-mobile'>${price}</td>
+                <td className='td-pedidos total-pedidos font-mobile-pedidos'>${price}</td>
                 <StateTd state={type} />
             </tr>
 

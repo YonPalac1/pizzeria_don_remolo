@@ -13,7 +13,7 @@ export const Table = ({orders}) => {
 
  
   return (
-    <table className='table'>
+    <table className='table-pedidos'>
 
         {
             orders.map(orderObj => {
