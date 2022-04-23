@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addNewProductAction, editProductAction } from "../../../redux/crudReducer";
+import {
+  addNewProductAction,
+  editProductAction,
+} from "../../../redux/crudReducer";
 import "./formAddProduct.css";
 
 export const FormAddProduct = () => {
   const dispatch = useDispatch();
-  const dataToEdit = useSelector(state => state.crud.product);
+  const dataToEdit = useSelector((state) => state.crud.product);
   const [file, setFile] = useState();
   const [images, setImages] = useState([]);
   const [imageUrls, setImageUrls] = useState([]);
@@ -16,9 +19,9 @@ export const FormAddProduct = () => {
     measurement: 0,
     category: "",
     show: 0,
-  }; 
+  };
   const [form, setForm] = useState(initialForm);
-  
+
   useEffect(() => {
     if (images.length < 1) return;
     const newImageUrls = [];
@@ -33,12 +36,8 @@ export const FormAddProduct = () => {
   };
 
   useEffect(() => {
-    if(dataToEdit){
-      setForm(dataToEdit)
-    } else {
-      setForm(initialForm)
-    }
-  }, [dataToEdit])
+    setForm(dataToEdit);
+  }, [dataToEdit]);
 
   const categories = [
     {
@@ -68,11 +67,17 @@ export const FormAddProduct = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(!dataToEdit){
-      dispatch(addNewProductAction(form, file));
-    } else {
-      dispatch(editProductAction(form));
-    }
+
+    const formData = new FormData();
+    formData.append("image", file);
+    formData.append("name", form.name);
+    formData.append("price", form.price);
+    formData.append("description", form.description);
+    formData.append("category", form.category);
+    formData.append("show", form.show);
+    formData.append("measurement", form.measurement);
+
+    dispatch(addNewProductAction(formData));
   };
 
   return (
@@ -126,7 +131,11 @@ export const FormAddProduct = () => {
         <select name="category" value={form.category} onChange={handleChange}>
           <option value="0">Categoria</option>
           {categories.map((category, i = 0) => {
-            return <option value={category.name} key={i++}>{category.name}</option>;
+            return (
+              <option value={category.name} key={i++}>
+                {category.name}
+              </option>
+            );
           })}
         </select>
 

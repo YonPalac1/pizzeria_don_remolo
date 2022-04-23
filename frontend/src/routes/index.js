@@ -11,7 +11,7 @@ import { Layout } from "../layout/Layout.jsx";
 import { PrivateRoutes } from "./PrivateRoutes";
 
 import { ListProducts } from "../components/Backoffice/ListProducts/ListProducts";
-import { Backoffice } from "../pages/backoffice/Backoffice";
+import { Backoffice } from "../pages/Backoffice/Backoffice";
 import { BackofficeLayout } from "../layout/BackofficeLayout/BackofficeLayout"
 import { OrdersControl } from "../components/Backoffice/ordersControl/OrdersControl.jsx";
 
