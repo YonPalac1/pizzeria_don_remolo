@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { sessionAction } from "../redux/authReducer.js";
-import { Login, Register, Home, Cart, Payment, Success, Layout, PrivateRoutes, NotFound, Details } from './index'
+import { Login, Register, Home, Cart, Payment, Success, Layout, PrivateRoutes, NotFound, Details, OrdersControl } from './index'
 
 
 
@@ -40,7 +40,7 @@ const AppRouter = () => {
             path="/register"
             element={logged ? <Navigate to="/" /> : <Register />}
           />
-          {/* <Route exact path="/" element={<Home />} /> */}
+         
 
           <Route exact path="/" element={<Home />} />
           <Route exact path="/cart" element={<Cart />} />
