@@ -5,7 +5,6 @@ const TOTAL = "TOTAL";
 const DELETE = "DELETE";
 const INFO = "INFO";
 const SHIPPING = "SHIPPING";
-const CHECKOUT = "CHECKOUT";
 const ORDER = "ORDER";
 const ORDER_STATUS = "ORDER_STATUS";
 
@@ -14,7 +13,6 @@ const dataInicial = {
     total: 0,
     info: [],
     shipping: "",
-    checkout: [],
     order: {},
     orderStatus: {}
 };
@@ -23,7 +21,8 @@ const dataInicial = {
 export default function cartReducer(state = dataInicial, action) {
     switch (action.type) {
         case CART:
-            return { ...state, cart: [...state.cart, action.payload] };
+            console.log(action.payload)
+            return { ...state, cart: [...state.cart, action.payload], order: {...state.order, menu: action.payload} };
 
         case TOTAL:
             return { ...state, total: action.payload };
@@ -34,13 +33,19 @@ export default function cartReducer(state = dataInicial, action) {
             return { ...state, cart: newData, total: newTotal };
 
         case INFO:
-            return { ...state, info: action.payload };
-
-        case SHIPPING:
-            return { ...state, shipping: action.payload };
-
-        case CHECKOUT:
-            return { ...state, checkout: action.payload };
+            console.log(state.order)
+            return { ...state, info: action.payload, 
+                order: {...state.order, 
+                    name: action.payload.name,
+                    lastname: action.payload.lastname,
+                    celphone: action.payload.celphone,
+                    address: action.payload.address,
+                    note: action.payload.note,
+                    menu: state.cart,
+                    total: state.total,  }};
+            
+            case SHIPPING:
+            return { ...state, shipping: action.payload, order: {...state.order, retire: action.payload}};
 
         case ORDER:
             return { ...state, order: action.payload };
@@ -104,11 +109,10 @@ export const saveOrder = (order) => (dispatch) => {
 };
 
 export const makeOrder = (order) => async (dispatch) => {
+    console.log(order)
     const json = JSON.stringify(order);
     const res = await axios.post(
-        "http://localhost:9000/api/order",
-
-        { json },
+        "http://localhost:9000/api/order", json,
         {
             mode: "no-cors",
             headers: {

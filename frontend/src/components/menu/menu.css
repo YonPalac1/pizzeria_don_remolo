@@ -1,9 +1,11 @@
 .menu {
     display: grid;
     grid-template-columns: auto auto auto auto;
+    flex-wrap: wrap;
     padding: 20px 0;
     gap: 20px;
     margin: 100px auto;
+    max-width: 1024px;
     justify-content: center;
 }
 
@@ -18,6 +20,7 @@
     border: 1px solid #ccc;
     overflow: hidden;
     position: relative;
+    width: 100%;
 }
 
 .menu-card_details {
@@ -28,10 +31,11 @@
 
 .menu-card_img {
     cursor: pointer;
+    overflow: hidden;
 }
 
 .menu-card_img img {
-    width: 100%;
+    max-width: 250px;
 }
 
 .menu-card_img .btn-modal {

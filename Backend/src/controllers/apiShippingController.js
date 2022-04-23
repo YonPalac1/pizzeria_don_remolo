@@ -57,5 +57,21 @@ module.exports = {
       res.status(500).json({ ok: false, msg: error.message });
     }
   },
+  remove: async (req, res) => {
+    try {
+      const { id: _id } = req.params;
+      await ShippingTicket.remove({ _id });
 
+      res.status(200).json({
+        ok: true,
+      });
+    } catch (error) {
+      res.status(500).json({
+        ok: false,
+        errors: { msg: error.message },
+      });
+    }
+  },
 };
+
+

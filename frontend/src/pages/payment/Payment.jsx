@@ -1,19 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Navigation } from "../../components/navigation/Navigation";
 import { CartDetails } from "../../components/cartDetails/CartDetails";
-import { checkoutAction, saveOrder } from "../../redux/cartReducer";
+import { saveOrder } from "../../redux/cartReducer";
 import "./payment.css";
 
 export const Payment = () => {
   const dispatch = useDispatch();
   const contact = useSelector((state) => state.cart.info);
+  const order = useSelector((state) => state.cart.order);
   const total = 200;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(checkoutAction(contact));
 
     let value = contact;
 
@@ -24,7 +24,7 @@ export const Payment = () => {
       configurable: true,
     });
 
-    dispatch(saveOrder(value));
+    dispatch(saveOrder(order));
   };
 
   //   "name": "emanuel",

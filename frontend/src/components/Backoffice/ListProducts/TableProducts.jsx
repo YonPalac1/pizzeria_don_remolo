@@ -19,7 +19,8 @@ export const TableProducts = ({ icons }) => {
     if (!key && !category_active) {
       dispatch(allProductsAction());
     }
-  }, []);
+  }, [products]);
+
 
   const deleteProduct = (id) => {
     if (window.confirm("Desea eliminar este producto?")) {

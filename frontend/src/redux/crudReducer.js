@@ -77,8 +77,7 @@ export const addNewProductAction = (data) => async (dispatch) => {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
       },
-    });
-    console.log(res)  
+    }); 
     dispatch({
       type: ADD_PRODUCT,
       payload: res.data,
@@ -103,10 +102,9 @@ export const productToEditDataAction = (data) => async (dispatch) => {
   }
 };
 
-export const editProductAction = (data) => async (dispatch) => {
+export const editProductAction = (data, id) => async (dispatch) => {
   try { 
-    const json = JSON.stringify(data);
-    const res = await axios.patch(`http://localhost:9000/api/foods/${data._id}`, json, {
+    const res = await axios.patch(`http://localhost:9000/api/foods/${id}`, data, {
       mode: "no-cors",
       headers: {
         "Content-Type": "application/json",
@@ -114,7 +112,6 @@ export const editProductAction = (data) => async (dispatch) => {
       },
     });
 
-    console.log(res.data.data)
     dispatch({
       type: EDIT_PRODUCT,
       payload: res.data.data

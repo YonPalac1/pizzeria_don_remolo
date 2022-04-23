@@ -45,7 +45,6 @@ module.exports = {
         description,
         measurement,
         category,
-        show,
         available,
       } = req.body;
 
@@ -57,7 +56,6 @@ module.exports = {
           description: description || foodBefore.description,
           measurement: measurement || foodBefore.measurement,
           category: category || foodBefore.category,
-          show: show || +foodBefore.show,
           available: available || +foodBefore.available,
           image: files || foodBefore.image,
         },

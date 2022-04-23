@@ -57,6 +57,7 @@ export const Modal = () => {
         <>
             {viewModal &&
                 <div className='modal'>
+                    <div className='modal-backdrop' onClick={() => { setModal(false) }}></div>
                     <div className='modal-card'>
                         <button
                           onClick={() => { setModal(false) }}
@@ -76,7 +77,7 @@ export const Modal = () => {
 
                             <div className='modal-card_body-photo'>
                                 <div className='img'>
-                                    <img href={product.image} alt='product'></img>
+                                    <img src={product.image} alt='product'></img>
                                 </div>
                             </div>
 

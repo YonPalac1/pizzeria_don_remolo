@@ -1,17 +1,39 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { allOrdersAction } from "../../../redux/orderReducer";
+import { faArrowRight, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import { Modal } from "./Modal";
+import { modalAction } from "../../../redux/dataReducer";
+import { allOrdersAction, confirmOrderAction, deleteOrderAction, detailsModal, editOrderAction } from "../../../redux/orderReducer";
+import './recentOrders.css'
 
 export const RecentOrders = () => {
   const dispatch = useDispatch();
+  const modal = useSelector(state => state.data.modal);
   const orders = useSelector((state) => state.order.orders);
+  const ordersConfirm = useSelector((state) => state.order.ordersConfirm);
 
   useEffect(() => {
     dispatch(allOrdersAction());
-  }, []);
+  }, [ordersConfirm]);
+
+  useEffect(()=>{
+  }, [orders, ordersConfirm])
+
+  const handleConfirm = (order, id) => {
+    dispatch(confirmOrderAction(order))
+    dispatch(editOrderAction(id))
+  }
+
+  const openModal = (data) => {
+    dispatch(modalAction(true));
+    dispatch(detailsModal(data))
+  };
+
+  const handleDelete = (id) => {
+    dispatch(deleteOrderAction(id))
+  }
 
   return (
     <div className="orders-container">
@@ -26,52 +48,26 @@ export const RecentOrders = () => {
             </Link>
           </div>
           <div className="orders-incomings">
-            <div className="register" >
-              <h4>Nombre del usuario</h4>
+            {orders &&
+              orders.map((order) => {
+                return <div className="register" key={order._id}>
+                  <h4>{order.name}</h4>
 
-              <button className="open-modal">detalles</button>
+                  <button className="open-modal" onClick={()=>openModal(order)}>detalles</button>
 
-              <div className="buttons-add">
-                <button>-</button>
-                <button>+</button>
-              </div>
-            </div>
-            <div className="register" >
-              <h4>Nombre del usuario</h4>
-
-              <button className="open-modal">detalles</button>
-
-              <div className="buttons-add">
-                <button>-</button>
-                <button>+</button>
-              </div>
-            </div>
-            <div className="register" >
-              <h4>Nombre del usuario</h4>
-
-              <button className="open-modal">detalles</button>
-
-              <div className="buttons-add">
-                <button>-</button>
-                <button>+</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="orders-incomings type-orders">
-          <div className="orders-incomings_title">
-            <h4>Delivery</h4>
-          </div>
-          <div className="register">
-            <h4>Kristin algo</h4>
-            <span>cancelado</span>
-            <div className="buttons-add">
-              <button>-</button>
-              <button>+</button>
-            </div>
+                  <div className="buttons-add">
+                    { order.status === 1 ?
+                    <button onClick={()=>handleConfirm(order, order._id)}>Confirmar</button>
+                      : 
+                    <FontAwesomeIcon className="icon-confirm" icon={faCheckCircle} />
+                  }
+                  </div>
+                </div>;
+              })}
           </div>
         </div>
       </div>
+      {modal && <Modal />} 
     </div>
   );
 };
