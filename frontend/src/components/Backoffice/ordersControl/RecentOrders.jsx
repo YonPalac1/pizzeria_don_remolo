@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { Modal } from "./Modal";
 import { modalAction } from "../../../redux/dataReducer";
-import { allOrdersAction, confirmOrderAction, deleteOrderAction, detailsModal, editOrderAction } from "../../../redux/orderReducer";
+import { allOrdersAction, confirmOrderAction, deleteOrderAction, detailsModal } from "../../../redux/orderReducer";
 import './recentOrders.css'
 
 export const RecentOrders = () => {
@@ -21,9 +21,8 @@ export const RecentOrders = () => {
   useEffect(()=>{
   }, [orders, ordersConfirm])
 
-  const handleConfirm = (order, id) => {
-    dispatch(confirmOrderAction(order))
-    dispatch(editOrderAction(id))
+  const handleConfirm = (id) => {
+    dispatch(confirmOrderAction(id))
   }
 
   const openModal = (data) => {
@@ -56,8 +55,9 @@ export const RecentOrders = () => {
                   <button className="open-modal" onClick={()=>openModal(order)}>detalles</button>
 
                   <div className="buttons-add">
+                  <button onClick={()=>handleDelete(order._id)}>Cancelar</button>
                     { order.status === 1 ?
-                    <button onClick={()=>handleConfirm(order, order._id)}>Confirmar</button>
+                    <button onClick={()=>handleConfirm(order._id)}>Confirmar</button>
                       : 
                     <FontAwesomeIcon className="icon-confirm" icon={faCheckCircle} />
                   }

@@ -21,7 +21,6 @@ const dataInicial = {
 export default function cartReducer(state = dataInicial, action) {
     switch (action.type) {
         case CART:
-            console.log(action.payload)
             return { ...state, cart: [...state.cart, action.payload], order: {...state.order, menu: action.payload} };
 
         case TOTAL:
@@ -33,7 +32,6 @@ export default function cartReducer(state = dataInicial, action) {
             return { ...state, cart: newData, total: newTotal };
 
         case INFO:
-            console.log(state.order)
             return { ...state, info: action.payload, 
                 order: {...state.order, 
                     name: action.payload.name,
@@ -109,7 +107,6 @@ export const saveOrder = (order) => (dispatch) => {
 };
 
 export const makeOrder = (order) => async (dispatch) => {
-    console.log(order)
     const json = JSON.stringify(order);
     const res = await axios.post(
         "http://localhost:9000/api/order", json,
