@@ -12,7 +12,7 @@ const dataInicial = {
     cart: [],
     total: 0,
     info: [],
-    shipping: "",
+    shipping: "delivery",
     order: {},
     orderStatus: {}
 };

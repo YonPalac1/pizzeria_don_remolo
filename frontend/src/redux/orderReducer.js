@@ -3,6 +3,7 @@ import axios from "axios";
 const ALL_ORDERS = "ALL_ORDERS";
 const ORDERS_ACCEPTED = "ORDERS_ACCEPTED";
 const DELETE_ORDERS = "DELETE_ORDERS";
+const ORDERS_CONFIRMED = "ORDERS_CONFIRMED";
 const MODAL = "MODAL";
 
 const dataInicial = {
@@ -20,13 +21,15 @@ export default function orderReducer(state = dataInicial, action) {
     case ORDERS_ACCEPTED:{
       let newData = state.orders.filter(data => data._id === action.payload)
 
-      return { ...state, ordersConfirm: [...state.orders, newData]}
+      return { ...state, ordersConfirm: [...state.ordersConfirm, newData]}
     }
-    
     case DELETE_ORDERS:
       let newData = state.orders.filter((data) => data.id !== action.payload);
 
       return { ...state, orders: newData };
+    case ORDERS_CONFIRMED:
+      return { ...state, ordersConfirm: [...state.ordersConfirm, action.payload]}
+
     case MODAL:
       return { ...state, details: action.payload}
     default:
@@ -37,10 +40,16 @@ export default function orderReducer(state = dataInicial, action) {
 export const allOrdersAction = () => async (dispatch) => {
   try {
     const res = await axios.get("http://localhost:9000/api/order/");
-
+    
+    const confirmed = res.data.result.filter(item => item.status === 2 )
+    
     dispatch({
         type: ALL_ORDERS,
         payload: res.data.result
+    })
+    dispatch({
+        type: ORDERS_CONFIRMED,
+        payload: confirmed
     })
   } catch (err) {
     console.log(err);
@@ -71,6 +80,13 @@ export const deleteOrderAction = (id) => async (dispatch) => {
   }
 }
 
+export const ordersComfirmed = (data) => (dispatch) => {
+  console.log(data)
+  dispatch({
+    type: ORDERS_CONFIRMED,
+    payload: data
+  })
+}
 
 export const detailsModal = (data) => (dispatch) =>  {
   dispatch({

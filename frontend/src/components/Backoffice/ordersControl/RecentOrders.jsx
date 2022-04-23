@@ -17,9 +17,11 @@ export const RecentOrders = () => {
   useEffect(() => {
     dispatch(allOrdersAction());
   }, [ordersConfirm]);
+  
+  useEffect(()=>{}, [orders, ordersConfirm])
 
   useEffect(()=>{
-  }, [orders, ordersConfirm])
+  },[])
 
   const handleConfirm = (id) => {
     dispatch(confirmOrderAction(id))
