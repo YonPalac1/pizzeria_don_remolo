@@ -11,7 +11,9 @@ import { Layout } from "../layout/Layout.jsx";
 import { PrivateRoutes } from "./PrivateRoutes";
 
 import { ListProducts } from "../components/Backoffice/ListProducts/ListProducts";
-import { Backoffice } from "../pages/Backoffice/Backoffice";
+import { Backoffice } from "../pages/backoffice/Backoffice.jsx";
 import { BackofficeLayout } from "../layout/BackofficeLayout/BackofficeLayout"
+import { OrdersControl } from "../components/Backoffice/ordersControl/OrdersControl.jsx";
+import { DeliveryTable } from "../components/Backoffice/DeliveryTable/DeliveryTable.jsx";
 
-export { Login, Register, Home, Cart, Payment, Success, Layout, PrivateRoutes, NotFound, Details,ListProducts, Backoffice,BackofficeLayout }
+export { Login, Register, Home, Cart, Payment, Success, Layout, PrivateRoutes, NotFound, Details,ListProducts, OrdersControl, Backoffice,BackofficeLayout, DeliveryTable }

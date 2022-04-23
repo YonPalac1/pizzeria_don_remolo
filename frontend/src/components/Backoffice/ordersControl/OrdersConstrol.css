@@ -21,7 +21,7 @@
 
 .div-item-search{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
 
 }
 
@@ -34,7 +34,17 @@
 
     .div-item-search{
        
+        margin-left: 2vw;
+    }
+    
+}
+
+@media(min-width:768px) {
+
+
+    .div-item-search{
        
+      margin-left: 5vw;
     }
     
 }

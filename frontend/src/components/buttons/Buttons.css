@@ -1,0 +1,85 @@
+.taken {
+    padding: 0.5em 2em;
+    color: #24BDC7;
+    border-radius: 5px;
+    background-color: #24BDC71A;
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.orderState:hover {
+    background-color: #24BDC71A;
+}
+
+.refunded {
+    padding: 0.5em 2em;
+    color: #616161;
+    border-radius: 5px;
+    background-color: #7000FF1A;
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.refunded:hover {
+    background-color: #7000FF1A;
+}
+
+.cancel {
+
+    padding: 0.5em 2em;
+
+    color: #E80000;
+    border-radius: 5px;
+    background-color: rgba(232, 0, 0, .1);
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+
+}
+
+.pending {
+    padding: 0.5em 2em;
+
+    color: #FF9900;
+    border-radius: 5px;
+    background-color: rgba(255, 153, 0, 0.1);
+    ;
+    cursor: pointer;
+    font-weight: 700;
+ 
+    text-transform: uppercase;
+}
+
+.paid {
+    padding: 0.5em 2em;
+
+    color: #16C35B;
+    border-radius: 5px;
+    background-color: rgba(22, 195, 91, .1);
+    cursor: pointer;
+    font-weight: 700;
+     
+    text-transform: uppercase;
+}
+
+.delivered {
+
+    padding: 0.5em 2em;
+
+    color: #16C31E;
+    border-radius: 5px;
+    background-color: rgba(67, 107, 170,.1);
+    cursor: pointer;
+    font-weight: 700;
+  
+    text-transform: uppercase;
+
+}
+
+.order {
+    color: #436BAA;
+    text-transform: uppercase;
+
+}

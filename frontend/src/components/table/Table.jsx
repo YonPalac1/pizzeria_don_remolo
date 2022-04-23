@@ -2,7 +2,7 @@ import React from 'react';
 import Tr from './tr/Tr';
 import './Table.css'
 
-export default function Table({orders}) {
+export const Table = ({orders}) => {
  
     // picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYgO3fm3d_UcdvascBahHhqu3z-uXB-mUzQg&usqp=CAU',
     // client: 'Martin Salem',
@@ -13,7 +13,7 @@ export default function Table({orders}) {
 
  
   return (
-    <table className='table'>
+    <table className='table-pedidos'>
 
         {
             orders.map(orderObj => {

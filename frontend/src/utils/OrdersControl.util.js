@@ -13,9 +13,9 @@ export const orders  = [{
     picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYgO3fm3d_UcdvascBahHhqu3z-uXB-mUzQg&usqp=CAU',
     client: 'Martin Salem',
     date: '10 abr, 2022',
-    state: 'Enviado',
+    state: 'Pendiente',
     price: '2.100',
-    type: 'Retirar en el local'
+    type: 'Delivery'
 
 },
 {
@@ -23,7 +23,7 @@ export const orders  = [{
     picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYgO3fm3d_UcdvascBahHhqu3z-uXB-mUzQg&usqp=CAU',
     client: 'Martin Salem',
     date: '10 abr, 2022',
-    state: 'Enviado',
+    state: 'Cancelado',
     price: '2.100',
     type: 'Retirar en el local'
 
@@ -31,6 +31,38 @@ export const orders  = [{
 
 ]
 
+export const ordersDelivery = [
+    {
+
+        picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYgO3fm3d_UcdvascBahHhqu3z-uXB-mUzQg&usqp=CAU',
+        delivery: 'Martin Salem',
+        time: '10:30',
+        status: 'Enviado',
+        orderStatus: '2.100',
+        
+    
+    },
+    {
+    
+        picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYgO3fm3d_UcdvascBahHhqu3z-uXB-mUzQg&usqp=CAU',
+        delivery: 'Martin Salem',
+        time: '10:30',
+        status: 'Pendiente',
+        orderStatus: '2.100',
+      
+    
+    },
+    {
+    
+        picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYgO3fm3d_UcdvascBahHhqu3z-uXB-mUzQg&usqp=CAU',
+        delivery: 'Martin Salem',
+        time: '10:30',
+        status: 'Cancelado',
+        orderStatus: '2.100',
+        
+    
+    }
+]
 
  
 

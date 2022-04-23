@@ -10,9 +10,21 @@
 
     .item-Search-button{
        
-        width: 14vh;
-        margin-left: 2vh;
-        margin-right: 2vh;
+        width: 10vh;
+       
+    }
+    
+    
+}
+
+@media(min-width:768px) {
+
+
+    .item-Search-button{
+       width: 20vw;
+        
+        
+        
     }
     
     

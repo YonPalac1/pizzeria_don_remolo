@@ -1,15 +1,79 @@
-.green{
+.green {
     color: #00CD6B;
+    fill: #00CD6B;
 }
 
-.red{
-    color:#FF3131;
+.red {
+    color: #FF3131;
+    fill: #FF3131;
 }
 
-.yellow{
-    color:#FFC940;
+.yellow {
+    color: #FFC940;
+    fill: #FFC940;
 }
 
-.broken{
+
+.broken {
     color: gray;
+}
+
+.mobile-pedidos {
+    width: 6vw;
+    height: 6vw;
+    border: solid 3px;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.desktop-pedidos {
+    display: none;
+
+}
+
+
+/* 
+768px */
+
+/*           TABLET         RESPONSIVE          */
+
+@media(min-width:768px) {
+
+
+    .mobile-pedidos {
+        display: none;
+    }
+
+    .desktop-pedidos {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        width: 16vw;
+    }
+
+
+
+}
+
+
+/* 
+1024px */
+
+/*           DESKTOP         RESPONSIVE          */
+
+@media(min-width:1024px) {
+
+
+    .mobile-pedidos {
+        display: none;
+    }
+
+    .desktop-pedidos {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+
 }

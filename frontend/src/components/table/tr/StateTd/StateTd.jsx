@@ -2,41 +2,62 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import './StateTd.css'
 
+
+
+
 export const StateTd = ({ state }) => {
 
-    const [color, setColor] = useState('')
+    const [color, setColor] = useState({ color: '', Icon: Check })
+    const { Icon } = color
 
     const handleColor = () => {
 
         const value = state.toLowerCase()
-            switch (value) {
-                case 'enviado':
-                    
-                    setColor('green')
-                    break;
-        
-                case 'pendiente':
-                    setColor('yellow')
-                    break;
-        
-                case 'cancelado':
-                    setColor('red')
-                    break;
-        
-                default:
-                    setColor('broken')
-                    break;
-            }
+        switch (value) {
+            case 'enviado':
+
+                setColor({ color: 'green', Icon: Check })
+                break;
+
+            case 'pendiente':
+                setColor({ color: 'yellow', Icon: Spinner })
+                break;
+
+            case 'cancelado':
+                setColor({ color: 'red', Icon: Remove })
+                break;
+
+            case 'delivery':
+                setColor({ color: 'black', Icon: Truck })
+                break;
+
+            case 'retirar en el local':
+                setColor({ color: 'black', Icon: Store })
+                break;
+
+            default:
+                setColor({ color: 'broken', Icon: Check })
+                break;
+        }
 
 
     }
 
+
     useEffect(() => {
         handleColor()
+
     }, [])
-    
+
     return (
-        <td className={color}>{state}</td>
+        <>
+            <div className='desktop-pedidos'>
+                <td className={color.color}>{state}</td>
+
+            </div>
+
+            <Icon />
+        </>
     )
 }
 
@@ -48,3 +69,45 @@ StateTd.propTypes = {
 
 
 
+
+
+
+const Check = () => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className='green mobile-pedidos'>
+            <path d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z" />
+        </svg>
+    )
+}
+
+const Remove = () => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" className='red mobile-pedidos'>
+            <path d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z" />
+        </svg>
+    )
+}
+
+const Spinner = () => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className='yellow mobile-pedidos'>
+            <path d="M304 48C304 74.51 282.5 96 256 96C229.5 96 208 74.51 208 48C208 21.49 229.5 0 256 0C282.5 0 304 21.49 304 48zM304 464C304 490.5 282.5 512 256 512C229.5 512 208 490.5 208 464C208 437.5 229.5 416 256 416C282.5 416 304 437.5 304 464zM0 256C0 229.5 21.49 208 48 208C74.51 208 96 229.5 96 256C96 282.5 74.51 304 48 304C21.49 304 0 282.5 0 256zM512 256C512 282.5 490.5 304 464 304C437.5 304 416 282.5 416 256C416 229.5 437.5 208 464 208C490.5 208 512 229.5 512 256zM74.98 437C56.23 418.3 56.23 387.9 74.98 369.1C93.73 350.4 124.1 350.4 142.9 369.1C161.6 387.9 161.6 418.3 142.9 437C124.1 455.8 93.73 455.8 74.98 437V437zM142.9 142.9C124.1 161.6 93.73 161.6 74.98 142.9C56.24 124.1 56.24 93.73 74.98 74.98C93.73 56.23 124.1 56.23 142.9 74.98C161.6 93.73 161.6 124.1 142.9 142.9zM369.1 369.1C387.9 350.4 418.3 350.4 437 369.1C455.8 387.9 455.8 418.3 437 437C418.3 455.8 387.9 455.8 369.1 437C350.4 418.3 350.4 387.9 369.1 369.1V369.1z" />
+        </svg>
+    )
+}
+
+const Store = () => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" className='mobile-pedidos'>
+            <path d="M495.5 223.2C491.6 223.7 487.6 224 483.4 224C457.4 224 434.2 212.6 418.3 195C402.4 212.6 379.2 224 353.1 224C327 224 303.8 212.6 287.9 195C272 212.6 248.9 224 222.7 224C196.7 224 173.5 212.6 157.6 195C141.7 212.6 118.5 224 92.36 224C88.3 224 84.21 223.7 80.24 223.2C24.92 215.8-1.255 150.6 28.33 103.8L85.66 13.13C90.76 4.979 99.87 0 109.6 0H466.4C476.1 0 485.2 4.978 490.3 13.13L547.6 103.8C577.3 150.7 551 215.8 495.5 223.2H495.5zM499.7 254.9C503.1 254.4 508 253.6 512 252.6V448C512 483.3 483.3 512 448 512H128C92.66 512 64 483.3 64 448V252.6C67.87 253.6 71.86 254.4 75.97 254.9L76.09 254.9C81.35 255.6 86.83 256 92.36 256C104.8 256 116.8 254.1 128 250.6V384H448V250.7C459.2 254.1 471.1 256 483.4 256C489 256 494.4 255.6 499.7 254.9L499.7 254.9z" />
+        </svg>
+    )
+}
+
+const Truck = () => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" className='mobile-pedidos'>
+            <path d="M368 0C394.5 0 416 21.49 416 48V96H466.7C483.7 96 499.1 102.7 512 114.7L589.3 192C601.3 204 608 220.3 608 237.3V352C625.7 352 640 366.3 640 384C640 401.7 625.7 416 608 416H576C576 469 533 512 480 512C426.1 512 384 469 384 416H256C256 469 213 512 160 512C106.1 512 64 469 64 416H48C21.49 416 0 394.5 0 368V48C0 21.49 21.49 0 48 0H368zM416 160V256H544V237.3L466.7 160H416zM160 368C133.5 368 112 389.5 112 416C112 442.5 133.5 464 160 464C186.5 464 208 442.5 208 416C208 389.5 186.5 368 160 368zM480 464C506.5 464 528 442.5 528 416C528 389.5 506.5 368 480 368C453.5 368 432 389.5 432 416C432 442.5 453.5 464 480 464z" />
+        </svg>
+    )
+}
