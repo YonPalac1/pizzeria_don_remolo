@@ -1,9 +1,10 @@
 import React from 'react'
-import Table from '../../table/Table'
+
 
 import './OrdersConstrol.css'
 
 import { orders,  tittlesValues } from '../../../utils/OrdersControl.util'
+import {Table} from '../../table/Table'
 import { Search } from '../../search/Search'
 import { SearchButton } from '../../searchButton/SearchButton'
 
