@@ -15,5 +15,6 @@ import { Backoffice } from "../pages/backoffice/Backoffice.jsx";
 import { BackofficeLayout } from "../layout/BackofficeLayout/BackofficeLayout"
 import { OrdersControl } from "../components/Backoffice/ordersControl/OrdersControl.jsx";
 import { DeliveryTable } from "../components/Backoffice/DeliveryTable/DeliveryTable.jsx";
+import { LastRequestTable } from "../components/Backoffice/LastRequestTable/LastRequestTable.jsx";
 
-export { Login, Register, Home, Cart, Payment, Success, Layout, PrivateRoutes, NotFound, Details,ListProducts, OrdersControl, Backoffice,BackofficeLayout, DeliveryTable }
+export { Login, Register, Home, Cart, Payment, Success, Layout, PrivateRoutes, NotFound, Details,ListProducts, OrdersControl, Backoffice,BackofficeLayout, DeliveryTable, LastRequestTable }

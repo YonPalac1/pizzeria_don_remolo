@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+
+
+.title-request {
+    margin-left: 2vh;
+    font-weight: 400;
+    line-height: 40px;
+    font-size: 28px;
+    font-family: 'Barlow', sans-serif;
+
+}
+
+/* 
+768px */
+
+/*           TABLET         RESPONSIVE          */
+
+@media(min-width:768px) {
+
+
+    .title-request {
+        margin-left: 2vh;
+        font-weight: 400;
+        line-height: 40px;
+        font-size: 28px;
+        font-family: 'Barlow', sans-serif;
+
+    }
+    .table-request{
+        width: 80%;
+    }
+
+
+}
+
+
+/* 
+1024px */
+
+/*           DESKTOP         RESPONSIVE          */
+
+@media(min-width:1024px) {
+
+    .title-request {
+        margin-left: 2vh;
+        font-weight: 400;
+        line-height: 40px;
+        font-size: 28px;
+        font-family: 'Barlow', sans-serif;
+
+    }
+
+    .table-request{
+        width: 100%;
+    }
+
+    .td-request{
+        width: 12vw;
+    }
+    .div-item-search{
+        margin-left: 0;
+        
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.div-item-search{
+    display: flex;
+    justify-content: space-around;
+
+}
+
+
+
+@media(min-width:1024px) {
+
+
+    .div-item-search{
+       
+        margin-left: 0;
+    }
+    
+}
+
+@media(min-width:768px) {
+
+
+    .div-item-search{
+       
+      margin-left:0;
+    }
+    
+}
+ 
+ 
+ 
+
+@media(min-width:768px) {
+
+
+    .div-item-search{
+       
+      margin: 0;
+    }
+    
+}

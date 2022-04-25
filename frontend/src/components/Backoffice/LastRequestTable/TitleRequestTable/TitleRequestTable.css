@@ -1,0 +1,25 @@
+.item-request-button{
+    color: #ADB5BD;
+    width: auto;
+    position: relative;
+}
+
+.first{
+    left: 4%;
+}
+ 
+.second{
+    left: 17%;
+}
+
+.third{
+    left: 28.5%;
+}
+
+.fourth{
+    left: 41.5%;
+}
+
+.fifth{
+    left: 47.5%;
+}

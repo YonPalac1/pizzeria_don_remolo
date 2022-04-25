@@ -87,3 +87,63 @@ export const tittlesValues = [
         item: 'Más info'
     }
 ]
+
+export const ordersLastsRequest = [
+    {
+
+        picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYgO3fm3d_UcdvascBahHhqu3z-uXB-mUzQg&usqp=CAU',
+        client: 'Martin Salem',
+        date: '10:30',
+        order: 'OPD-0586',
+        payment: 'Tarjeta',
+        address: 'wall Street 15',
+        
+    
+    },
+    {
+    
+        picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYgO3fm3d_UcdvascBahHhqu3z-uXB-mUzQg&usqp=CAU',
+        client: 'Martin Salem',
+        order: 'OPD-0586',
+        date: '10:30',
+        payment: 'Efectivo',
+        address: 'wall Street 15',
+      
+    
+    },
+    {
+    
+        picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYgO3fm3d_UcdvascBahHhqu3z-uXB-mUzQg&usqp=CAU',
+        client: 'Martin Salem',
+        order: 'OPD-0586',
+        date: '10:30',
+        payment: 'Tarjeta',
+        address: 'wall Street 15',
+        
+    
+    }
+]
+
+
+export const ordersLastsRequestTittles = [
+    {
+    item: "Nombre del Cliente",
+    position: 'first item-request-button'
+},
+{
+    item: "N° de ID",
+    position: 'second item-request-button'
+},
+{
+    item: "Fecha",
+    position: 'third item-request-button'
+},
+{
+    item: "Metodo de pago",
+    position: 'fourth item-request-button'
+},
+{
+    item: "Dirección",
+    position: 'fifth item-request-button'
+}
+]
