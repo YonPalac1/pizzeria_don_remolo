@@ -4,6 +4,8 @@ import {
   addNewProductAction,
   editProductAction,
 } from "../../../redux/crudReducer";
+import { productToEditDataAction } from "../../../redux/crudReducer";
+import { modalAction } from "../../../redux/dataReducer";
 import "./formAddProduct.css";
 
 export const FormAddProduct = () => {
@@ -13,16 +15,16 @@ export const FormAddProduct = () => {
   const [images, setImages] = useState([]);
   const [imageUrls, setImageUrls] = useState([]);
   const initialForm = {
+    image: file,
     name: "",
     price: 0,
     description: "",
     measurement: 0,
     category: "",
-    show: 0,
   };
   const [form, setForm] = useState(initialForm);
 
-  useEffect(() => {
+  useEffect(() => {    
     if (images.length < 1) return;
     const newImageUrls = [];
     images.forEach((image) => newImageUrls.push(URL.createObjectURL(image)));
@@ -36,8 +38,12 @@ export const FormAddProduct = () => {
   };
 
   useEffect(() => {
-    setForm(dataToEdit);
-  }, [dataToEdit]);
+    if(dataToEdit.length === 0){
+      setForm(initialForm)
+    } else {
+      setForm(dataToEdit);
+    }
+  }, []);
 
   const categories = [
     {
@@ -74,10 +80,17 @@ export const FormAddProduct = () => {
     formData.append("price", form.price);
     formData.append("description", form.description);
     formData.append("category", form.category);
-    formData.append("show", form.show);
     formData.append("measurement", form.measurement);
 
-    dispatch(addNewProductAction(formData));
+    if(!dataToEdit && dataToEdit == undefined){
+      dispatch(addNewProductAction(formData));
+    } else {
+      dispatch(editProductAction(formData, dataToEdit._id))
+    }
+
+    dispatch(modalAction(false))
+    dispatch(productToEditDataAction())
+
   };
 
   return (
@@ -99,7 +112,7 @@ export const FormAddProduct = () => {
         <input
           name="name"
           type="text"
-          value={form.name}
+          value={form?.name}
           onChange={handleChange}
           placeholder="Nombre"
         ></input>
@@ -107,7 +120,7 @@ export const FormAddProduct = () => {
         <input
           name="price"
           type="number"
-          value={form.price}
+          value={form?.price}
           onChange={handleChange}
           placeholder="Precio"
         ></input>
@@ -115,7 +128,7 @@ export const FormAddProduct = () => {
         <input
           name="description"
           type="text"
-          value={form.description}
+          value={form?.description}
           onChange={handleChange}
           placeholder="Descripcion"
         ></input>
@@ -123,12 +136,12 @@ export const FormAddProduct = () => {
         <input
           name="measurement"
           type="number"
-          value={form.measurement}
+          value={form?.measurement}
           onChange={handleChange}
           placeholder="Cantidad"
         ></input>
 
-        <select name="category" value={form.category} onChange={handleChange}>
+        <select name="category" value={form?.category} onChange={handleChange}>
           <option value="0">Categoria</option>
           {categories.map((category, i = 0) => {
             return (
@@ -139,11 +152,6 @@ export const FormAddProduct = () => {
           })}
         </select>
 
-        <select name="show" value={form.show} onChange={handleChange}>
-          <option value="0">Mostrar</option>
-          <option value="1">Si</option>
-          <option value="0">No</option>
-        </select>
 
         <button type="submit" className="button-send">
           {" "}

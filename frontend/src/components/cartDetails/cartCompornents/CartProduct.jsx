@@ -33,7 +33,7 @@ export const CartProduct = ({product}) => {
     <div className='cart-column_column img' key={product._id}>
 
         <div>
-            <img></img>
+            <img src={product.image}></img>
         </div>
 
 

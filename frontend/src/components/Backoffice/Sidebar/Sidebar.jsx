@@ -9,8 +9,11 @@ export const Sidebar = () => {
 
   return (
     <div className="navigation">
-      <Link to="/backoffice/" className={location === '/backoffice/' ? `active` : ""}>Mi perfil</Link>
-      <Link to="/backoffice/list-products" className={location === '/backoffice/list-products' ? `active` : ""}>Editar productos</Link>
+      <div>
+        <Link to="/backoffice/" className={location === '/backoffice/' ? `active` : ""}>Mi perfil</Link>
+        <Link to="/backoffice/list-products" className={location === '/backoffice/list-products' ? `active` : ""}>Editar productos</Link>
+      </div>
+      <Link to="/" className="">Ver el sitio</Link>
     </div>
   )
 }

@@ -45,14 +45,7 @@ const foodValidator = [
       "Categorías invalidas ( 'pizzas', 'empanadas', 'postres', 'promociones' )"
     ),
 
-  body("show")
-    .optional({ nullable: true })
-    .isNumeric()
-    .withMessage("Mostrar tiene que ser un número")
-    .bail()
-    .isIn([0, 1])
-    .withMessage("Mostrar es invalido ( 0 , 1 )"),
-
+  
   body("available")
     .optional({ nullable: true })
     .isNumeric()

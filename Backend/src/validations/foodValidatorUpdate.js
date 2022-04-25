@@ -40,14 +40,6 @@ const foodValidatorUpdate = [
     .isIn(["pizzas", "empanadas", "postres"])
     .withMessage("Categorías invalidas ( 'pizzas', 'empanadas', 'postres' )"),
 
-  body("show")
-    .optional({ nullable: true })
-    .isNumeric()
-    .withMessage("Mostrar tiene que ser un número")
-    .bail()
-    .isIn([0, 1])
-    .withMessage("Mostrar es invalido ( 0 , 1 )"),
-
   body("available")
     .optional({ nullable: true })
     .isNumeric()

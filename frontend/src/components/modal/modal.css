@@ -1,17 +1,25 @@
 .modal {
     position: fixed;
-    background-color: rgba(59, 59, 59, 0.5);
-    z-index: 1;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 3000;
+  background-color: rgba(59, 59, 59, 0.5);
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.modal-backdrop {
+    position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
 .modal-card {
     background: #fff;
     border-radius: 10px;
@@ -19,6 +27,7 @@
     position: relative;
     max-width: 1080px;
     width: 100%;
+    z-index: 3;
 }
 
 .modal-card .btn-close {
@@ -59,12 +68,7 @@
     background: #F2F2F1;
     height: 375px;
     position: relative;
-}
-.modal-card_body-photo .img {
-    border-radius: 10px;
-    background: #F2F2F1;
-    height: 375px;
-    position: relative;
+    overflow: hidden;
 }
 
 .modal-card_body-photo .img img {

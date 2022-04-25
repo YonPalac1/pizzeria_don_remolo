@@ -10,8 +10,8 @@ import './success.css'
 export const Success = () => {
 
     const orderStatus = useSelector(state => state.cart.orderStatus) // here is the flag of the order
-
     const order = useSelector(state => state.cart.order)
+
     const orderId = 20;  //we need this data from the Endpoind
     const dispatch = useDispatch();
     const flag = true    //Also this...

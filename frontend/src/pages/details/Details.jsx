@@ -21,7 +21,7 @@ export const Details = () => {
   const [check2, setCheck2] = useState(true);
   const [option, setOption] = useState("");
   const [errorMsg, setErrorMsg] = useState(false);
-  const [next, setNext] = useState(false);
+  const [next, setNext] = useState(true);
 
   useEffect(() => {
     if (option) {

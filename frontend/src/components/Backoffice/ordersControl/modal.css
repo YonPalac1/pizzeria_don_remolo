@@ -1,0 +1,40 @@
+.modalActive {
+    position: fixed;
+    background-color: rgba(213, 213, 213, 0.5);
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modalProduct {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+  }
+  
+  .modal-container {
+    background: #fff;
+    border-radius: 5px;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .modal-container .details div {
+    display: flex;
+    justify-content: space-between;
+    color: rgb(100, 98, 98);
+    padding: 10px 0;
+  }
+  .modal-container .details div span {
+    color: #000;
+    font-size: 20px;
+  }

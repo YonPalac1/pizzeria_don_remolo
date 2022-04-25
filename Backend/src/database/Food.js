@@ -8,7 +8,6 @@ const foodSchema = new Schema({
   measurement: { type: String, default: 0 }, // medición
   preparationTimeMin: Number, // tiempo de preparación
   category: String, // categoría
-  show: { type: Number, default: 1 }, // mostrar
   available: { type: Number, default: 1 },  // disponible
 },{ versionKey: false }); 
 

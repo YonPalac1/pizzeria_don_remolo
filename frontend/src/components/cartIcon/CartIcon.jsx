@@ -30,7 +30,7 @@ export const CartIcon = () => {
                         productCart.map((product) => {
                             return (
                                 <div className="image_content">
-                                    <img src="./images/logo.png"></img>
+                                    <img src={product.image}></img>
                                     <div className="product_info">
                                         <span className="name_product">{product.name}</span>
                                         <span>${product.price}</span>

@@ -1,9 +1,15 @@
 import axios from "axios";
 
 const ALL_ORDERS = "ALL_ORDERS";
+const ORDERS_ACCEPTED = "ORDERS_ACCEPTED";
+const DELETE_ORDERS = "DELETE_ORDERS";
+const ORDERS_CONFIRMED = "ORDERS_CONFIRMED";
+const MODAL = "MODAL";
 
 const dataInicial = {
   orders: [],
+  ordersConfirm: [],
+  details: []
 };
 
 //Reducer
@@ -12,6 +18,20 @@ export default function orderReducer(state = dataInicial, action) {
     case ALL_ORDERS:
       return { ...state, orders: action.payload };
 
+    case ORDERS_ACCEPTED:{
+      let newData = state.orders.filter(data => data._id === action.payload)
+
+      return { ...state, ordersConfirm: [...state.ordersConfirm, newData]}
+    }
+    case DELETE_ORDERS:
+      let newData = state.orders.filter((data) => data.id !== action.payload);
+
+      return { ...state, orders: newData };
+    case ORDERS_CONFIRMED:
+      return { ...state, ordersConfirm: [...state.ordersConfirm, action.payload]}
+
+    case MODAL:
+      return { ...state, details: action.payload}
     default:
       return state;
   }
@@ -19,12 +39,58 @@ export default function orderReducer(state = dataInicial, action) {
 
 export const allOrdersAction = () => async (dispatch) => {
   try {
-    const res = await axios.get(" http://localhost:9000/api/order/");
+    const res = await axios.get("http://localhost:9000/api/order/");
+    
+    const confirmed = res.data.result.filter(item => item.status === 2 )
+    
     dispatch({
         type: ALL_ORDERS,
         payload: res.data.result
+    })
+    dispatch({
+        type: ORDERS_CONFIRMED,
+        payload: confirmed
     })
   } catch (err) {
     console.log(err);
   }
 };
+export const confirmOrderAction = (id) => async (dispatch) => {
+  try { 
+    await axios.patch(`http://localhost:9000/api/order/cancel/${id}`);
+
+    dispatch({
+      type: ORDERS_ACCEPTED,
+      payload: id
+    })
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+export const deleteOrderAction = (id) => async (dispatch) => {
+  try {
+    await axios.delete(`http://localhost:9000/api/order/remove/${id}`);
+    dispatch({
+      type: DELETE_ORDERS,
+      payload: id
+  })
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export const ordersComfirmed = (data) => (dispatch) => {
+  console.log(data)
+  dispatch({
+    type: ORDERS_CONFIRMED,
+    payload: data
+  })
+}
+
+export const detailsModal = (data) => (dispatch) =>  {
+  dispatch({
+    type: MODAL,
+    payload: data
+  })
+}

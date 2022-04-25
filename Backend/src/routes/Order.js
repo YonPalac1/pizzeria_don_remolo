@@ -6,12 +6,21 @@ const {
   cancel,
   enable,
   all,
+  remove,
+  update
 } = require("../controllers/apiShippingController");
 
 // Validations Middleware
 const {
   orderValidator
 } = require("../validations/orderValidator");
+
+const {
+  checkTicket,
+} = require("../validations/orderValidatorUpdate")
+const {
+  checkObjectId,
+} = require("../validations/errorHandler");
 
 /* ADMIN POST */
 router
@@ -25,4 +34,6 @@ router
   .patch("/cancel/:id", cancel)
 
   // Verb DELETE
-  .patch("/enable/:id", enable);
+  .patch("/enable/:id", enable)
+
+  .delete("/remove/:id", checkObjectId, checkTicket, remove);
