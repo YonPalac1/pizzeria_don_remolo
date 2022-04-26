@@ -16,14 +16,8 @@ export const HeaderCarousel = ({ carouselData }) => {
     const [rotate, setRotate] = useState("");
     const [sateliteUno, setSateliteUno] = useState("uno");
     const [sateliteDos, setSateliteDos] = useState("dos");
-    const [sateliteTres, setSateliteTres] = useState("tres lastSatelite");
-
-    const lastSatelite = document.querySelector(".tres")
-    const secondSatelite = document.querySelector(".dos")
-    
-    useEffect(() => {
-    }, [lastSatelite])
-
+    const [sateliteTres, setSateliteTres] = useState("tres");
+   
     const indexChange = (index) => {
         if (index === 0) {
             setSateliteUno("uno");
@@ -68,7 +62,7 @@ export const HeaderCarousel = ({ carouselData }) => {
      };
 
     const handleNextCarousel = () => {
-        lastSatelite.classList.add("lastSatelite")
+        document.querySelector(".tres").classList.add("lastSatelite")
         
         setRotate("rotate");
         setTimeout(() => {
@@ -77,7 +71,7 @@ export const HeaderCarousel = ({ carouselData }) => {
         }, 500);
     };
     const handleBackCarousel = () => {
-        secondSatelite.classList.add("secondSatelite")
+        document.querySelector(".dos").classList.add("secondSatelite")
         
         setRotate("rotatereverse");
         setTimeout(() => {
