@@ -155,11 +155,18 @@ body {
 .satelites.rotate {
   animation: 1s rotate ease;
 }
+.satelites.rotatereverse {
+  animation: 1s rotatereverse ease;
+}
 
 @keyframes rotate {
-  80% {
+  100% {
     transform: rotate(90deg);
-    opacity: 0;
+  }
+}
+@keyframes rotatereverse {
+  100% {
+    transform: rotate(-90deg);
   }
 }
 
@@ -193,6 +200,31 @@ body {
     border-radius: 50%;
     z-index: -1;
 }
+.lastSatelite {
+  animation: .8s lastSatelite ease;
+} 
+@keyframes lastSatelite {
+  0% {
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(250%);
+    opacity: 0;
+  }
+}
+.secondSatelite {
+  animation: .8s secondSatelite ease;
+}
+@keyframes secondSatelite {
+  0% {
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(250%);
+    opacity: 0;
+  }
+}
+
 .circle-bg.circle1 {
   background: #fbb488;
 }

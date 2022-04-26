@@ -27,15 +27,16 @@
     border-top: 1px solid #ccc;
     padding: 8px 8px 5px;
     position: relative;
-}
+   }
 
 .menu-card_img {
     cursor: pointer;
     overflow: hidden;
+    padding: 6px;
 }
 
 .menu-card_img img {
-    max-width: 250px;
+    max-width: 100%;
 }
 
 .menu-card_img .btn-modal {

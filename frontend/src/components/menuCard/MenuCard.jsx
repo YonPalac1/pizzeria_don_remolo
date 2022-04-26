@@ -6,6 +6,7 @@ import { faCartShopping, faInfo } from "@fortawesome/free-solid-svg-icons";
 import { Modal } from "../../components/modal/Modal";
 import { modalAction, productAction } from "../../redux/dataReducer";
 import { cartAction } from '../../redux/cartReducer'
+import { SuccessAlert } from "../Alert";
 
 export const MenuCard = ({ products }) => {
     const location = useLocation().pathname; // Get route
@@ -27,6 +28,7 @@ export const MenuCard = ({ products }) => {
 
     function handleAddProduct(products) {
         dispatch(cartAction(products))
+        SuccessAlert("", "Agregado al carrito")
     }
 
     return (
