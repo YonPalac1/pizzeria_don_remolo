@@ -37,10 +37,37 @@
 
 @media(min-width:424px) {
 
+    .first{
+        left: 3vw;
+        font-size: 12px;
+    }
+     
+    .second{
+        left: 12vw;
+        font-size: 12px;
+    }
+    
+    .third{
+        left: 21vw;
+        font-size: 12px;
+    }
+    
+    .fourth{
+        left: 30vw;
+        font-size: 12px;
+    }
+    
+    .fifth{
+        left: 30vw;
+        font-size: 12px;
+    }
+    
   
 }
 
-@media(min-width:624px) {
+@media(min-width:500px) {
+   
+    
 
   
 }
