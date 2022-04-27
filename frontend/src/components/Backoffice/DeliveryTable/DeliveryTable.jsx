@@ -13,7 +13,7 @@ export const DeliveryTable = () => {
             <span className='title-delivery'>Delivery</span>
                 {
                     ordersDelivery.map(orderObj => {
-                        return <TrDelivery orderObj={orderObj} />
+                        return <TrDelivery orderObj={orderObj} key={orderObj.time} />
                     })
                 }
 

@@ -1,11 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { useSelector } from "react-redux";
 import { ordersLastsRequest,ordersLastsRequestTittles } from '../../../utils/OrdersControl.util'
 import { TrLastRequest, } from './TrLastRequest/TrLastRequest'
 import { TitleRequestTable } from './TitleRequestTable/TitleRequestTable'
 import './LastRequestTable.css'
 
 export const LastRequestTable = props => {
+
+
+    
+    const orders = useSelector((state) => state.order.ordersConfirm);
 
 
 
@@ -25,7 +30,7 @@ export const LastRequestTable = props => {
             </div>
          
             {
-                ordersLastsRequest.map(orderObj => {
+                orders.map(orderObj => {
                     return <TrLastRequest orderObj={orderObj} />
                 })
             }
