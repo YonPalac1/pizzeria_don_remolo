@@ -6,7 +6,6 @@ import {
   CANCELED,
 } from './../../helpers/translations';
 import { ICONS, COLORS } from './alertConfig';
-import './alert.scss';
 
 export function InfoAlert(title, message) {
   return Swal.fire(title, message, ICONS.INFO);
@@ -17,7 +16,22 @@ export function ErrorAlert(title, message) {
 }
 
 export function SuccessAlert(title, message) {
-  return Swal.fire(title, message, ICONS.SUCCESS);
+   const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: false,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
+  
+  return Toast.fire({
+    icon: 'success',
+    title: message
+  });
 }
 
 export function ConfirmAlert(title, message) {

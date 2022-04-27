@@ -38,10 +38,14 @@ export const FormAddProduct = () => {
   };
 
   useEffect(() => {
-    if(dataToEdit.length === 0){
-      setForm(initialForm)
+    if(dataToEdit){
+      if(dataToEdit.length === 0){
+        setForm(initialForm)
+      } else {
+        setForm(dataToEdit);
+      }
     } else {
-      setForm(dataToEdit);
+      setForm(initialForm)
     }
   }, []);
 
@@ -81,11 +85,15 @@ export const FormAddProduct = () => {
     formData.append("description", form.description);
     formData.append("category", form.category);
     formData.append("measurement", form.measurement);
-
-    if(!dataToEdit && dataToEdit == undefined){
-      dispatch(addNewProductAction(formData));
+    
+    if(dataToEdit){
+      if(dataToEdit.length === 0){
+        dispatch(addNewProductAction(formData));
+      } else {
+        dispatch(editProductAction(formData, dataToEdit._id))
+      }
     } else {
-      dispatch(editProductAction(formData, dataToEdit._id))
+      dispatch(addNewProductAction(formData));
     }
 
     dispatch(modalAction(false))
@@ -97,9 +105,18 @@ export const FormAddProduct = () => {
     <div className="form">
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <div className="form-image">
-          {imageUrls.map((imageSrc) => (
+          {dataToEdit ?
+          dataToEdit.length === 0 ?
+          imageUrls.map((imageSrc) => (
             <img src={imageSrc} key={imageSrc} />
-          ))}
+          ))
+          :
+            <img src={dataToEdit.image} />
+          :
+            imageUrls.map((imageSrc) => (
+              <img src={imageSrc} key={imageSrc} />
+            ))
+          }
           <label htmlFor="file">Agrega una imagen:</label>
           <br />
           <input

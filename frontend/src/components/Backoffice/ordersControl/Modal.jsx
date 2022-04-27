@@ -7,7 +7,9 @@ export const Modal = () => {
   const dispatch = useDispatch();
   const details = useSelector(state => state.order.details) 
 
-  useEffect(() => {}, [])
+  useEffect(() => {
+    console.log(details)
+  }, [])
 
   const openModal = () => {
     dispatch(modalAction(false));
@@ -17,24 +19,27 @@ export const Modal = () => {
     <div className="modalActive">
       <div className="modalProduct" onClick={openModal}></div>
       <div className='modal-container'>
-          <div className='details'>
+          <div className='modal-container_details'>
             <div>
-                Nombre: <span>{details.name}</span>
+                Nombre: <span>{details?.name} {details?.lastname}</span>
             </div>
             <div>
-                Apellido: <span>{details.lastname}</span>
+                Celular: <span>{details?.celphone}</span>
             </div>
             <div>
-                Celular: <span>{details.celphone}</span>
+                Direccion: <span>{details?.address}</span>
             </div>
             <div>
-                Direccion: <span>{details.address}</span>
+                Nota: <span>{details?.note}</span>
             </div>
             <div>
-                Nota: <span>{details.note}</span>
-            </div>
-            <div>
-                Pedido: <span>{details.menu[0].name}</span>
+                Pedido: 
+                <div className='pedido'>
+                  {details.menu.map(orden => {
+                    return <><span>{orden.name} :</span> <p>{orden.description}</p></>
+                  })
+                  }
+                </div>
             </div>
             
 

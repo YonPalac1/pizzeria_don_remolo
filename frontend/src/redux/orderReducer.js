@@ -41,15 +41,11 @@ export const allOrdersAction = () => async (dispatch) => {
   try {
     const res = await axios.get("http://localhost:9000/api/order/");
     
-    const confirmed = res.data.result.filter(item => item.status === 2 )
+    // const confirmed = res.data.result.filter(item => item.status === 2 )
     
     dispatch({
         type: ALL_ORDERS,
         payload: res.data.result
-    })
-    dispatch({
-        type: ORDERS_CONFIRMED,
-        payload: confirmed
     })
   } catch (err) {
     console.log(err);

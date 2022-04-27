@@ -13,14 +13,11 @@ export const HeaderCarousel = ({ carouselData }) => {
     const dispatch = useDispatch();
     const [index, setIndex] = useState(0);
     const [info, setInfo] = useState("active1");
-    const [rotate, setRotate] = useState(false);
+    const [rotate, setRotate] = useState("");
     const [sateliteUno, setSateliteUno] = useState("uno");
     const [sateliteDos, setSateliteDos] = useState("dos");
     const [sateliteTres, setSateliteTres] = useState("tres");
-
-  useEffect(() => {
-  }, []);
-
+   
     const indexChange = (index) => {
         if (index === 0) {
             setSateliteUno("uno");
@@ -53,17 +50,34 @@ export const HeaderCarousel = ({ carouselData }) => {
         }
         indexChange(index);
     };
-    const decrease = (index) => { };
+    const decrease = (index) => {
+        if (index > 0) {
+            index = index - 1;
+            setIndex(index);
+        } else {
+            index = 2;
+            setIndex(index);
+        }
+        indexChange(index);
+     };
 
     const handleNextCarousel = () => {
-        setRotate(true);
+        document.querySelector(".tres").classList.add("lastSatelite")
+        
+        setRotate("rotate");
         setTimeout(() => {
-            setRotate(false);
+            setRotate("");
             increase(index);
         }, 500);
     };
     const handleBackCarousel = () => {
-        decrease(index);
+        document.querySelector(".dos").classList.add("secondSatelite")
+        
+        setRotate("rotatereverse");
+        setTimeout(() => {
+            setRotate("");
+            decrease(index);
+        }, 500);
     };
 
     return (
@@ -80,10 +94,10 @@ export const HeaderCarousel = ({ carouselData }) => {
                 <div className={`circle-bg ${carouselData.color}`}></div>
                 <div className="header-column_circle">
                     <div className="circle_pricipal">
-                        <img src={carouselData.image} className={`${info}`}></img>
+                        <img src={carouselData.image} ></img>
                     </div>
 
-                    <div className={`satelites ${rotate ? "rotate" : ""} ${info}`}>
+                    <div className={`satelites ${rotate} `}>
                         <img className={`satelite ${sateliteUno}`} src={pizza}></img>
                         <img className={`satelite ${sateliteDos}`} src={empanadas}></img>
                         <img className={`satelite ${sateliteTres}`} src={postre}></img>

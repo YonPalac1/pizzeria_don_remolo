@@ -6,18 +6,16 @@
 
 .button{
     background-color: #EB9F3F;
-    width: 10vh;
-    height: 3vh;
+    padding: 3px 8px;
     color: white;
     text-transform: uppercase;
     border: none;
     outline: none;
-     
-
+    cursor: pointer; 
 }
 
 .input{
-    height: 3vh;
+    padding: 3px 8px;
 }
 
 .error{
