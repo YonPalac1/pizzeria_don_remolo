@@ -3,7 +3,15 @@ import PropTypes from 'prop-types'
 import './TrDelivery.css'
 
 export const TrDelivery = ({ orderObj }) => {
-    const { picture, delivery, time, status, orderStatus } = orderObj
+    // const { picture, delivery, time, status, orderStatus } = orderObj
+
+    const { address, celphone, menu, name, note, status, total, _id } = orderObj
+
+    const picture = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnZsbe7GUxdCRmqUBxV60xV7Bdq5qm6bzNyhWAHCJbm9corKmWkANQv6pfNU3jFvtE&usqp=CAU'
+    const state = 'Pendiente'
+    const delivery = 'Carlos Ramirez'
+
+
 
 
     const handleDelete = () => {
@@ -20,10 +28,10 @@ export const TrDelivery = ({ orderObj }) => {
                 <img className='img-td-delivery' src={picture} alt="image" />
                 <div className='container-delivery'>
                     <td className='font-mobile-delivery'>{delivery}</td>
-                    <td className='status-delivery font-mobile-delivery'>{status}</td>
+                    <td className='status-delivery font-mobile-delivery'>${total}</td>
                 </div>
 
-                <td className='td-delivery font-mobile-delivery time-delivery'>{time}</td>
+                <td className='td-delivery font-mobile-delivery time-delivery'>{address}</td>
                 <div className='font-mobile-delivery container-buttons-delivery'>
                     <span className='span-delivery hover-delivery' onClick={handleAdd}>
                         <Check />
