@@ -83,11 +83,8 @@ export const addNewProductAction = (data) => async (dispatch) => {
       payload: res.data,
     });
   } catch (err) {
-    console.log(err.response);
-    dispatch({
-      type: ADD_PRODUCT_FAIL,
-      payload: err.response.data,
-    });
+    console.log(err);
+    
   }
 };
 
@@ -98,7 +95,7 @@ export const productToEditDataAction = (data) => async (dispatch) => {
       payload: data,
     });
   } catch (err) {
-    console.log(err.response);
+    console.log(err);
   }
 };
 
@@ -117,7 +114,7 @@ export const editProductAction = (data, id) => async (dispatch) => {
       payload: res.data.data
     })
   } catch (err) {
-    console.log(err.response)
+    console.log(err)
   }
 }
 
@@ -130,7 +127,7 @@ export const deleteProductAction = (id) => async (dispatch) => {
       payload: id,
     });
   } catch (err) {
-    console.log(err.response);
+    console.log(err);
   }
 };
 
