@@ -1,18 +1,26 @@
 import React,{ useEffect} from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import { allOrdersConfirmed } from '../../../redux/orderReducer';
 
+
+import { allOrdersAction } from '../../../redux/orderReducer.js'
 import './OrdersConstrol.css'
 import { tittlesValues } from '../../../utils/OrdersControl.util'
-import {Table} from '../../table/Table'
+import {Table} from '../../table/Table.jsx'
 import { Search } from '../../search/Search'
 import { SearchButton } from '../../searchButton/SearchButton'
 
 export const OrdersControl = () => {
 
-
-    const orders = useSelector((state) => state.order.ordersConfirm);
-
+    const dispatch = useDispatch();
+    const orders = useSelector((state) => state.order.orders);
+    useEffect(() => {
+        dispatch(allOrdersAction());
+      }, []);
+    
+      useEffect(() => {
+        console.log(orders)
+       }, [orders]);
+    
 
 
     return (
@@ -30,7 +38,7 @@ export const OrdersControl = () => {
             <div className='child-div-content'>
 
 
-                <Table orders={orders} />
+                <Table orders={orders} /> 
 
 
 

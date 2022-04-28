@@ -24,7 +24,9 @@ export const RecentOrders = () => {
     dispatch(allOrdersAction());
   }, [ordersConfirm]);
 
-  useEffect(() => {}, [orders]);
+  useEffect(() => {
+    console.log(orders)
+   }, [orders]);
 
   const handleConfirm = (id) => {
     dispatch(confirmOrderAction(id));
@@ -85,8 +87,8 @@ export const RecentOrders = () => {
             </div>
           </div>
         </div>
-      {modal && <Modal />}
-      <DeliveryTable />
+        {modal && <Modal />}
+        <DeliveryTable />
       </div>
     </div>
   );

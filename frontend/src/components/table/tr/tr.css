@@ -17,6 +17,7 @@
 .date-pedidos {
     font-weight: 100;
 
+
 }
 
 
@@ -92,4 +93,13 @@
 
     }
 
+    .date-pedidos {
+        font-weight: 100;
+        width: 10vw;
+    
+    }
+    
+    .client-pedidos{
+        width: 6vw;
+    }
 }
