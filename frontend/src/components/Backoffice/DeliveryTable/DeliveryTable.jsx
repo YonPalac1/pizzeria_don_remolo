@@ -8,9 +8,9 @@ import { TrDelivery } from './TrDelivery/TrDelivery'
 export const DeliveryTable = () => {
     return (
         <>
-            
+             <span className='title-delivery'>Delivery</span>
             <table className='table-delivery'>
-            <span className='title-delivery'>Delivery</span>
+           
                 {
                     ordersDelivery.map(orderObj => {
                         return <TrDelivery orderObj={orderObj} key={orderObj.time} />
