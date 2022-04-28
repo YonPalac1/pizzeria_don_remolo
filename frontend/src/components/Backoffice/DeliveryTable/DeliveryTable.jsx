@@ -7,8 +7,8 @@ import { TrDelivery } from './TrDelivery/TrDelivery'
 
 export const DeliveryTable = () => {
     return (
-        <>
-             <span className='title-delivery'>Delivery</span>
+        <div className='main-div-delivery'>
+            <span className='title-delivery'>Delivery</span>
             <table className='table-delivery'>
            
                 {
@@ -19,7 +19,7 @@ export const DeliveryTable = () => {
 
 
             </table>
-        </>
+        </div>
     )
 }
 

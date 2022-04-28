@@ -5,10 +5,14 @@
     
     width: 100%;
     margin: 2vw;
-    
+    cursor: pointer;
     
     align-items: center;
 
+}
+
+.hover-delivery:hover {
+    opacity: .3;
 }
 
 .green {

@@ -25,11 +25,11 @@ export const TrDelivery = ({ orderObj }) => {
 
                 <td className='td-delivery font-mobile-delivery time-delivery'>{time}</td>
                 <div className='font-mobile-delivery container-buttons-delivery'>
-                    <span className='span-delivery' onClick={handleAdd}>
+                    <span className='span-delivery hover-delivery' onClick={handleAdd}>
                         <Check />
                     </span>
 
-                    <span className='span-delivery' onClick={handleDelete}>
+                    <span className='span-delivery hover-delivery' onClick={handleDelete}>
                         <Remove />
                     </span>
                 </div>
