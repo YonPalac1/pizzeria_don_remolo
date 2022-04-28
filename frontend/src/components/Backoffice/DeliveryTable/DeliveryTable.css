@@ -50,6 +50,12 @@
     .title-delivery{
         margin: 0;
     }
+   .table-delivery{
+       width: 30vw;
+   }
+   .main-div-delivery{
+       margin-top: .5vw
+   }
 
 
 }
