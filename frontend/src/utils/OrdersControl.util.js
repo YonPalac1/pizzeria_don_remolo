@@ -36,7 +36,7 @@ export const ordersDelivery = [
 
         picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYgO3fm3d_UcdvascBahHhqu3z-uXB-mUzQg&usqp=CAU',
         delivery: 'Martin Salem',
-        time: '10:30',
+        time: '10:40',
         status: 'Enviado',
         orderStatus: '2.100',
         
@@ -46,7 +46,7 @@ export const ordersDelivery = [
     
         picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYgO3fm3d_UcdvascBahHhqu3z-uXB-mUzQg&usqp=CAU',
         delivery: 'Martin Salem',
-        time: '10:30',
+        time: '10:20',
         status: 'Pendiente',
         orderStatus: '2.100',
       
@@ -56,7 +56,7 @@ export const ordersDelivery = [
     
         picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYgO3fm3d_UcdvascBahHhqu3z-uXB-mUzQg&usqp=CAU',
         delivery: 'Martin Salem',
-        time: '10:30',
+        time: '10:50',
         status: 'Cancelado',
         orderStatus: '2.100',
         
@@ -69,22 +69,28 @@ export const ordersDelivery = [
 
 export const tittlesValues = [ 
     {
-        item: 'Foto'
+        item: 'Foto',
+        id: 0
     },
     {
-        item: 'Nombre Cliente'
+        item: 'Nombre Cliente',
+        id: 1
     },
     {
-        item: 'Fecha'
+        item: 'Fecha',
+        id: 2
     },
     {
-        item: 'Estado'
+        item: 'Estado',
+        id: 3
     },
     {
-        item: 'Precio'
+        item: 'Precio',
+        id: 4
     },
     {
-        item: 'Más info'
+        item: 'Más info',
+        id: 5
     }
 ]
 
@@ -93,7 +99,7 @@ export const ordersLastsRequest = [
 
         picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYgO3fm3d_UcdvascBahHhqu3z-uXB-mUzQg&usqp=CAU',
         client: 'Martin Salem',
-        date: '10:30',
+        date: '10:00',
         order: 'OPD-0586',
         payment: 'Tarjeta',
         address: 'wall Street 15',
@@ -105,7 +111,7 @@ export const ordersLastsRequest = [
         picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYgO3fm3d_UcdvascBahHhqu3z-uXB-mUzQg&usqp=CAU',
         client: 'Martin Salem',
         order: 'OPD-0586',
-        date: '10:30',
+        date: '20:30',
         payment: 'Efectivo',
         address: 'wall Street 15',
       
@@ -116,7 +122,7 @@ export const ordersLastsRequest = [
         picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYgO3fm3d_UcdvascBahHhqu3z-uXB-mUzQg&usqp=CAU',
         client: 'Martin Salem',
         order: 'OPD-0586',
-        date: '10:30',
+        date: '15:30',
         payment: 'Tarjeta',
         address: 'wall Street 15',
         
