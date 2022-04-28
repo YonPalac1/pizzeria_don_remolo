@@ -5,10 +5,14 @@
     
     width: 100%;
     margin: 2vw;
-    
+    cursor: pointer;
     
     align-items: center;
 
+}
+
+.hover-delivery:hover {
+    opacity: .3;
 }
 
 .green {
@@ -50,6 +54,7 @@
     display: flex;
     flex-direction: column;
     margin: 0 2vw;
+    width: 4vw;
 }
 
 .status-delivery{
@@ -111,6 +116,9 @@
         font-size: medium;
     }
 
+    .time-delivery{
+        width: 4vw;
+    }
 
 
 
