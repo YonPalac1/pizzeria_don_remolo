@@ -10,7 +10,6 @@ const fileUpload = require("express-fileupload");
 // settings
 const app = express();
 const port = process.env.PORT || 9000;
-const uri = process.env.URI_MONGODB_CONNECTION
 
 // Routers
 const usersRoutes = require("./src/routes/Users");
@@ -60,7 +59,7 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-//const uri = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@api-pizzeria.1bgkr.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`
+const uri = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@api-pizzeria.1bgkr.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`
 
 // mongodb connection
 mongoose.connect(uri)

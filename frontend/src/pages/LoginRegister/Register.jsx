@@ -10,7 +10,7 @@ export const Register = () => {
     name: "",
     email: "",
     password: "",
-    rol: 1,
+    rol: 2,
   });
   const { name, email, password } = formValues;
   const [errorPass2, setErrorPass2] = useState();
