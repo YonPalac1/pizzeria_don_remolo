@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Navigation } from "../../components/navigation/Navigation";
 import { CartDetails } from "../../components/cartDetails/CartDetails";
 import { useDispatch, useSelector } from "react-redux";
-import { shippingAction } from "../../redux/cartReducer";
+import { calculateTotalSend, shippingAction } from "../../redux/cartReducer";
 import { infoAction } from '../../redux/cartReducer';
 import "./details.css";
 
@@ -19,7 +19,7 @@ export const Details = () => {
   const [active, setActive] = useState(false);
   const [check1, setCheck1] = useState(false);
   const [check2, setCheck2] = useState(true);
-  const [option, setOption] = useState("");
+  const [option, setOption] = useState("delivery");
   const [errorMsg, setErrorMsg] = useState(false);
   const [next, setNext] = useState(true);
 
@@ -27,6 +27,7 @@ export const Details = () => {
     if (option) {
       setNext(true);
     }
+    dispatch(shippingAction(option))
   }, [contact, option]);
 
   const handleCheck = (e) => {
@@ -67,7 +68,12 @@ export const Details = () => {
 
   const handleSubmit = () => {
     if (next) {
-      dispatch(shippingAction(option));
+      if(option === "delivery"){
+        dispatch(shippingAction(option));
+        dispatch(calculateTotalSend(130))
+      } else {
+        dispatch(shippingAction(option));
+      }
     } else {
       setErrorMsg(true);
     }

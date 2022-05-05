@@ -20,7 +20,7 @@ export default function Tr({ orderObj }) {
     return (
         <>
             <tr className='tr-pedidos'>
-                <img className='img-td-pedidos' src={picture} alt="image" />
+                {/* <img className='img-td-pedidos' src={picture} alt="image" /> */}
                 <td className='td-pedidos client-pedidos font-mobile-pedidos'>{name}</td>
                 <td className='td-pedidos date-pedidos font-mobile-pedidos'>{note}</td>
                 <StateTd state={state} />

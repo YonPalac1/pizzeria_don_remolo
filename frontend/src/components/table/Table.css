@@ -1,3 +1,6 @@
 .table-pedidos {
-    width: 100%;
+    width: 1024px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }

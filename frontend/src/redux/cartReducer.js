@@ -5,6 +5,7 @@ const TOTAL = "TOTAL";
 const DELETE = "DELETE";
 const INFO = "INFO";
 const SHIPPING = "SHIPPING";
+const CALCULATE_TOTAL_SEND = "CALCULATE_TOTAL_SEND";
 const ORDER = "ORDER";
 const ORDER_STATUS = "ORDER_STATUS";
 
@@ -12,7 +13,7 @@ const dataInicial = {
     cart: [],
     total: 0,
     info: [],
-    shipping: "delivery",
+    shipping: "",
     order: {},
     orderStatus: {}
 };
@@ -42,7 +43,7 @@ export default function cartReducer(state = dataInicial, action) {
                     menu: state.cart,
                     total: state.total,  }};
             
-            case SHIPPING:
+        case SHIPPING:
             return { ...state, shipping: action.payload, order: {...state.order, retire: action.payload}};
 
         case ORDER:
@@ -50,6 +51,10 @@ export default function cartReducer(state = dataInicial, action) {
 
         case ORDER_STATUS:
             return { ...state, orderStatus: action.payload };
+        
+        case CALCULATE_TOTAL_SEND: 
+            return { ...state, total: state.total + action.payload}
+
         default:
             return state;
     }
@@ -89,6 +94,12 @@ export const shippingAction = (shipping) => (dispatch) => {
     dispatch({
         type: SHIPPING,
         payload: shipping
+    });
+};
+export const calculateTotalSend = (data) => (dispatch) => {
+    dispatch({
+        type: CALCULATE_TOTAL_SEND,
+        payload: data
     });
 };
 

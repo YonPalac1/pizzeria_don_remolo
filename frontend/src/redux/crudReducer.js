@@ -87,6 +87,24 @@ export const addNewProductAction = (data) => async (dispatch) => {
     
   }
 };
+export const addNewDrinkAction = (data) => async (dispatch) => {
+  try {    
+    const res = await axios.post("http://localhost:9000/api/drinks/", data, {
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+    }); 
+    dispatch({
+      type: ADD_PRODUCT,
+      payload: res.data,
+    });
+  } catch (err) {
+    console.log(err);
+    
+  }
+};
 
 export const productToEditDataAction = (data) => async (dispatch) => {
   try {
@@ -101,6 +119,7 @@ export const productToEditDataAction = (data) => async (dispatch) => {
 
 export const editProductAction = (data, id) => async (dispatch) => {
   try { 
+    console.log(data)
     const res = await axios.patch(`http://localhost:9000/api/foods/${id}`, data, {
       mode: "no-cors",
       headers: {

@@ -68,16 +68,16 @@ export const ordersDelivery = [
 
 
 export const tittlesValues = [ 
-    {
-        item: 'Foto',
-        id: 0
-    },
+    // {
+    //     item: 'Foto',
+    //     id: 0
+    // },
     {
         item: 'Nombre Cliente',
         id: 1
     },
     {
-        item: 'Fecha',
+        item: 'Nota',
         id: 2
     },
     {

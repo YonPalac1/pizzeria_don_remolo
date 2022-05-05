@@ -25,7 +25,6 @@ export const RecentOrders = () => {
   }, [ordersConfirm]);
 
   useEffect(() => {
-    console.log(orders)
    }, [orders]);
 
   const handleConfirm = (id) => {

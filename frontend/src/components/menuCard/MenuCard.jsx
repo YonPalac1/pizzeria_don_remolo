@@ -61,7 +61,7 @@ export const MenuCard = ({ products }) => {
                     <b>$ {products.price}</b>
                     <button onClick={() => handleAddProduct(products)}>
                         <FontAwesomeIcon icon={faCartShopping} />{" "}
-                        Carrito
+                        Agregar
                     </button>
                 </div>
             </div>
