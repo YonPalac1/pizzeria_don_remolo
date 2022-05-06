@@ -19,6 +19,25 @@ export const Modal = () => {
 
     const setModal = modal => dispatch(modalAction(modal))
 
+   /**
+    * I'm trying to add a product to the cart, but I want to add the product with a quantity of 1, and
+    * then if the user wants to add more of the same product, I want to add the product with the
+    * quantity of the user's choice.
+    * 
+    * I'm using Redux to manage the state of the cart.
+    * 
+    * I'm using React Hooks to manage the state of the quantity.
+    * 
+    * I'm using React Hooks to manage the state of the price of the product.
+    * 
+    * I'm using React Hooks to manage the state of the price of the product with the quantity.
+    * 
+    * I'm using React Hooks to manage the state of the product.
+    * 
+    * I'm using React Hooks to manage the state of the product with the quantity.
+    * 
+    * I'm using React Hooks to manage the state of the product with the quantity and the price of
+    */
     const handleAddProduct = () => {
          dispatch(cartAction(product)) 
 
