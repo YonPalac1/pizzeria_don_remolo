@@ -110,7 +110,7 @@ export const Modal = () => {
                                     <p>{product.size} {product.measurement}</p>
                                 }
                                 <div className='modal-card_body-addMore'>
-                                    <h5>Sumar al pedido</h5>
+                                    {/* <h5>Sumar al pedido</h5> */}
                                 </div>
                             </div>
 
@@ -124,7 +124,7 @@ export const Modal = () => {
 
                         <section className='modal-card_footer'>
 
-                            <p>Subtotal: <span>$500.00</span></p>
+                            <p>Subtotal: <span>${product.price}</span></p>
 
                             <div 
                             

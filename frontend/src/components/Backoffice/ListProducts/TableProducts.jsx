@@ -19,7 +19,7 @@ export const TableProducts = ({ icons }) => {
     if (!key && !category_active) {
       dispatch(allProductsAction());
     }
-  }, [modal]);
+  }, [modal, category_active]);
 
   useEffect(() => {}, [modal, products])
 

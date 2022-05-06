@@ -11,8 +11,8 @@ export const Table = ({ orders }) => {
     // price: '2.100',
     // type: 'Retirar en el local'
     useEffect(() => {
-        console.log(orders)
-    }, [])
+        // console.log(orders)
+    }, [orders])
 
 
     return (

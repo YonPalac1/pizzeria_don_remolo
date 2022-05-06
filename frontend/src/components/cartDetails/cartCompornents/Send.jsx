@@ -9,7 +9,7 @@ export const Send = ({type}) => {
                 <span>Se calculará en el siguiente paso</span>
                 :
                 type !== "local" ?
-                    <p>$ 130</p>
+                    <p>$ 130 (delivery)</p>
                     :
                     <span>gratis (se retira por local)</span>
 

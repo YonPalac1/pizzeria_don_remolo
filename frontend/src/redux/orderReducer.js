@@ -4,11 +4,13 @@ const ALL_ORDERS = "ALL_ORDERS";
 const ORDERS_ACCEPTED = "ORDERS_ACCEPTED";
 const DELETE_ORDERS = "DELETE_ORDERS";
 const ORDERS_CONFIRMED = "ORDERS_CONFIRMED";
+const ORDERS_RETIRE = "ORDERS_RETIRE";
 const MODAL = "MODAL";
 
 const dataInicial = {
   orders: [],
   ordersConfirm: [],
+  ordersRetire: [],
   details: []
 };
 
@@ -28,8 +30,9 @@ export default function orderReducer(state = dataInicial, action) {
 
       return { ...state, orders: newData };
     case ORDERS_CONFIRMED:
-      return { ...state, ordersConfirm: [...state.ordersConfirm, action.payload]}
-
+      return { ...state, ordersConfirm: action.payload }
+    case ORDERS_RETIRE:
+      return { ...state, ordersRetire: action.payload }
     case MODAL:
       return { ...state, details: action.payload}
     default:
@@ -46,6 +49,25 @@ export const allOrdersAction = () => async (dispatch) => {
     dispatch({
         type: ALL_ORDERS,
         payload: res.data.result
+    })
+  } catch (err) {
+    console.log(err);
+  }
+};
+export const allOrdersConfirmedAction = () => async (dispatch) => {
+  try {
+    const res = await axios.get("http://localhost:9000/api/order/");
+    
+    const confirmed = res.data.result.filter(item => item.status === 2 )
+    const type = res.data.result.filter(item => item.retire === "Delivery" )
+    
+    dispatch({
+        type: ORDERS_CONFIRMED,
+        payload: confirmed
+    })
+    dispatch({
+        type: ORDERS_RETIRE,
+        payload: type
     })
   } catch (err) {
     console.log(err);

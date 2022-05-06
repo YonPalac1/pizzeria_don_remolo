@@ -8,21 +8,21 @@ import PropTypes from 'prop-types'
 import './DeliveryTable.css'
 // import { ordersDelivery } from '../../../utils/OrdersControl.util'
 import { TrDelivery } from './TrDelivery/TrDelivery'
-import { allOrdersAction } from '../../../redux/orderReducer.js'
+import { allOrdersConfirmedAction } from '../../../redux/orderReducer.js'
 
 
 export const DeliveryTable = () => {
 
 
     const dispatch = useDispatch();
-    const orders = useSelector((state) => state.order.orders);
+    const ordersConfirm = useSelector((state) => state.order.ordersConfirm);
+    const orders = useSelector((state) => state.order.ordersRetire);
+
     useEffect(() => {
-        dispatch(allOrdersAction());
+        dispatch(allOrdersConfirmedAction());
       }, []);
     
-      useEffect(() => {
-        console.log(orders)
-       }, [orders]);
+      useEffect(() => {}, [orders, ordersConfirm]);
     
 
     return (

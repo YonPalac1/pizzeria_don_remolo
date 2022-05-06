@@ -3,14 +3,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { totalAction } from "../../redux/cartReducer";
 import "./cartIcon.css";
 
 export const CartIcon = () => {
+  const dispatch = useDispatch();
   const productCart = useSelector((state) => state.cart.cart);
   const totals = useSelector((state) => state.cart.total);
   const [openCart, setOpenCart] = useState(false);
 
-  useEffect(() => {}, [productCart, totals]);
+  useEffect(() => {
+    if (productCart.length) {
+      const total = productCart.map((item) => item.price);
+      dispatch(totalAction(total));
+    }
+  }, [productCart, totals]);
 
   const showCart = () => {
     setOpenCart(!openCart);
@@ -18,6 +25,7 @@ export const CartIcon = () => {
 
   return (
     <>
+      
       <button className="icon-button" onClick={showCart}>
         <div className="icon-button_container">
           <FontAwesomeIcon icon={faShoppingCart} /> 
@@ -25,6 +33,11 @@ export const CartIcon = () => {
         </div>
       </button>
 
+      {openCart ?
+        <div className="backdrop" onClick={showCart}></div>
+        :
+        <></>
+      }
       <div className={`menu_cart ${openCart && "active"}`}>
         <div className="container_cart">
           {productCart.length ? (
@@ -51,7 +64,7 @@ export const CartIcon = () => {
         </div>
         <Link to="/cart" className="link_cart">
           {" "}
-          Ir al carrito
+          Ir a pagar
         </Link>
       </div>
     </>

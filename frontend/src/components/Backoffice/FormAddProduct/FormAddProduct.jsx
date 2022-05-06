@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addNewProductAction,
   editProductAction,
+  addNewDrinkAction
 } from "../../../redux/crudReducer";
 import { productToEditDataAction } from "../../../redux/crudReducer";
 import { modalAction } from "../../../redux/dataReducer";
@@ -88,7 +89,11 @@ export const FormAddProduct = () => {
     
     if(dataToEdit){
       if(dataToEdit.length === 0){
-        dispatch(addNewProductAction(formData));
+        if(form.category === "bebidas"){
+          dispatch(addNewDrinkAction(formData));
+        } else {
+          dispatch(addNewProductAction(formData));
+        }
       } else {
         dispatch(editProductAction(formData, dataToEdit._id))
       }
@@ -137,7 +142,7 @@ export const FormAddProduct = () => {
         <input
           name="price"
           type="number"
-          value={form?.price}
+          value={form?.price === 0 ? "" : form?.price}
           onChange={handleChange}
           placeholder="Precio"
         ></input>
@@ -153,7 +158,7 @@ export const FormAddProduct = () => {
         <input
           name="measurement"
           type="number"
-          value={form?.measurement}
+          value={form?.measurement === 0 ? "" : form?.measurement}
           onChange={handleChange}
           placeholder="Cantidad"
         ></input>

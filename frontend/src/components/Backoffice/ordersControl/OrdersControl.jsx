@@ -2,7 +2,7 @@ import React,{ useEffect} from 'react'
 import { useDispatch, useSelector } from "react-redux";
 
 
-import { allOrdersAction } from '../../../redux/orderReducer.js'
+import { allOrdersAction, allOrdersConfirmedAction } from '../../../redux/orderReducer.js'
 import './OrdersConstrol.css'
 import { tittlesValues } from '../../../utils/OrdersControl.util'
 import {Table} from '../../table/Table.jsx'
@@ -10,16 +10,14 @@ import { Search } from '../../search/Search'
 import { SearchButton } from '../../searchButton/SearchButton'
 
 export const OrdersControl = () => {
-
     const dispatch = useDispatch();
-    const orders = useSelector((state) => state.order.orders);
+    const orders = useSelector((state) => state.order.ordersConfirm);
+    
     useEffect(() => {
-        dispatch(allOrdersAction());
+            dispatch(allOrdersConfirmedAction());
       }, []);
     
-      useEffect(() => {
-        console.log(orders)
-       }, [orders]);
+      useEffect(() => {}, [orders]);
     
 
 
