@@ -12,7 +12,7 @@ export const Header = () => {
   const carouselData = [{
     id: 1,
     subtitle: "La mejor pizza a domicilio",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio sit id enim non morbi aliquet id quis. Vivamus pretium dolor vitae netus ut laoreet nisl quisque.",
+    description: "Porque contamos con un tesoro familiar, nuestras recetas heredadas de varias generaciones de maestros pizzeros, porque cuidamos la calidad de cada ingrediente y las llevamos a tu mesa.",
     image: pizza,
     color: "circle1"
   }, {
